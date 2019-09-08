@@ -40,8 +40,15 @@ extension FeedViewController {
 		ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
 	}
 
+    func simulateUserTapOnView(_ view: UIView?) {
+        view?.simulateTapGesture()
+    }
+
+    var errorView: ErrorView? {
+        return tableView.tableHeaderView as? ErrorView
+    }
+
     var errorMessage: String? {
-        let errorView = tableView.tableHeaderView as? ErrorView
         return errorView?.message
     }
     

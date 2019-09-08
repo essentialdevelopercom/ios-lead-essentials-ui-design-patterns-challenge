@@ -118,6 +118,7 @@
 		08F3B6E2232258BD00510CE7 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6D6232258BD00510CE7 /* FeedUIIntegrationTests.swift */; };
 		08F3B6E3232258BD00510CE7 /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6D8232258BD00510CE7 /* FeedLocalizationTests.swift */; };
 		08F3B6E6232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */; };
+		83B34366232554F100501640 /* UIView+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B34365232554F100501640 /* UIView+TestHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -317,6 +318,7 @@
 		83B343602325301100501640 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Feed.strings; sourceTree = "<group>"; };
 		83B343612325301100501640 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Feed.strings; sourceTree = "<group>"; };
 		83B343622325301200501640 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Feed.strings; sourceTree = "<group>"; };
+		83B34365232554F100501640 /* UIView+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+TestHelpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -861,6 +863,7 @@
 				08F3B6D3232258BD00510CE7 /* UIControl+TestHelpers.swift */,
 				08F3B6D4232258BD00510CE7 /* FeedViewController+TestHelpers.swift */,
 				08F3B6D5232258BD00510CE7 /* UIRefreshControl+TestHelpers.swift */,
+				83B34365232554F100501640 /* UIView+TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1372,6 +1375,7 @@
 				08F3B6DC232258BD00510CE7 /* FeedUIIntegrationTests+Assertions.swift in Sources */,
 				08F3B6E6232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				08F3B6E2232258BD00510CE7 /* FeedUIIntegrationTests.swift in Sources */,
+				83B34366232554F100501640 /* UIView+TestHelpers.swift in Sources */,
 				08F3B6E1232258BD00510CE7 /* UIRefreshControl+TestHelpers.swift in Sources */,
 				08F3B6DD232258BD00510CE7 /* FeedImageCell+TestHelpers.swift in Sources */,
 				08F3B6DA232258BD00510CE7 /* FeedUIIntegrationTests+Localization.swift in Sources */,
