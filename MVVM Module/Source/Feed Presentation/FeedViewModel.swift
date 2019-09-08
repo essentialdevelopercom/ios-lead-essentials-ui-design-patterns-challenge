@@ -21,16 +21,28 @@ final class FeedViewModel {
 			comment: "Title for the feed view")
 	}
 
+    var loadError: String {
+        return NSLocalizedString("FEED_VIEW_CONNECTION_ERROR",
+                                 tableName: "Feed",
+                                 bundle: Bundle(for: FeedViewModel.self),
+                                 comment: "Error message displayed when we can't load the image feed from the server")
+    }
+
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
+    var onLoadingError: Observer<String>?
 	
 	func loadFeed() {
 		onLoadingStateChange?(true)
 		feedLoader.load { [weak self] result in
-			if let feed = try? result.get() {
-				self?.onFeedLoad?(feed)
-			}
-			self?.onLoadingStateChange?(false)
+            guard let self = self else { return }
+
+            if let feed = try? result.get() {
+				self.onFeedLoad?(feed)
+            } else {
+                self.onLoadingError?(self.loadError)
+            }
+			self.onLoadingStateChange?(false)
 		}
 	}
 }
