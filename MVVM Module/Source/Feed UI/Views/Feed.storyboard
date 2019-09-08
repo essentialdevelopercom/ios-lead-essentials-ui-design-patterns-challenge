@@ -39,6 +39,7 @@
                             </constraints>
                             <connections>
                                 <outlet property="label" destination="Tn7-ki-LHD" id="STB-t0-j55"/>
+                                <outletCollection property="gestureRecognizers" destination="uHs-oO-jhW" appends="YES" id="Nvw-PJ-g3T"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
@@ -168,6 +169,11 @@ Location</string>
                     </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="uHs-oO-jhW" userLabel="Hide Error Gesture Recognizer">
+                    <connections>
+                        <action selector="hideMessage" destination="clu-9B-M8g" id="xfH-cQ-zct"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1105.7971014492755" y="-11.383928571428571"/>
         </scene>
