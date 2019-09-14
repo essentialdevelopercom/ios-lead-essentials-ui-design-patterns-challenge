@@ -15,7 +15,7 @@ extension UIView {
 		}
 		
 		get {
-			return layer.mask?.animation(forKey: shimmerAnimationKey) != nil
+			layer.mask?.animation(forKey: shimmerAnimationKey) != nil
 		}
 	}
 	
