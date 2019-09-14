@@ -28,15 +28,18 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     var errorView: ErrorView? {
         return tableView.tableHeaderView as? ErrorView
     }
-	
+
+    func display(_ viewModel: FeedErrorViewModel) {
+        errorView?.show(message: viewModel.errorMessage)
+        refreshControl?.endRefreshing()
+
+    }
+    
 	func display(_ viewModel: FeedLoadingViewModel) {
 		if viewModel.isLoading {
             errorView?.hideMessage()
 			refreshControl?.beginRefreshing()
 		} else {
-            if let errorMessage = viewModel.errorMessage {
-                errorView?.show(message: errorMessage)
-            }
 			refreshControl?.endRefreshing()
 		}
 	}

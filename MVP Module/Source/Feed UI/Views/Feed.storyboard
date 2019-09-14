@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1hh-nG-9OR">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1hh-nG-9OR">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,28 +19,30 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suv-TJ-iMJ">
-                                    <rect key="frame" x="0.0" y="8" width="414" height="18"/>
-                                    <viewLayoutGuide key="safeArea" id="2XB-PI-BXl"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQP-47-ylB">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
+                                    <state key="normal" title="Error label">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="bPz-9U-rA4"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="1" green="0.41343292230000001" blue="0.54339731250000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstItem="suv-TJ-iMJ" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" constant="8" id="36i-M9-OGq"/>
-                                <constraint firstItem="suv-TJ-iMJ" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="3UL-xv-GEA"/>
-                                <constraint firstAttribute="trailing" secondItem="suv-TJ-iMJ" secondAttribute="trailing" id="Bmw-9s-ohR"/>
-                                <constraint firstAttribute="bottom" secondItem="suv-TJ-iMJ" secondAttribute="bottom" constant="8" id="ITB-b0-bmC"/>
+                                <constraint firstAttribute="bottom" secondItem="yQP-47-ylB" secondAttribute="bottom" id="2Az-9m-DWU"/>
+                                <constraint firstItem="yQP-47-ylB" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="hC2-p2-Qo8"/>
+                                <constraint firstItem="yQP-47-ylB" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" id="lIY-o2-J7D"/>
+                                <constraint firstAttribute="trailing" secondItem="yQP-47-ylB" secondAttribute="trailing" id="rEE-iu-U5g"/>
                             </constraints>
                             <connections>
-                                <outlet property="label" destination="suv-TJ-iMJ" id="qlM-2y-JD5"/>
+                                <outlet property="button" destination="yQP-47-ylB" id="DHJ-kF-DB1"/>
                                 <outletCollection property="gestureRecognizers" destination="OTf-1i-0n4" appends="YES" id="afD-9h-dla"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
-                            <rect key="frame" x="0.0" y="642" width="414" height="16"/>
+                            <rect key="frame" x="0.0" y="670" width="414" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
