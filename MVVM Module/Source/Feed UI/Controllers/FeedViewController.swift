@@ -23,7 +23,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		viewModel?.loadFeed()
 	}
 
-    var errorView: ErrorView? {
+    public var errorView: ErrorView? {
         return tableView.tableHeaderView as? ErrorView
     }
 	
