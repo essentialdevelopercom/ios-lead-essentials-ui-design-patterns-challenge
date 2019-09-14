@@ -8,11 +8,11 @@ public final class ErrorView: UIView {
 	@IBOutlet public var button: UIButton!
 	
 	public var message: String? {
-        isVisible ? button.title(for: .normal) : nil
+        get { return isVisible ? button.title(for: .normal) : nil }
 	}
 	
 	private var isVisible: Bool {
-		alpha > 0
+		return alpha > 0
 	}
 	
 	public override func awakeFromNib() {
