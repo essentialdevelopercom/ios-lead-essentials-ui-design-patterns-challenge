@@ -19,23 +19,26 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcU-Ab-LfG" userLabel="Error Label">
-                                    <rect key="frame" x="20" y="8" width="374" height="18"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsS-RX-jP8">
+                                    <rect key="frame" x="16" y="8" width="382" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                    <state key="normal" title="Button">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="0At-Sf-feL"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="1" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="HcU-Ab-LfG" secondAttribute="bottom" constant="8" id="1oI-ZU-vmv"/>
-                                <constraint firstItem="HcU-Ab-LfG" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" constant="8" id="3TS-j1-NU5"/>
-                                <constraint firstItem="HcU-Ab-LfG" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" constant="20" symbolic="YES" id="Fha-hB-7Bc"/>
-                                <constraint firstAttribute="trailing" secondItem="HcU-Ab-LfG" secondAttribute="trailing" constant="20" symbolic="YES" id="e9F-YQ-TiD"/>
+                                <constraint firstItem="hsS-RX-jP8" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" constant="16" id="3yr-6p-YS7"/>
+                                <constraint firstAttribute="trailing" secondItem="hsS-RX-jP8" secondAttribute="trailing" constant="16" id="REN-6k-Gxg"/>
+                                <constraint firstAttribute="bottom" secondItem="hsS-RX-jP8" secondAttribute="bottom" constant="8" id="njl-i2-9Ng"/>
+                                <constraint firstItem="hsS-RX-jP8" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" constant="8" id="yVW-A0-hFn"/>
                             </constraints>
                             <connections>
-                                <outlet property="label" destination="HcU-Ab-LfG" id="jel-Rn-pat"/>
+                                <outlet property="button" destination="hsS-RX-jP8" id="HnW-0S-xXH"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
