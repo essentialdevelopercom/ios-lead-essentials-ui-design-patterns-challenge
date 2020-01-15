@@ -282,9 +282,12 @@ final class FeedUIIntegrationTests: XCTestCase {
 	}
 	
     func test_loadFeedCompletion_correctlyRenderErrorState() {
-        let (sut, _) = makeSUT()
+        let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.errorMessage, nil)
+        
+        loader.completeFeedLoading(with: [makeImage()])
         XCTAssertEqual(sut.errorMessage, nil)
     }
 
