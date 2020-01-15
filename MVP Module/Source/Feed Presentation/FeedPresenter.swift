@@ -25,6 +25,13 @@ final class FeedPresenter {
 	private let feedView: FeedView
 	private let loadingView: FeedLoadingView
     private let errorView: FeedErrorView
+    
+    private var errorMessage: String {
+        NSLocalizedString("FEED_VIEW_CONNECTION_ERROR",
+                          tableName: "Feed",
+                          bundle: Bundle(for: FeedPresenter.self),
+                          comment: "Message to be shown when loading feed failed")
+    }
 	
 	init(feedView: FeedView, loadingView: FeedLoadingView, errorView: FeedErrorView) {
 		self.feedView = feedView
@@ -51,12 +58,6 @@ final class FeedPresenter {
 	
 	func didFinishLoadingFeed(with error: Error) {
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
-        
-        let errorMessage = NSLocalizedString("FEED_VIEW_CONNECTION_ERROR",
-                                             tableName: "Feed",
-                                             bundle: Bundle(for: FeedPresenter.self),
-                                             comment: "Message to be shown when loading feed failed")
-        
         errorView.display(FeedErrorViewModel(errorMessage: errorMessage))
 	}
 }

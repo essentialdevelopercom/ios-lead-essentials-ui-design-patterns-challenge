@@ -9,7 +9,14 @@ final class FeedViewModel {
 	typealias Observer<T> = (T) -> Void
 	
 	private let feedLoader: FeedLoader
-	
+
+    private var errorMessage: String {
+        NSLocalizedString("FEED_VIEW_CONNECTION_ERROR",
+                          tableName: "Feed",
+                          bundle: Bundle(for: FeedViewModel.self),
+                          comment: "Message to be shown when loading feed failed")
+    }
+    
 	init(feedLoader: FeedLoader) {
 		self.feedLoader = feedLoader
 	}
@@ -28,15 +35,11 @@ final class FeedViewModel {
 	func loadFeed() {
 		onLoadingStateChange?(true)
         onErrorStateChange?(nil)
-		feedLoader.load { [weak self] result in
-			if let feed = try? result.get() {
-				self?.onFeedLoad?(feed)
+        feedLoader.load { [weak self] result in
+            if let feed = try? result.get() {
+                self?.onFeedLoad?(feed)
             } else {
-                let errorMessage = NSLocalizedString("FEED_VIEW_CONNECTION_ERROR",
-                                                     tableName: "Feed",
-                                                     bundle: Bundle(for: FeedViewModel.self),
-                                                     comment: "Message to be shown when loading feed failed")
-                self?.onErrorStateChange?(errorMessage)
+                self?.onErrorStateChange?(self?.errorMessage)
             }
             
 			self?.onLoadingStateChange?(false)
