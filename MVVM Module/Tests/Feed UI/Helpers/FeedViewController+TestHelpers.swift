@@ -54,6 +54,10 @@ extension FeedViewController {
 		return ds?.tableView(tableView, cellForRowAt: index)
 	}
 	
+    func simulateUserTapToDismissOnErrorMessage() {
+        errorView?.simulateMessageDismiss()
+    }
+
     var errorMessage: String? {
         errorView?.message
     }

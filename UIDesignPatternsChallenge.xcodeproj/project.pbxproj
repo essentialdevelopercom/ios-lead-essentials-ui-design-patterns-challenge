@@ -119,6 +119,7 @@
 		08F3B6E3232258BD00510CE7 /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6D8232258BD00510CE7 /* FeedLocalizationTests.swift */; };
 		08F3B6E6232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */; };
 		C4B5D77823CF3B0500AFBF75 /* ErrorView+SimulateDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B5D77723CF3B0500AFBF75 /* ErrorView+SimulateDismiss.swift */; };
+		C4B5D77A23CF474200AFBF75 /* ErrorView+SimulateTapToDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B5D77923CF474200AFBF75 /* ErrorView+SimulateTapToDismiss.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -320,6 +321,7 @@
 		C4B5D77523CF250400AFBF75 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Feed.strings; sourceTree = "<group>"; };
 		C4B5D77623CF250400AFBF75 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Feed.strings; sourceTree = "<group>"; };
 		C4B5D77723CF3B0500AFBF75 /* ErrorView+SimulateDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorView+SimulateDismiss.swift"; sourceTree = "<group>"; };
+		C4B5D77923CF474200AFBF75 /* ErrorView+SimulateTapToDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorView+SimulateTapToDismiss.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -745,6 +747,7 @@
 				08F3B6612322565F00510CE7 /* UIControl+TestHelpers.swift */,
 				08F3B6622322565F00510CE7 /* FeedViewController+TestHelpers.swift */,
 				08F3B6632322565F00510CE7 /* UIRefreshControl+TestHelpers.swift */,
+				C4B5D77923CF474200AFBF75 /* ErrorView+SimulateTapToDismiss.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1332,6 +1335,7 @@
 				08F3B6722322565F00510CE7 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 				08F3B66F2322565F00510CE7 /* FeedViewController+TestHelpers.swift in Sources */,
 				08F3B66D2322565F00510CE7 /* UIImage+TestHelpers.swift in Sources */,
+				C4B5D77A23CF474200AFBF75 /* ErrorView+SimulateTapToDismiss.swift in Sources */,
 				08F3B6672322565F00510CE7 /* FeedLocalizationTests.swift in Sources */,
 				08F3B6712322565F00510CE7 /* FeedUIIntegrationTests.swift in Sources */,
 				08F3B6692322565F00510CE7 /* FeedUIIntegrationTests+Localization.swift in Sources */,
