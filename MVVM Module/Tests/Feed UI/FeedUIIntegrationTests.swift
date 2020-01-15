@@ -298,6 +298,8 @@ final class FeedUIIntegrationTests: XCTestCase {
                        localized("FEED_VIEW_CONNECTION_ERROR"),
                        "Expected error message \(localized("FEED_VIEW_CONNECTION_ERROR")) to be shown, instead \(String(describing: sut.errorMessage)) is shown")
 
+        sut.simulateUserInitiatedFeedReload()
+        XCTAssertEqual(sut.errorMessage, nil, "Expected no error message on user reload action")
     }
 
 	// MARK: - Helpers
