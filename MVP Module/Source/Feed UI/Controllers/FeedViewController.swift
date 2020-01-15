@@ -11,7 +11,9 @@ protocol FeedViewControllerDelegate {
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
 	var delegate: FeedViewControllerDelegate?
 	
-	var tableModel = [FeedImageCellController]() {
+    @IBOutlet public var errorView: ErrorView!
+
+    var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
 
