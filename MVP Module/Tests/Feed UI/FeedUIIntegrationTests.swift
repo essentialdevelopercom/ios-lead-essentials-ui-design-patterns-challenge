@@ -285,14 +285,14 @@ final class FeedUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        XCTAssertEqual(sut.errorMessage, nil)
+        XCTAssertEqual(sut.errorMessage, nil, "Expected no error message to be shown view loaded for the first time")
         
         loader.completeFeedLoading(with: [makeImage()])
-        XCTAssertEqual(sut.errorMessage, nil)
+        XCTAssertEqual(sut.errorMessage, nil, "Expected no error message feed loaded successfully")
         
         sut.simulateUserInitiatedFeedReload()
         loader.completeFeedLoadingWithError()
-        XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+        XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Expected error message \(localized("FEED_VIEW_CONNECTION_ERROR")) to be shown, instead \(sut.errorMessage) is shown")
     }
 
 	// MARK: - Helpers
