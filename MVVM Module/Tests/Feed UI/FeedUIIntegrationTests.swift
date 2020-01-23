@@ -294,9 +294,7 @@ final class FeedUIIntegrationTests: XCTestCase {
         
         sut.simulateUserInitiatedFeedReload()
         loader.completeFeedLoadingWithError()
-        XCTAssertEqual(sut.errorMessage,
-                       localized("FEED_VIEW_CONNECTION_ERROR"),
-                       "Expected error message \(localized("FEED_VIEW_CONNECTION_ERROR")) to be shown, instead \(String(describing: sut.errorMessage)) is shown")
+        assertShowsCorrectErrorMessage(sut: sut)
 
         sut.simulateUserInitiatedFeedReload()
         XCTAssertEqual(sut.errorMessage, nil, "Expected no error message on user reload action")
@@ -307,9 +305,7 @@ final class FeedUIIntegrationTests: XCTestCase {
         
         sut.loadViewIfNeeded()
         loader.completeFeedLoadingWithError()
-        XCTAssertEqual(sut.errorMessage,
-                       localized("FEED_VIEW_CONNECTION_ERROR"),
-                       "Expected error message \(localized("FEED_VIEW_CONNECTION_ERROR")) to be shown, instead \(String(describing: sut.errorMessage)) is shown")
+        assertShowsCorrectErrorMessage(sut: sut)
         sut.simulateUserTapToDismissOnErrorMessage()
         XCTAssertEqual(sut.errorMessage, nil, "Expected no error message on user tap to dimiss")
     }
@@ -331,4 +327,10 @@ final class FeedUIIntegrationTests: XCTestCase {
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
 	}
+    
+    private func assertShowsCorrectErrorMessage(sut: FeedViewController, file: StaticString = #file, line: UInt = #line) {
+        XCTAssertEqual(sut.errorMessage,
+        localized("FEED_VIEW_CONNECTION_ERROR"),
+        "Expected error message \(localized("FEED_VIEW_CONNECTION_ERROR")) to be shown, instead \(String(describing: sut.errorMessage)) is shown", file: file, line: line)
+    }
 }
