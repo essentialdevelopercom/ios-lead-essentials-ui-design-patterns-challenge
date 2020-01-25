@@ -45,8 +45,8 @@ extension FeedViewController {
 	}
 
     var errorMessage: String? {
-        let headerview = tableView.tableHeaderView as? ErrorView
-        return headerview?.message
+        let errorView = tableView.tableHeaderView as? ErrorView
+        return errorView?.message
     }
 	
 	func numberOfRenderedFeedImageViews() -> Int {
