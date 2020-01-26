@@ -10,7 +10,6 @@ protocol FeedViewControllerDelegate {
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView, FeedErrorView {
 
-
 	var delegate: FeedViewControllerDelegate?
 	
 	var tableModel = [FeedImageCellController]() {
