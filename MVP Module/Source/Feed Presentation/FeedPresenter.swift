@@ -16,10 +16,12 @@ protocol FeedView {
 final class FeedPresenter {
 	private let feedView: FeedView
 	private let loadingView: FeedLoadingView
+    private let feedErrorView: FeedErrorView
 	
-	init(feedView: FeedView, loadingView: FeedLoadingView) {
+    init(feedView: FeedView, loadingView: FeedLoadingView, feedErrorView: FeedErrorView) {
 		self.feedView = feedView
 		self.loadingView = loadingView
+        self.feedErrorView = feedErrorView
 	}
 
 	static var title: String {
@@ -34,15 +36,17 @@ final class FeedPresenter {
     }
 
 	func didStartLoadingFeed() {
-		loadingView.display(FeedLoadingViewModel(isLoading: true, errorMessage: nil))
+		loadingView.display(FeedLoadingViewModel(isLoading: true))
 	}
 	
 	func didFinishLoadingFeed(with feed: [FeedImage]) {
 		feedView.display(FeedViewModel(feed: feed))
-		loadingView.display(FeedLoadingViewModel(isLoading: false, errorMessage: nil))
+		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 	
 	func didFinishLoadingFeed(with error: Error) {
-        loadingView.display(FeedLoadingViewModel(isLoading: false, errorMessage: loadingError))
+        loadingView.display(FeedLoadingViewModel(isLoading: false))
+        feedErrorView.display(FeedErrorViewModel(errorMessage: loadingError))
+
 	}
 }
