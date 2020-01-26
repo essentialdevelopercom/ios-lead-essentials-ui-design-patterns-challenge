@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="clu-9B-M8g">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="clu-9B-M8g" customClass="ErrorView" customModule="MVP" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -32,6 +32,9 @@
                                 <constraint firstAttribute="bottom" secondItem="d32-Qe-pKv" secondAttribute="bottom" constant="8" id="QXq-4a-6Sf"/>
                                 <constraint firstItem="d32-Qe-pKv" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" constant="8" id="fKC-HK-oMR"/>
                             </constraints>
+                            <connections>
+                                <outlet property="label" destination="d32-Qe-pKv" id="XIU-D4-m4w"/>
+                            </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
                             <rect key="frame" x="0.0" y="670" width="414" height="16"/>
