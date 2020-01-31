@@ -5,11 +5,3 @@
 struct FeedLoadingViewModel {
 	let isLoading: Bool
 }
-
-struct FeedErrorViewModel {
-    let errorMessage: String
-}
-
-protocol FeedErrorView {
-    func display(_ viewModel: FeedErrorViewModel)
-}
