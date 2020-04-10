@@ -19,6 +19,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		refresh()
 	}
 	
+    @IBOutlet private(set) public var errorView: ErrorView?
+    
 	@IBAction private func refresh() {
 		viewModel?.loadFeed()
 	}

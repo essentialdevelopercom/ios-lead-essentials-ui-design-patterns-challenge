@@ -27,6 +27,7 @@
                                 </label>
                             </subviews>
                             <color key="backgroundColor" red="0.91493767500000001" green="0.40338131789999998" blue="0.40312683580000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <gestureRecognizers/>
                             <constraints>
                                 <constraint firstItem="MOn-zy-coh" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" constant="20" symbolic="YES" id="96I-Ge-t03"/>
                                 <constraint firstAttribute="bottom" secondItem="MOn-zy-coh" secondAttribute="bottom" constant="8" id="N8I-w9-GK3"/>
@@ -34,7 +35,8 @@
                                 <constraint firstAttribute="trailing" secondItem="MOn-zy-coh" secondAttribute="trailing" constant="20" symbolic="YES" id="VP0-5l-rmm"/>
                             </constraints>
                             <connections>
-                                <outlet property="label" destination="MOn-zy-coh" id="Z6h-sl-Laa"/>
+                                <outlet property="label" destination="MOn-zy-coh" id="iMI-Hg-uTt"/>
+                                <outletCollection property="gestureRecognizers" destination="OtS-X5-5EG" appends="YES" id="AIr-38-57c"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
@@ -162,8 +164,16 @@ Location</string>
                             <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="OPy-Q1-D7T"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="errorView" destination="clu-9B-M8g" id="EWF-We-nGO"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="OtS-X5-5EG">
+                    <connections>
+                        <action selector="hideMessage" destination="clu-9B-M8g" id="Nny-6Q-akY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1105.7971014492755" y="-11.383928571428571"/>
         </scene>
