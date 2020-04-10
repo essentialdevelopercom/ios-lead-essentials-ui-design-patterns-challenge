@@ -29,6 +29,7 @@ final class FeedViewModel {
     
 	func loadFeed() {
 		onLoadingStateChange?(true)
+        onErrorStateChange?(nil)
 		feedLoader.load { [weak self] result in
             guard let self = self else { return }
             
