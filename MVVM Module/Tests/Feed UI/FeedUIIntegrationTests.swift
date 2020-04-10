@@ -289,6 +289,10 @@ final class FeedUIIntegrationTests: XCTestCase {
         
         loader.completeFeedLoading(with: [makeImage()])
         assertErrorMessageIsExpected(sut: sut, expectedMessage: nil)
+        
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoadingWithError()
+        assertErrorMessageIsExpected(sut: sut, expectedMessage: localized("FEED_VIEW_CONNECTION_ERROR"))
     }
     
 	// MARK: - Helpers
