@@ -285,10 +285,10 @@ final class FeedUIIntegrationTests: XCTestCase {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        XCTAssertEqual(sut.errorView?.message, nil, "Expected no error message to be shown for the first time")
+        assertErrorMessageIsExpected(sut: sut, expectedMessage: nil)
         
         loader.completeFeedLoading(with: [makeImage()])
-        XCTAssertEqual(sut.errorView?.message, nil, "Expected no error message when feed loads successfully")
+        assertErrorMessageIsExpected(sut: sut, expectedMessage: nil)
     }
     
 	// MARK: - Helpers
@@ -308,4 +308,8 @@ final class FeedUIIntegrationTests: XCTestCase {
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
 	}
+    
+    private func assertErrorMessageIsExpected(sut: FeedViewController, expectedMessage: String?, file: StaticString = #file, line: UInt = #line) {
+        XCTAssertEqual(sut.errorView?.message, expectedMessage, "Expected error message \(String(describing: expectedMessage)) but got \(String(describing: sut.errorView?.message))")
+    }
 }
