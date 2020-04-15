@@ -280,6 +280,13 @@ final class FeedUIIntegrationTests: XCTestCase {
 		}
 		wait(for: [exp], timeout: 1.0)
 	}
+    
+    func test_loadFeedCompletion_correctlyRendersErrorState() {
+        let(sut, _) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        assertErrorMessageIsExpected(sut: sut, expectedMessage: nil)
+    }
 	
 	// MARK: - Helpers
 	
@@ -298,4 +305,8 @@ final class FeedUIIntegrationTests: XCTestCase {
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
 	}
+    
+    private func assertErrorMessageIsExpected(sut: FeedViewController, expectedMessage: String?, file: StaticString = #file, line: UInt = #line) {
+        XCTAssertEqual(sut.errorView?.message, expectedMessage, "Expected error message \(String(describing: expectedMessage)) but got \(String(describing: sut.errorView?.message))")
+    }
 }
