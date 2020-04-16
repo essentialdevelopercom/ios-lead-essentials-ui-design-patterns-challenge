@@ -30,7 +30,7 @@ public final class ErrorView: UIView {
 		}
 	}
 	
-	@IBAction func hideMessage() {
+	@IBAction public func hideMessage() {
 		UIView.animate(
 			withDuration: 0.25,
 			animations: { self.alpha = 0 },

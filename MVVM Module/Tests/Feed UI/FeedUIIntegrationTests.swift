@@ -298,6 +298,18 @@ final class FeedUIIntegrationTests: XCTestCase {
         assertErrorMessageIsExpected(sut: sut, expectedMessage: nil)
     }
     
+    func test_errorView_correctlyDismissedOnUsersTap() {
+        let(sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError()
+        assertErrorMessageIsExpected(sut: sut, expectedMessage: localized("FEED_VIEW_CONNECTION_ERROR"))
+        
+        sut.simulateUserTappedError()
+        assertErrorMessageIsExpected(sut: sut, expectedMessage: nil)
+    }
+    
+    
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
