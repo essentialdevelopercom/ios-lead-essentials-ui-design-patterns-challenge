@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import MVP
+@testable import MVP
 
 extension FeedViewController {
 	func simulateUserInitiatedFeedReload() {
@@ -43,6 +43,11 @@ extension FeedViewController {
     var errorMessage: String? {
         let errorView = tableView.tableHeaderView as? ErrorView
         return errorView?.message
+    }
+    
+    func simulateUserInitiatedErrorMessageDismissal() {
+        let errorView = tableView.tableHeaderView as? ErrorView
+        errorView?.hideMessage()
     }
 	
 	var isShowingLoadingIndicator: Bool {
