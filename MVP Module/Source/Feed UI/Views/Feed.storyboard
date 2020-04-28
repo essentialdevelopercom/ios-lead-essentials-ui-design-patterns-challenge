@@ -169,7 +169,11 @@ Location</string>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="euV-3N-Vcy"/>
+                <tapGestureRecognizer id="euV-3N-Vcy">
+                    <connections>
+                        <action selector="hideMessage" destination="clu-9B-M8g" id="km6-Q6-v4Z"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1105.7971014492755" y="-11.383928571428571"/>
         </scene>

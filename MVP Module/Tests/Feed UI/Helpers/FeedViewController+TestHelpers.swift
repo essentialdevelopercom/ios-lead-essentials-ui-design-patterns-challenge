@@ -41,7 +41,6 @@ extension FeedViewController {
 	}
     
     func simulateTapOnErrorView() {
-        let errorView = tableView.tableHeaderView as? ErrorView
         errorView?.hideMessage()
     }
 	
