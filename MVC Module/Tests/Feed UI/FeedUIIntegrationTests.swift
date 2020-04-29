@@ -304,8 +304,19 @@ final class FeedUIIntegrationTests: XCTestCase {
         } else {
             XCTFail("Error button dose not have any target action")
         }
+    }
+    
+    func test_tapErrorView_hidesErrorViewWhenUserTapOnErrorView() {
+        let (sut, loader) = makeSUT()
         
+        sut.loadViewIfNeeded()
+        XCTAssertNil(sut.errorMessage, "Expected no error message when the feed view is loaded")
         
+        loader.completeFeedLoadingWithError(at: 0)
+        XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+        
+        sut.simulateTapOnErrorView()
+        XCTAssertNil(sut.errorMessage, "Expected no error message when the user tap on error view")
     }
     
 	// MARK: - Helpers

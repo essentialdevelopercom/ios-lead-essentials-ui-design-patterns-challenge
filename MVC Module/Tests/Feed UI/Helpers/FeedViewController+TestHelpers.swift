@@ -45,6 +45,11 @@ extension FeedViewController {
         let button = errorView?.errorButton
         return button?.actions(forTarget: errorView, forControlEvent: .touchUpInside)
     }
+    
+    func simulateTapOnErrorView() {
+        let errorView = tableView.tableHeaderView as? ErrorView
+        errorView?.hideMessage()
+    }
 	
 	var errorMessage: String? {
 		let errorView = tableView.tableHeaderView as? ErrorView
