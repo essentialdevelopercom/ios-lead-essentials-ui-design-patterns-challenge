@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import MVC
+@testable import MVC
 
 extension FeedViewController {
 	func simulateUserInitiatedFeedReload() {
@@ -39,6 +39,12 @@ extension FeedViewController {
 		let index = IndexPath(row: row, section: feedImagesSection)
 		ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
 	}
+    
+    func actions() -> [String]? {
+        let errorView = tableView.tableHeaderView as? ErrorView
+        let button = errorView?.errorButton
+        return button?.actions(forTarget: errorView, forControlEvent: .touchUpInside)
+    }
 	
 	var errorMessage: String? {
 		let errorView = tableView.tableHeaderView as? ErrorView

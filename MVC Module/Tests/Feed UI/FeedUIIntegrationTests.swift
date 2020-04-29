@@ -294,6 +294,20 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
+    func test_errorMessageButton_isWiredToAction() {
+        let (sut, _) = makeSUT()
+        let actions = sut.actions()
+        
+        if let actions = actions {
+            XCTAssert(actions.count > 0)
+            XCTAssert(actions.contains("hideMessage"))
+        } else {
+            XCTFail("Error button dose not have any target action")
+        }
+        
+        
+    }
+    
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
@@ -311,4 +325,5 @@ final class FeedUIIntegrationTests: XCTestCase {
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
 	}
+    
 }
