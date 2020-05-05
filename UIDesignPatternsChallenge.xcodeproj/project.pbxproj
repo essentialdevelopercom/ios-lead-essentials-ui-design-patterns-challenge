@@ -118,6 +118,7 @@
 		08F3B6E2232258BD00510CE7 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6D6232258BD00510CE7 /* FeedUIIntegrationTests.swift */; };
 		08F3B6E3232258BD00510CE7 /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6D8232258BD00510CE7 /* FeedLocalizationTests.swift */; };
 		08F3B6E6232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */; };
+		FC77A17124622F7B00C6D65D /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC77A16F24622F5000C6D65D /* Localized.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,6 +315,7 @@
 		08F3B6D6232258BD00510CE7 /* FeedUIIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedUIIntegrationTests.swift; sourceTree = "<group>"; };
 		08F3B6D8232258BD00510CE7 /* FeedLocalizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedLocalizationTests.swift; sourceTree = "<group>"; };
 		08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		FC77A16F24622F5000C6D65D /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -704,6 +706,7 @@
 			isa = PBXGroup;
 			children = (
 				08F3B6412322564500510CE7 /* FeedImageViewModel.swift */,
+				FC77A16F24622F5000C6D65D /* Localized.swift */,
 				08F3B6432322564500510CE7 /* FeedViewModel.swift */,
 				08F3B63E2322564500510CE7 /* Feed.strings */,
 			);
@@ -1308,6 +1311,7 @@
 				08F3B64E2322564500510CE7 /* FeedImageViewModel.swift in Sources */,
 				08F3B6452322564500510CE7 /* FeedImageCellController.swift in Sources */,
 				08F3B64F2322564500510CE7 /* FeedViewModel.swift in Sources */,
+				FC77A17124622F7B00C6D65D /* Localized.swift in Sources */,
 				082072E22322D13000759471 /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
