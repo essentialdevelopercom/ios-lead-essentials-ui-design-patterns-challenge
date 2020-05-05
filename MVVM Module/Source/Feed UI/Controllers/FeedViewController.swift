@@ -37,7 +37,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		}
         viewModel?.onErrorStateChange = { [weak self] showError in
             if showError {
-                self?.errorView?.show(message: "Couldn't connect to server")
+                self?.errorView?.show(message: NSLocalizedString("FEED_VIEW_CONNECTION_ERROR", tableName: "Feed", bundle: Bundle(for: FeedViewController.self), comment: "Error message displayed when we can't load the image feed from the server"))
             } else {
                 self?.errorView?.hideMessage()
             }
