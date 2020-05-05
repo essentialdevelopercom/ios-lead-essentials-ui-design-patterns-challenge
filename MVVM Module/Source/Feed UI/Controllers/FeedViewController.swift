@@ -18,6 +18,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		
 		refresh()
 	}
+    
+    private var errorView: ErrorView? {
+        return self.tableView.tableHeaderView as? ErrorView
+    }
 	
 	@IBAction private func refresh() {
 		viewModel?.loadFeed()
@@ -31,6 +35,13 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.endRefreshing()
 			}
 		}
+        viewModel?.onErrorStateChange = { [weak self] showError in
+            if showError {
+                self?.errorView?.show(message: "Couldn't connect to server")
+            } else {
+                self?.errorView?.hideMessage()
+            }
+        }
 	}
 
 	public override func viewDidLayoutSubviews() {
