@@ -44,6 +44,15 @@ extension FeedViewController {
         let errorView = tableView.tableHeaderView as? ErrorView
         return errorView?.message
     }
+    
+    func simulateTapAtErrorView() {
+        let button = errorView?.button
+        button?.simulateTap()
+    }
+    
+    private var errorView: ErrorView? {
+        return tableView.tableHeaderView as? ErrorView
+    }
 	
 	var isShowingLoadingIndicator: Bool {
 		return refreshControl?.isRefreshing == true
