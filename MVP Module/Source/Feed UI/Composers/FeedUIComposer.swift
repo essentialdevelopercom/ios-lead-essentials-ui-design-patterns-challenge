@@ -20,7 +20,8 @@ public final class FeedUIComposer {
 			feedView: FeedViewAdapter(
 				controller: feedController,
 				imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
-			loadingView: WeakRefVirtualProxy(feedController))
+            loadingView: WeakRefVirtualProxy(feedController),
+            errorView: WeakRefVirtualProxy(feedController))
 		
 		return feedController
 	}
@@ -30,7 +31,7 @@ public final class FeedUIComposer {
 		let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
 		let feedController = storyboard.instantiateInitialViewController() as! FeedViewController
 		feedController.delegate = delegate
-		feedController.title = title
+		feedController.title = Localized.feedTitle
 		return feedController
 	}
 }
