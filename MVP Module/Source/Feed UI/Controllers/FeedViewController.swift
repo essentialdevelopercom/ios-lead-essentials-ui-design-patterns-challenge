@@ -39,7 +39,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     
     func display(_ viewModel: FeedErrorViewModel) {
         if viewModel.showError {
-            errorView?.show(message: NSLocalizedString("FEED_VIEW_CONNECTION_ERROR", tableName: "Feed", bundle: Bundle(for: FeedViewController.self), comment: ""))
+            errorView?.show(message: Localized.feedLoadError)
         } else {
             errorView?.hideMessage()
         }

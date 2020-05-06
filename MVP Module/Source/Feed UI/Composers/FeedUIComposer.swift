@@ -31,7 +31,7 @@ public final class FeedUIComposer {
 		let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
 		let feedController = storyboard.instantiateInitialViewController() as! FeedViewController
 		feedController.delegate = delegate
-		feedController.title = title
+		feedController.title = Localized.feedTitle
 		return feedController
 	}
 }
