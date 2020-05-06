@@ -25,15 +25,26 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N93-Ig-XNa">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
+                                    <connections>
+                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="2xd-dz-bXm"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="N93-Ig-XNa" secondAttribute="bottom" id="B4R-x7-0Mg"/>
                                 <constraint firstAttribute="bottom" secondItem="WUc-JZ-4aq" secondAttribute="bottom" constant="8" id="U1G-fM-vDz"/>
+                                <constraint firstItem="N93-Ig-XNa" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="dQJ-ik-Rnt"/>
                                 <constraint firstItem="WUc-JZ-4aq" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" constant="8" id="dVN-Vc-p2W"/>
                                 <constraint firstAttribute="trailing" secondItem="WUc-JZ-4aq" secondAttribute="trailing" id="hZt-rm-BLM"/>
                                 <constraint firstItem="WUc-JZ-4aq" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="kXO-Tn-lMj"/>
+                                <constraint firstItem="N93-Ig-XNa" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" id="o0Z-7e-7ih"/>
+                                <constraint firstAttribute="trailing" secondItem="N93-Ig-XNa" secondAttribute="trailing" id="yrL-zr-yn8"/>
                             </constraints>
                             <connections>
+                                <outlet property="button" destination="N93-Ig-XNa" id="Krm-ja-oQR"/>
                                 <outlet property="label" destination="WUc-JZ-4aq" id="Xi1-2H-hNz"/>
                             </connections>
                         </view>
