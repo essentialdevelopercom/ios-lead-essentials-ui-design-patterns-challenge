@@ -3,5 +3,5 @@
 //
 
 struct FeedLoadingViewModel {
-	let isLoading: Bool
+    let isLoading: Bool
 }
