@@ -38,8 +38,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     }
     
     func display(_ viewModel: FeedErrorViewModel) {
-        if viewModel.showError {
-            errorView?.show(message: Localized.feedLoadError)
+        if let errorMessage = viewModel.errorMessage {
+            errorView?.show(message: errorMessage)
         } else {
             errorView?.hideMessage()
         }
