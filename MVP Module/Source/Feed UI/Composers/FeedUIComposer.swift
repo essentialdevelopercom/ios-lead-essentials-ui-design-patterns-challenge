@@ -13,7 +13,8 @@ public final class FeedUIComposer {
 			MainQueueDispatchDecorator(decoratee: feedLoader))
 		
 		let feedController = makeFeedViewController(
-			delegate: presentationAdapter)
+			delegate: presentationAdapter,
+            title: Localized.feedTitle)
 
 		presentationAdapter.presenter = FeedPresenter(
 			feedView: FeedViewAdapter(
@@ -25,12 +26,12 @@ public final class FeedUIComposer {
 		return feedController
 	}
 
-	private static func makeFeedViewController(delegate: FeedViewControllerDelegate) -> FeedViewController {
+	private static func makeFeedViewController(delegate: FeedViewControllerDelegate, title: String) -> FeedViewController {
 		let bundle = Bundle(for: FeedViewController.self)
 		let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
 		let feedController = storyboard.instantiateInitialViewController() as! FeedViewController
 		feedController.delegate = delegate
-		feedController.title = Localized.feedTitle
+		feedController.title = title
 		return feedController
 	}
 }
