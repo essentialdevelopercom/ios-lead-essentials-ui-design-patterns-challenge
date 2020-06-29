@@ -118,6 +118,7 @@
 		08F3B6E2232258BD00510CE7 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6D6232258BD00510CE7 /* FeedUIIntegrationTests.swift */; };
 		08F3B6E3232258BD00510CE7 /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6D8232258BD00510CE7 /* FeedLocalizationTests.swift */; };
 		08F3B6E6232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */; };
+		C9C549FC24AAA9AC00D272D7 /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C549FB24AAA9AC00D272D7 /* FeedErrorViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,6 +315,7 @@
 		08F3B6D6232258BD00510CE7 /* FeedUIIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedUIIntegrationTests.swift; sourceTree = "<group>"; };
 		08F3B6D8232258BD00510CE7 /* FeedLocalizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedLocalizationTests.swift; sourceTree = "<group>"; };
 		08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		C9C549FB24AAA9AC00D272D7 /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
 		C9F2568324AA7273006FD874 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Feed.strings; sourceTree = "<group>"; };
 		C9F2568424AA7273006FD874 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Feed.strings; sourceTree = "<group>"; };
 		C9F2568524AA7274006FD874 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Feed.strings; sourceTree = "<group>"; };
@@ -836,6 +838,7 @@
 				08F3B6AE2322585E00510CE7 /* FeedImagePresenter.swift */,
 				08F3B6AF2322585E00510CE7 /* FeedViewModel.swift */,
 				08F3B6A72322585E00510CE7 /* Feed.strings */,
+				C9C549FB24AAA9AC00D272D7 /* FeedErrorViewModel.swift */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
@@ -1254,6 +1257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				082072D423226B5700759471 /* FeedLoader.swift in Sources */,
+				C9C549FC24AAA9AC00D272D7 /* FeedErrorViewModel.swift in Sources */,
 				082072D323226B5700759471 /* FeedImageDataLoader.swift in Sources */,
 				082072D223226B5700759471 /* FeedImage.swift in Sources */,
 			);
