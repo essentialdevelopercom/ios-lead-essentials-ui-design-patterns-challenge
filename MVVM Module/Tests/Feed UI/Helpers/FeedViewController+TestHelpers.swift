@@ -3,13 +3,18 @@
 //
 
 import UIKit
-import MVVM
+@testable import MVVM
 
 extension FeedViewController {
     
     var errorMessage: String? {
         let errorView = tableView.tableHeaderView as? ErrorView
         return errorView?.message
+    }
+    
+    func simulateUserTapOnErrorView() {
+        let errorView = tableView.tableHeaderView as? ErrorView
+        errorView?.dismissButton.simulate(event: .touchUpInside)
     }
     
 	func simulateUserInitiatedFeedReload() {

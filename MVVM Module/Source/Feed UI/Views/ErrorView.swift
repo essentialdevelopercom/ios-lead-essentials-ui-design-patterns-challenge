@@ -5,6 +5,8 @@
 import UIKit
 
 public final class ErrorView: UIView {
+    
+    @IBOutlet var dismissButton: UIButton!
 	@IBOutlet private var label: UILabel!
 	
 	public var message: String? {

@@ -20,6 +20,12 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WpO-yf-ieR">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
+                                    <connections>
+                                        <action selector="hideMessage" destination="NFC-a1-ElF" eventType="touchUpInside" id="qVv-xO-akm"/>
+                                    </connections>
+                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrF-lU-Wdb">
                                     <rect key="frame" x="8" y="8" width="398" height="18"/>
                                     <viewLayoutGuide key="safeArea" id="JXI-hZ-Shx"/>
@@ -31,12 +37,17 @@
                             <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <gestureRecognizers/>
                             <constraints>
+                                <constraint firstItem="WpO-yf-ieR" firstAttribute="leading" secondItem="NFC-a1-ElF" secondAttribute="leading" id="EF9-OE-n6d"/>
                                 <constraint firstItem="MrF-lU-Wdb" firstAttribute="leading" secondItem="NFC-a1-ElF" secondAttribute="leadingMargin" id="Hpw-Zi-zsy"/>
+                                <constraint firstItem="WpO-yf-ieR" firstAttribute="top" secondItem="NFC-a1-ElF" secondAttribute="top" id="fd8-x4-YHu"/>
+                                <constraint firstAttribute="bottom" secondItem="WpO-yf-ieR" secondAttribute="bottom" id="mWr-RV-7iF"/>
+                                <constraint firstAttribute="trailing" secondItem="WpO-yf-ieR" secondAttribute="trailing" id="mrh-Sz-jGN"/>
                                 <constraint firstItem="MrF-lU-Wdb" firstAttribute="top" secondItem="NFC-a1-ElF" secondAttribute="top" constant="8" id="qQY-ke-GgV"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="MrF-lU-Wdb" secondAttribute="trailing" id="sjT-am-N3h"/>
                                 <constraint firstAttribute="bottom" secondItem="MrF-lU-Wdb" secondAttribute="bottom" constant="8" id="wFn-Fk-m4r"/>
                             </constraints>
                             <connections>
+                                <outlet property="dismissButton" destination="WpO-yf-ieR" id="OrG-WB-CYD"/>
                                 <outlet property="label" destination="MrF-lU-Wdb" id="7Fq-n7-IzA"/>
                             </connections>
                         </view>
