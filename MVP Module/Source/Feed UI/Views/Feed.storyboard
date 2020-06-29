@@ -20,6 +20,12 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ayj-IE-MZi">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
+                                    <connections>
+                                        <action selector="hideMessage" destination="NpU-Un-VD9" eventType="touchUpInside" id="ZCZ-BX-AJ3"/>
+                                    </connections>
+                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oW1-4H-Eea">
                                     <rect key="frame" x="8" y="8" width="398" height="18"/>
                                     <viewLayoutGuide key="safeArea" id="CeM-t1-bnY"/>
@@ -31,12 +37,17 @@
                             <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <gestureRecognizers/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="ayj-IE-MZi" secondAttribute="trailing" id="9EO-cd-iYm"/>
+                                <constraint firstItem="ayj-IE-MZi" firstAttribute="leading" secondItem="NpU-Un-VD9" secondAttribute="leading" id="FnT-cQ-CCT"/>
+                                <constraint firstAttribute="bottom" secondItem="ayj-IE-MZi" secondAttribute="bottom" id="ZFi-Ee-21V"/>
                                 <constraint firstItem="oW1-4H-Eea" firstAttribute="leading" secondItem="NpU-Un-VD9" secondAttribute="leadingMargin" id="bey-x7-Wcu"/>
+                                <constraint firstItem="ayj-IE-MZi" firstAttribute="top" secondItem="NpU-Un-VD9" secondAttribute="top" id="d1L-3E-ouU"/>
                                 <constraint firstItem="oW1-4H-Eea" firstAttribute="top" secondItem="NpU-Un-VD9" secondAttribute="top" constant="8" id="eb0-ZQ-05s"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="oW1-4H-Eea" secondAttribute="trailing" id="hc8-h7-ffN"/>
                                 <constraint firstAttribute="bottom" secondItem="oW1-4H-Eea" secondAttribute="bottom" constant="8" id="y8m-9H-939"/>
                             </constraints>
                             <connections>
+                                <outlet property="dismissButton" destination="ayj-IE-MZi" id="qYy-K4-DLc"/>
                                 <outlet property="label" destination="oW1-4H-Eea" id="LVa-pt-iaJ"/>
                             </connections>
                         </view>
