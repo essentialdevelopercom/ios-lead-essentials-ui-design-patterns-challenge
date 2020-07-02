@@ -31,10 +31,12 @@ final class FeedViewModel {
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
     var onShowError: Observer<String?>?
+    
+    private let noErrorMessage: String? = nil
 	
 	func loadFeed() {
 		onLoadingStateChange?(true)
-        onShowError?(nil)
+        onShowError?(noErrorMessage)
 		feedLoader.load { [weak self] result in
 			if let feed = try? result.get() {
 				self?.onFeedLoad?(feed)
