@@ -23,13 +23,17 @@ final class FeedViewModel {
 
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
-	
+    var onFeedLoadFails: Observer<String>?
+    
 	func loadFeed() {
 		onLoadingStateChange?(true)
 		feedLoader.load { [weak self] result in
-			if let feed = try? result.get() {
-				self?.onFeedLoad?(feed)
-			}
+            do {
+                let feed = try result.get()
+                self?.onFeedLoad?(feed)
+            } catch {
+                self?.onFeedLoadFails?("Couldn't connect to server")
+            }
 			self?.onLoadingStateChange?(false)
 		}
 	}
