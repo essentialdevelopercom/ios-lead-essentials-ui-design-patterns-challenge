@@ -60,7 +60,8 @@ final class FeedUIIntegrationTests: XCTestCase {
         loader.completeFeedLoadingWithError(at: 1)
         XCTAssertEqual(sut.errorMessage, "Couldn't connect to server", "Expected error message once user initiated loading completes with error")
         
-        
+        sut.simulateUserInitiatedFeedReload()
+        XCTAssertNil(sut.errorMessage, "Expected no error message once user initiates a reload")
     }
 
 	func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
