@@ -318,6 +318,7 @@
 		08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		61CFA54024CA1B19004D492C /* FeedRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshViewController.swift; sourceTree = "<group>"; };
 		61CFA54424CA26E2004D492C /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		61CFA54624CA2919004D492C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Feed.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1136,6 +1137,7 @@
 				el,
 				"pt-BR",
 				Base,
+				es,
 			);
 			mainGroup = 08F3B58B2322512F00510CE7;
 			productRefGroup = 08F3B5962322512F00510CE7 /* Products */;
@@ -1454,6 +1456,7 @@
 				08F3B63F2322564500510CE7 /* el */,
 				08F3B6402322564500510CE7 /* en */,
 				08F3B6422322564500510CE7 /* pt-BR */,
+				61CFA54624CA2919004D492C /* es */,
 			);
 			name = Feed.strings;
 			sourceTree = "<group>";
