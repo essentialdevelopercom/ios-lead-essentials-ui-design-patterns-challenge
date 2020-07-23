@@ -118,6 +118,7 @@
 		08F3B6E2232258BD00510CE7 /* FeedUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6D6232258BD00510CE7 /* FeedUIIntegrationTests.swift */; };
 		08F3B6E3232258BD00510CE7 /* FeedLocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6D8232258BD00510CE7 /* FeedLocalizationTests.swift */; };
 		08F3B6E6232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */; };
+		61CFA54124CA1B19004D492C /* FeedRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFA54024CA1B19004D492C /* FeedRefreshViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,6 +315,7 @@
 		08F3B6D6232258BD00510CE7 /* FeedUIIntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedUIIntegrationTests.swift; sourceTree = "<group>"; };
 		08F3B6D8232258BD00510CE7 /* FeedLocalizationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedLocalizationTests.swift; sourceTree = "<group>"; };
 		08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		61CFA54024CA1B19004D492C /* FeedRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -682,6 +684,7 @@
 		08F3B6332322564500510CE7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				61CFA54024CA1B19004D492C /* FeedRefreshViewController.swift */,
 				08F3B6342322564500510CE7 /* FeedImageCellController.swift */,
 				08F3B6352322564500510CE7 /* FeedViewController.swift */,
 			);
@@ -1307,6 +1310,7 @@
 				08F3B6482322564500510CE7 /* UITableView+Dequeueing.swift in Sources */,
 				08F3B64E2322564500510CE7 /* FeedImageViewModel.swift in Sources */,
 				08F3B6452322564500510CE7 /* FeedImageCellController.swift in Sources */,
+				61CFA54124CA1B19004D492C /* FeedRefreshViewController.swift in Sources */,
 				08F3B64F2322564500510CE7 /* FeedViewModel.swift in Sources */,
 				082072E22322D13000759471 /* ErrorView.swift in Sources */,
 			);
