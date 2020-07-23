@@ -15,10 +15,7 @@ final class FeedViewModel {
 	}
 	
 	var title: String {
-		return NSLocalizedString("FEED_VIEW_TITLE",
-			tableName: "Feed",
-			bundle: Bundle(for: FeedViewModel.self),
-			comment: "Title for the feed view")
+        return Localized.feedTitle
 	}
 
 	var onLoadingStateChange: Observer<Bool>?
@@ -32,7 +29,7 @@ final class FeedViewModel {
                 let feed = try result.get()
                 self?.onFeedLoad?(feed)
             } catch {
-                self?.onFeedFailed?("Couldn't connect to server")
+                self?.onFeedFailed?(Localized.feedLoadError)
             }
 			self?.onLoadingStateChange?(false)
 		}
