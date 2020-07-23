@@ -4,13 +4,37 @@
 
 import UIKit
 
-public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+final class FeedRefreshViewController: NSObject {
+    @IBOutlet var view: UIRefreshControl?
     @IBOutlet var errorView: ErrorView?
     
-	var viewModel: FeedViewModel? {
-		didSet { bind() }
-	}
-	
+    var viewModel: FeedViewModel? {
+        didSet { bind() }
+    }
+
+    @IBAction func refresh() {
+        viewModel?.loadFeed()
+    }
+    
+    private func bind() {
+        viewModel?.onLoadingStateChange = { [weak self] isLoading in
+            if isLoading {
+                self?.errorView?.hideMessage()
+                self?.view?.beginRefreshing()
+            } else {
+                self?.view?.endRefreshing()
+            }
+        }
+        
+        viewModel?.onFeedFailed = { [weak self] message in
+            self?.errorView?.show(message: message)
+        }
+    }
+}
+
+public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+    @IBOutlet var refreshViewController: FeedRefreshViewController?
+
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
@@ -18,28 +42,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		refresh()
+        refreshViewController?.refresh()
 	}
-	
-	@IBAction private func refresh() {
-		viewModel?.loadFeed()
-	}
-	
-	func bind() {
-		viewModel?.onLoadingStateChange = { [weak self] isLoading in
-			if isLoading {
-                self?.errorView?.hideMessage()
-				self?.refreshControl?.beginRefreshing()
-			} else {
-				self?.refreshControl?.endRefreshing()
-			}
-		}
     
-        viewModel?.onFeedLoadFails = { [weak self] errorMessage in
-            self?.errorView?.show(message: errorMessage)
-        }
-	}
-
 	public override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
