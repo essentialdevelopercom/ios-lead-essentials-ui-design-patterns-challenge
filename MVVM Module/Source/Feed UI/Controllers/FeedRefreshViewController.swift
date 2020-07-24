@@ -6,7 +6,6 @@ import UIKit
 
 final class FeedRefreshViewController: NSObject {
     @IBOutlet var view: UIRefreshControl?
-    @IBOutlet var errorView: ErrorView?
     
     var viewModel: FeedViewModel? {
         didSet { bind() }
@@ -19,15 +18,10 @@ final class FeedRefreshViewController: NSObject {
     private func bind() {
         viewModel?.onLoadingStateChange = { [weak self] isLoading in
             if isLoading {
-                self?.errorView?.hideMessage()
                 self?.view?.beginRefreshing()
             } else {
                 self?.view?.endRefreshing()
             }
-        }
-        
-        viewModel?.onFeedFailed = { [weak self] message in
-            self?.errorView?.show(message: message)
         }
     }
 }

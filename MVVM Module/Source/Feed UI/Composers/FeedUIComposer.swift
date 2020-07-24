@@ -29,6 +29,8 @@ public final class FeedUIComposer {
 			}
 		}
 	}
+    
+    
 }
 
 private extension FeedViewController {
@@ -37,6 +39,7 @@ private extension FeedViewController {
 		let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
 		let feedController = storyboard.instantiateInitialViewController() as! FeedViewController
         feedController.refreshViewController?.viewModel = viewModel
+        feedController.errorViewController?.viewModel = viewModel
 		feedController.title = viewModel.title
 		return feedController
 	}

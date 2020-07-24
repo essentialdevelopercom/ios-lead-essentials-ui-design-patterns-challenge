@@ -120,6 +120,7 @@
 		08F3B6E6232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */; };
 		61CFA54124CA1B19004D492C /* FeedRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFA54024CA1B19004D492C /* FeedRefreshViewController.swift */; };
 		61CFA54524CA26E2004D492C /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFA54424CA26E2004D492C /* Localized.swift */; };
+		61CFA54824CA5400004D492C /* FeedErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CFA54724CA5400004D492C /* FeedErrorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -319,6 +320,7 @@
 		61CFA54024CA1B19004D492C /* FeedRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshViewController.swift; sourceTree = "<group>"; };
 		61CFA54424CA26E2004D492C /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		61CFA54624CA2919004D492C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Feed.strings; sourceTree = "<group>"; };
+		61CFA54724CA5400004D492C /* FeedErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -688,6 +690,7 @@
 			isa = PBXGroup;
 			children = (
 				61CFA54024CA1B19004D492C /* FeedRefreshViewController.swift */,
+				61CFA54724CA5400004D492C /* FeedErrorViewController.swift */,
 				08F3B6342322564500510CE7 /* FeedImageCellController.swift */,
 				08F3B6352322564500510CE7 /* FeedViewController.swift */,
 			);
@@ -1311,6 +1314,7 @@
 				08F3B6742322571C00510CE7 /* MainQueueDispatchDecorator.swift in Sources */,
 				08F3B64B2322564500510CE7 /* UIView+Shimmering.swift in Sources */,
 				61CFA54524CA26E2004D492C /* Localized.swift in Sources */,
+				61CFA54824CA5400004D492C /* FeedErrorViewController.swift in Sources */,
 				08F3B6462322564500510CE7 /* FeedViewController.swift in Sources */,
 				082072E32322D13000759471 /* UITableView+HeaderSizing.swift in Sources */,
 				08F3B6482322564500510CE7 /* UITableView+Dequeueing.swift in Sources */,

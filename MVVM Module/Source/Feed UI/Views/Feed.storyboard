@@ -163,18 +163,24 @@ Location</string>
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
+                            <action selector="hideMessage" destination="9R4-lc-EpI" eventType="valueChanged" id="tin-ek-Hdo"/>
                             <action selector="refresh" destination="V3F-4r-2Cq" eventType="valueChanged" id="fjJ-lT-sz2"/>
                         </connections>
                     </refreshControl>
                     <connections>
+                        <outlet property="errorViewController" destination="5cx-Qn-I1R" id="a4z-ms-Bzj"/>
                         <outlet property="refreshViewController" destination="V3F-4r-2Cq" id="xm1-Nc-WqK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="V3F-4r-2Cq" customClass="FeedRefreshViewController" customModule="MVVM" customModuleProvider="target">
                     <connections>
-                        <outlet property="errorView" destination="9R4-lc-EpI" id="2cH-A0-nfO"/>
                         <outlet property="view" destination="yrT-VT-7jR" id="h60-IG-7Nn"/>
+                    </connections>
+                </customObject>
+                <customObject id="5cx-Qn-I1R" customClass="FeedErrorViewController" customModule="MVVM" customModuleProvider="target">
+                    <connections>
+                        <outlet property="view" destination="9R4-lc-EpI" id="ZsT-Xm-qV8"/>
                     </connections>
                 </customObject>
                 <tapGestureRecognizer id="1KE-6T-th1">
