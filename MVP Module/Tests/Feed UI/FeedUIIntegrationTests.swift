@@ -48,10 +48,13 @@ final class FeedUIIntegrationTests: XCTestCase {
 	}
     
     func test_loadFeedCompletion_displaysErrorMessageOnError() {
-        let (sut, _) = makeSUT()
+        let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
         XCTAssertNil(sut.errorMessage, "Expected no error message once view is loaded")
+        
+        loader.completeFeedLoading(at: 0)
+        XCTAssertNil(sut.errorMessage, "Expected no error message once loading completes successfully")
 
     }
 
