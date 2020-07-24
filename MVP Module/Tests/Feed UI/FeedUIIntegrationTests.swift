@@ -46,6 +46,14 @@ final class FeedUIIntegrationTests: XCTestCase {
 		loader.completeFeedLoadingWithError(at: 1)
 		XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
 	}
+    
+    func test_loadFeedCompletion_displaysErrorMessageOnError() {
+        let (sut, _) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertNil(sut.errorMessage, "Expected no error message once view is loaded")
+
+    }
 
 	func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
 		let image0 = makeImage(description: "a description", location: "a location")
