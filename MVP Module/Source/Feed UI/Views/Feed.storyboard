@@ -38,6 +38,7 @@
                             </constraints>
                             <connections>
                                 <outlet property="label" destination="osK-vp-gbB" id="egn-St-68V"/>
+                                <outletCollection property="gestureRecognizers" destination="8Ua-2v-1gs" appends="YES" id="J3v-HC-3cJ"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
@@ -182,6 +183,11 @@ Location</string>
                         <outlet property="view" destination="yrT-VT-7jR" id="wcV-dj-aS3"/>
                     </connections>
                 </customObject>
+                <tapGestureRecognizer id="8Ua-2v-1gs">
+                    <connections>
+                        <action selector="hideMessage" destination="BWb-jf-TZ3" id="Zeq-41-xrj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1105.7971014492755" y="-11.383928571428571"/>
         </scene>
