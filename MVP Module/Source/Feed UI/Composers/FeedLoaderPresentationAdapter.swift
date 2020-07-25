@@ -4,7 +4,7 @@
 
 import FeedFeature
 
-final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
+final class FeedLoaderPresentationAdapter: FeedRefreshViewControllerDelegate {
 	private let feedLoader: FeedLoader
 	var presenter: FeedPresenter?
 	

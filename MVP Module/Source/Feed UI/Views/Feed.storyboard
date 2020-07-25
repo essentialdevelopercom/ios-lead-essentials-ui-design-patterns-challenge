@@ -163,11 +163,19 @@ Location</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="hideMessage" destination="BWb-jf-TZ3" eventType="valueChanged" id="4v4-9S-nrZ"/>
-                            <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="OPy-Q1-D7T"/>
+                            <action selector="refresh" destination="TUr-Za-pdQ" eventType="valueChanged" id="jqW-be-UCG"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="refreshController" destination="TUr-Za-pdQ" id="Ge7-PY-HIF"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="TUr-Za-pdQ" customClass="FeedRefreshViewController" customModule="MVP" customModuleProvider="target">
+                    <connections>
+                        <outlet property="view" destination="yrT-VT-7jR" id="wcV-dj-aS3"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1105.7971014492755" y="-11.383928571428571"/>
         </scene>

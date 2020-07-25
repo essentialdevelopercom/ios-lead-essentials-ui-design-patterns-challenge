@@ -8,8 +8,8 @@ protocol FeedViewControllerDelegate {
 	func didRequestFeedRefresh()
 }
 
-public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView, FeedErrorView {    
-	var delegate: FeedViewControllerDelegate?
+public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedErrorView {
+    @IBOutlet var refreshController: FeedRefreshViewController?
 
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
@@ -22,15 +22,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	}
 	
 	@IBAction private func refresh() {
-		delegate?.didRequestFeedRefresh()
-	}
-	
-	func display(_ viewModel: FeedLoadingViewModel) {
-		if viewModel.isLoading {
-			refreshControl?.beginRefreshing()
-		} else {
-			refreshControl?.endRefreshing()
-		}
+        refreshController?.refresh()
 	}
     
     func display(_ viewModel: FeedErrorViewModel) {
