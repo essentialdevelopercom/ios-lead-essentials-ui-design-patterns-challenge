@@ -329,6 +329,7 @@
 		61CFA54E24CBB3B4004D492C /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
 		61CFA55124CBD36C004D492C /* FeedErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewController.swift; sourceTree = "<group>"; };
 		61CFA55324CBD8DA004D492C /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		61CFA55524CBDA6A004D492C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Feed.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1487,6 +1488,7 @@
 				08F3B6A82322585E00510CE7 /* el */,
 				08F3B6A92322585E00510CE7 /* en */,
 				08F3B6AD2322585E00510CE7 /* pt-BR */,
+				61CFA55524CBDA6A004D492C /* es */,
 			);
 			name = Feed.strings;
 			sourceTree = "<group>";
