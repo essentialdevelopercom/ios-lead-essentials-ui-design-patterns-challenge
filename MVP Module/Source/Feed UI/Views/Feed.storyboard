@@ -167,10 +167,16 @@ Location</string>
                         </connections>
                     </refreshControl>
                     <connections>
+                        <outlet property="errorViewController" destination="t7P-5a-xdW" id="5XR-RX-Ji9"/>
                         <outlet property="refreshController" destination="TUr-Za-pdQ" id="Ge7-PY-HIF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="t7P-5a-xdW" customClass="FeedErrorViewController" customModule="MVP" customModuleProvider="target">
+                    <connections>
+                        <outlet property="view" destination="BWb-jf-TZ3" id="0U4-q6-uzL"/>
+                    </connections>
+                </customObject>
                 <customObject id="TUr-Za-pdQ" customClass="FeedRefreshViewController" customModule="MVP" customModuleProvider="target">
                     <connections>
                         <outlet property="view" destination="yrT-VT-7jR" id="wcV-dj-aS3"/>
