@@ -162,6 +162,7 @@ Location</string>
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
+                            <action selector="hideMessage" destination="BWb-jf-TZ3" eventType="valueChanged" id="4v4-9S-nrZ"/>
                             <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="OPy-Q1-D7T"/>
                         </connections>
                     </refreshControl>
