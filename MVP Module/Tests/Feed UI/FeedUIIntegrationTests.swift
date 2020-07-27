@@ -62,7 +62,6 @@ final class FeedUIIntegrationTests: XCTestCase {
         
         sut.simulateUserInitiatedFeedReload()
         XCTAssertNil(sut.errorMessage, "Expected no error message once user initiates a reload")
-
     }
 
 	func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
