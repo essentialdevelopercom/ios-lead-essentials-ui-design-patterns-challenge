@@ -4,7 +4,7 @@
 
 import XCTest
 import UIKit
-import MVVM
+@testable import MVVM
 import FeedFeature
 
 final class FeedUIIntegrationTests: XCTestCase {
@@ -280,6 +280,14 @@ final class FeedUIIntegrationTests: XCTestCase {
 		}
 		wait(for: [exp], timeout: 1.0)
 	}
+    
+    func test_viewdDidLoad_doesNotRenderErrorMessage() {
+        let (sut, _) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertNil(sut.errorMessage)
+    }
 	
 	// MARK: - Helpers
 	
@@ -298,4 +306,10 @@ final class FeedUIIntegrationTests: XCTestCase {
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
 	}
+}
+
+extension FeedViewController {
+    var errorMessage: String? {
+        viewModel?.errorMessage
+    }
 }
