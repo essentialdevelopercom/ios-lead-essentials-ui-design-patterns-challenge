@@ -8,13 +8,6 @@ import FeedFeature
 
 class FeedUISnapshotTests: XCTestCase {
     
-    //  ***********************
-    //
-    //  Uncomment and run one test at a time
-    //  to validate the layout (including Dark Mode support).
-    //
-    //  ***********************
-
     func test_emptyFeed() {
         let sut = makeSUT()
 
@@ -24,14 +17,14 @@ class FeedUISnapshotTests: XCTestCase {
         assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "EMPTY_FEED_dark")
     }
      
-//    func test_feedWithError() {
-//		let sut = makeSUT()
-//
-//        sut.display(errorMessage: "An error message")
-//
-//		assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_ERROR_light")
-//		assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_ERROR_dark")
-//    }
+    func test_feedWithError() {
+		let sut = makeSUT()
+
+        sut.display(errorMessage: "An error message")
+
+		assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_ERROR_light")
+		assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_ERROR_dark")
+    }
 	
 	// MARK: - Helpers
 
@@ -66,7 +59,11 @@ private class FeedLoaderStub: FeedLoader {
 
 private extension FeedViewController {
     func display(errorMessage: String) {
-        fatalError("Must be implemented - follow the MVC solution as a guide")
+        let error = NSError(domain: "any", code: 0)
+        let loader = FeedLoaderStub(.failure(error))
+        viewModel = FeedViewModel(feedLoader: loader)
+        viewModel?.errorMessage = errorMessage
+        simulateUserInitiatedFeedReload()
     }
     
     func display(_ feed: [FeedImageCellController]) {
