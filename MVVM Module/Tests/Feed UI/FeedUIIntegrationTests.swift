@@ -4,7 +4,7 @@
 
 import XCTest
 import UIKit
-@testable import MVVM
+import MVVM
 import FeedFeature
 
 final class FeedUIIntegrationTests: XCTestCase {
@@ -281,20 +281,13 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
     
-    func test_viewdDidLoad_doesNotRenderErrorMessage() {
-        let (sut, _) = makeSUT()
-        
-        sut.loadViewIfNeeded()
-        
-        XCTAssertNil(sut.errorMessage)
-    }
-    
     func test_whenFeedLoaderCompletesWithError_shouldRenderErrorMessage() {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoadingWithError()
+        XCTAssertNil(sut.errorMessage)
         
+        loader.completeFeedLoadingWithError()
         XCTAssertNotNil(sut.errorMessage)
     }
 	
@@ -318,7 +311,12 @@ final class FeedUIIntegrationTests: XCTestCase {
 }
 
 extension FeedViewController {
+    
+    var errorView: ErrorView? {
+        tableView.tableHeaderView as? ErrorView
+    }
+    
     var errorMessage: String? {
-        errorView?.button.titleLabel?.text
+        errorView?.message
     }
 }
