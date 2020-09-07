@@ -288,6 +288,15 @@ final class FeedUIIntegrationTests: XCTestCase {
         
         XCTAssertNil(sut.errorMessage)
     }
+    
+    func test_whenFeedLoaderCompletesWithError_shouldRenderErrorMessage() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError()
+        
+        XCTAssertNotNil(sut.errorMessage)
+    }
 	
 	// MARK: - Helpers
 	
@@ -310,6 +319,6 @@ final class FeedUIIntegrationTests: XCTestCase {
 
 extension FeedViewController {
     var errorMessage: String? {
-        viewModel?.errorMessage
+        errorView?.button.titleLabel?.text
     }
 }
