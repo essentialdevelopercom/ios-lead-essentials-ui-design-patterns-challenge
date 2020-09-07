@@ -23,6 +23,9 @@
                                     <rect key="frame" x="182" y="5" width="34" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Error"/>
+                                    <connections>
+                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="yfV-dE-0U2"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

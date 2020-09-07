@@ -294,6 +294,16 @@ final class FeedUIIntegrationTests: XCTestCase {
         loader.completeFeedLoading(at: 1)
         XCTAssertNil(sut.errorMessage)
     }
+    
+    func test_whenTapsError_shouldHidesError() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError(at: 0)
+        sut.simulateTapOnError()
+        
+        XCTAssertNil(sut.errorMessage, "Expected no error after tapping error message")
+    }
 	
 	// MARK: - Helpers
 	
@@ -322,5 +332,9 @@ extension FeedViewController {
     
     var errorMessage: String? {
         errorView?.message
+    }
+    
+    func simulateTapOnError() {
+        errorView?.button.simulateTap()
     }
 }
