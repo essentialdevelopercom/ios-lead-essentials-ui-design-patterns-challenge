@@ -27,7 +27,7 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="yfV-dE-0U2"/>
+                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="VEj-Ia-6eb"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -39,7 +39,7 @@
                                 <constraint firstItem="54s-7x-OTw" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="Ve3-Tk-q4N"/>
                             </constraints>
                             <connections>
-                                <outlet property="button" destination="54s-7x-OTw" id="nT0-sf-wz3"/>
+                                <outlet property="button" destination="54s-7x-OTw" id="hwG-VN-pTe"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
@@ -168,10 +168,15 @@ Location</string>
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="errorView" destination="clu-9B-M8g" id="s3X-5S-iRB"/>
+                        <outlet property="errorController" destination="xKM-W2-Uk1" id="lVv-Z3-nIF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="xKM-W2-Uk1" customClass="FeedErrorViewController" customModule="MVVM" customModuleProvider="target">
+                    <connections>
+                        <outlet property="view" destination="clu-9B-M8g" id="8I5-VN-g0c"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1105.7971014492755" y="-11.383928571428571"/>
         </scene>

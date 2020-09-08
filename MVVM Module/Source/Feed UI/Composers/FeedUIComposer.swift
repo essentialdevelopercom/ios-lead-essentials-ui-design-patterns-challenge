@@ -17,6 +17,7 @@ public final class FeedUIComposer {
 		feedViewModel.onFeedLoad = adaptFeedToCellControllers(
 			forwardingTo: feedController,
 			imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader))
+        feedController.errorController?.viewModel = feedViewModel
 
 		return feedController
 	}

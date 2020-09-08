@@ -18,7 +18,7 @@ class FeedUISnapshotTests: XCTestCase {
     }
      
     func test_feedWithError() {
-		let sut = makeSUT()
+        let sut = makeSUT()
 
         sut.display(errorMessage: "An error message")
 
@@ -62,7 +62,8 @@ private extension FeedViewController {
         let error = NSError(domain: "any", code: 0)
         let loader = FeedLoaderStub(.failure(error))
         viewModel = FeedViewModel(feedLoader: loader)
-        viewModel?.errorMessage = errorMessage
+        errorController?.viewModel = viewModel
+        errorController?.viewModel?.errorMessage = errorMessage
         simulateUserInitiatedFeedReload()
     }
     
