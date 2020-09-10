@@ -25,6 +25,8 @@ final class FeedPresenter {
 	private let feedView: FeedView
 	private let loadingView: FeedLoadingView
     private let feedErrorView: FeedErrorView
+    
+    var errorMessage = Localized.Feed.loadError
 	
 	init(feedView: FeedView, loadingView: FeedLoadingView, feedErrorView: FeedErrorView) {
 		self.feedView = feedView
@@ -45,6 +47,6 @@ final class FeedPresenter {
 	
 	func didFinishLoadingFeed(with error: Error) {
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
-        feedErrorView.display(FeedErrorViewModel(message: "An error message"))
+        feedErrorView.display(FeedErrorViewModel(message: errorMessage))
 	}
 }

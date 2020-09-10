@@ -288,7 +288,7 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertNil(sut.errorMessage, "Expected no error message on screen.")
         
         loader.completeFeedLoadingWithError(at: 0)
-        XCTAssertNotNil(sut.errorMessage, "Expected display an error message.")
+        XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Expected error message for error completion.")
         
         sut.simulateUserInitiatedFeedReload()
         XCTAssertNil(sut.errorMessage, "Expected no display error message on reload.")
