@@ -306,6 +306,16 @@ final class FeedUIIntegrationTests: XCTestCase {
         
         XCTAssertNil(sut.errorMessage, "Should not display an error message on success.")
     }
+    
+    func test_hidesErrorMessage_onPullToRefresh() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError()
+        
+        sut.simulateUserInitiatedFeedReload()
+        
+        XCTAssertNil(sut.errorMessage, "Should not display on reload.")
+    }
 	
 	// MARK: - Helpers
 	
