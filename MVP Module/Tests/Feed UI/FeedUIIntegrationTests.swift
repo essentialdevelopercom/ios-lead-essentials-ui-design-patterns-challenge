@@ -280,6 +280,14 @@ final class FeedUIIntegrationTests: XCTestCase {
 		}
 		wait(for: [exp], timeout: 1.0)
 	}
+    
+    func test_onViewDidLoad_shouldNotDisplayErrorMessage() {
+        let (sut, _) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertNil(sut.errorMessage)
+    }
 	
 	// MARK: - Helpers
 	
@@ -298,4 +306,15 @@ final class FeedUIIntegrationTests: XCTestCase {
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
 	}
+}
+
+extension FeedViewController {
+    
+    var errorView: ErrorView? {
+        tableView.tableHeaderView as? ErrorView
+    }
+    
+    var errorMessage: String? {
+        errorView?.message
+    }
 }
