@@ -325,18 +325,3 @@ final class FeedUIIntegrationTests: XCTestCase {
 		return UIImage.make(withColor: .red).pngData()!
 	}
 }
-
-extension FeedViewController {
-    
-    var errorView: ErrorView? {
-        tableView.tableHeaderView as? ErrorView
-    }
-    
-    var errorMessage: String? {
-        errorView?.message
-    }
-    
-    func simulateTapOnError() {
-        errorView?.button.simulateTap()
-    }
-}
