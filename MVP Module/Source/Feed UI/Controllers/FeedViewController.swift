@@ -35,7 +35,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     
     func display(_ viewModel: FeedErrorViewModel) {
         let view = tableView.tableHeaderView as? ErrorView
-        view?.show(message: viewModel.message)
+        guard let message = viewModel.message else {
+            view?.hideMessage()
+            return
+        }
+        view?.show(message: message)
     }
     
     func display(_ cellControllers: [FeedImageCellController]) {
