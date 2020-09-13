@@ -280,6 +280,32 @@ final class FeedUIIntegrationTests: XCTestCase {
 		}
 		wait(for: [exp], timeout: 1.0)
 	}
+    
+    func test_loadFeedCompletion_shouldRenderErrorViewOnError() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertNil(sut.errorMessage, "Expected no error message on screen.")
+        
+        loader.completeFeedLoadingWithError(at: 0)
+        XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Expected error message for error completion.")
+        
+        sut.simulateUserInitiatedFeedReload()
+        XCTAssertNil(sut.errorMessage, "Expected no display error message on reload.")
+        
+        loader.completeFeedLoading(at: 1)
+        XCTAssertNil(sut.errorMessage, "Expected no display an error message on success.")
+    }
+    
+    func test_whenTapsError_shouldHidesError() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError(at: 0)
+        
+        sut.simulateTapOnError()
+        
+        XCTAssertNil(sut.errorMessage, "Expected no error message after tapping it.")
+    }
 	
 	// MARK: - Helpers
 	
