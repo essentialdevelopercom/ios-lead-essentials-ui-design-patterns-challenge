@@ -28,7 +28,7 @@
                                     </state>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="0.41568627450980389" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="mZV-cx-Hd2" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" id="3Pm-ze-BrB"/>
                                 <constraint firstItem="mZV-cx-Hd2" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="IFI-T6-b0p"/>
