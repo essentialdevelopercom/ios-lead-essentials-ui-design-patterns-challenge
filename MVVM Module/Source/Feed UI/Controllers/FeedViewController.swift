@@ -18,6 +18,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		
 		refresh()
 	}
+    
+    var errorView: ErrorView?
 	
 	@IBAction private func refresh() {
 		viewModel?.loadFeed()
@@ -32,6 +34,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.endRefreshing()
 			}
 		}
+        
+        viewModel?.onFeedLoadError = { [weak self] errorMessage in
+            self?.errorView?.show(message: errorMessage)
+        }
 	}
 
 	public override func viewDidLayoutSubviews() {
