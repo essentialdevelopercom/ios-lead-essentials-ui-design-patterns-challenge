@@ -21,7 +21,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		refresh()
 	}
 	
-	@IBAction private func refresh() {
+    @IBOutlet weak var errorView: ErrorView!
+    
+    @IBAction private func refresh() {
 		delegate?.didRequestFeedRefresh()
 	}
 	
