@@ -38,6 +38,14 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     func display(_ cellControllers: [FeedImageCellController]) {
         tableModel = cellControllers
     }
+    
+    func display(_ viewModel: FeedErrorViewModel) {
+        guard let errorMessage = viewModel.errorMessage else {
+            errorView.hideMessage()
+            return
+        }
+        errorView.show(message: errorMessage)
+    }
 
 	public override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
