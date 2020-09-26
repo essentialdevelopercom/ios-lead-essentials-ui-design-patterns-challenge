@@ -52,6 +52,6 @@ class FeedUISnapshotTests: XCTestCase {
 
 private extension FeedViewController {
     func display(errorMessage: String) {
-        fatalError("Must be implemented - follow the MVC solution as a guide")
+        errorView?.show(message: errorMessage)
     }
 }
