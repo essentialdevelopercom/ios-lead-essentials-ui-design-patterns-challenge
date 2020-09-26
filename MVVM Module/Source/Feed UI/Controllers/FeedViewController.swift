@@ -19,7 +19,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		refresh()
 	}
     
-    @IBOutlet public weak var errorView: ErrorView!
+    @IBOutlet weak var errorView: ErrorView!
     
 	@IBAction private func refresh() {
 		viewModel?.loadFeed()
