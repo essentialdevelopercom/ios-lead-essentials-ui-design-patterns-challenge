@@ -27,8 +27,4 @@ final class FeedViewAdapter: FeedView {
 			return view
 		})
 	}
-    
-    func display(_ viewModel: FeedErrorViewModel) {
-        controller?.display(viewModel)
-    }
 }
