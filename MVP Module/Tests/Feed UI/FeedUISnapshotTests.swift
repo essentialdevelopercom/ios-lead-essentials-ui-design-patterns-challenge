@@ -64,19 +64,6 @@ private class FeedLoaderStub: FeedLoader, FeedImageDataLoader, FeedImageDataLoad
 
 private extension FeedViewController {
     func display(errorMessage: String) {
-        let loader = FeedLoaderStub(.failure(NSError(domain: "any", code: 0)))
-        let adapter = FeedLoaderPresentationAdapter(feedLoader: loader)
-        let presenter = FeedPresenter(
-            feedView: FeedViewAdapter(
-                controller: self,
-                imageLoader: loader
-            ),
-            loadingView: self,
-            feedErrorView: self
-        )
-        adapter.presenter = presenter
-        presenter.errorMessage = errorMessage
-        delegate = adapter
-        simulateUserInitiatedFeedReload()
+        display(FeedErrorViewModel(message: errorMessage))
     }
 }
