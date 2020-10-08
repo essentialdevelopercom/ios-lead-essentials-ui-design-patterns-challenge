@@ -16,8 +16,10 @@ class FeedErrorViewController: NSObject {
     }
     
     private func bind() {
-        viewModel?.onFeedFailed = { [weak self] message in
-            self?.view?.show(message: message)
+        viewModel?.onErrorStateChange = { [weak self] message in
+            if let message = message {
+                self?.view?.show(message: message)
+            }
         }
     }
 }

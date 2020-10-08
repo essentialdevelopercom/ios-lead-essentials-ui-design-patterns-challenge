@@ -17,21 +17,23 @@ final class FeedViewModel {
 	var title: String {
         Localized.Feed.title
 	}
-    
-    var errorMessage = Localized.Feed.loadError
+
+    var errorMessage: String {
+        Localized.Feed.loadError
+    }
 
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
-    var onFeedFailed: Observer<String>?
+    var onErrorStateChange: Observer<String?>?
 	
 	func loadFeed() {
 		onLoadingStateChange?(true)
-        let errorMessage = self.errorMessage
+        onErrorStateChange?(.none)
 		feedLoader.load { [weak self] result in
 			if let feed = try? result.get() {
 				self?.onFeedLoad?(feed)
             } else {
-                self?.onFeedFailed?(errorMessage)
+                self?.onErrorStateChange?(self?.errorMessage)
             }
 			self?.onLoadingStateChange?(false)
 		}
