@@ -23,6 +23,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		viewModel?.loadFeed()
 	}
 	
+    @IBOutlet weak var errorView: ErrorView!
+    
 	func bind() {
         title = viewModel?.title
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
