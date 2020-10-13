@@ -3,7 +3,7 @@
 //
 
 import UIKit
-@ testable import MVVM
+@testable import MVVM
 
 extension FeedViewController {
 	func simulateUserInitiatedFeedReload() {
