@@ -45,6 +45,9 @@ extension FeedViewController {
 	}
 	
     var isShowingErrorMessage: Bool {
+        if let view = errorView {
+            return view.alpha != 0
+        }
         return false
     }
     
