@@ -11,7 +11,6 @@ final class FeedRefreshViewController: NSObject {
 
 	var feedLoader: FeedLoader?
 	var onRefresh: (([FeedImage]) -> Void)?
-    var errorMessage: String = Localized.Feed.loadError
     
 	@IBAction func refresh() {
 		view?.beginRefreshing()
@@ -26,7 +25,7 @@ final class FeedRefreshViewController: NSObject {
         case let .success(feed):
             onRefresh?(feed)
         case .failure:
-            errorView?.show(message: errorMessage)
+            errorView?.show(message: Localized.Feed.loadError)
         }
         view?.endRefreshing()
     }

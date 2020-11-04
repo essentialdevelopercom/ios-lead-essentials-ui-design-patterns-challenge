@@ -59,11 +59,7 @@ private class FeedLoaderStub: FeedLoader {
 
 private extension FeedViewController {
     func display(errorMessage: String) {
-        let error = NSError(domain: "any", code: 0)
-        let loader = FeedLoaderStub(.failure(error))
-        refreshController?.feedLoader = loader
-        refreshController?.errorMessage = errorMessage
-        simulateUserInitiatedFeedReload()
+        refreshController?.errorView?.show(message: errorMessage)
     }
     
     func display(_ feed: [FeedImageCellController]) {

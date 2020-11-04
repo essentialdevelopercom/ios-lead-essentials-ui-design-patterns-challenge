@@ -8,8 +8,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     
     //MARK: - Outlets
     @IBOutlet private var errorView: ErrorView!
-    
-	var viewModel: FeedViewModel? {
+
+    var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}
 	
