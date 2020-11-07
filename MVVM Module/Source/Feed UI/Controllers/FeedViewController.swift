@@ -12,6 +12,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
+    @IBOutlet var errorView: ErrorView?
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
@@ -20,6 +21,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	}
 	
 	@IBAction private func refresh() {
+        errorView?.hideMessage()
 		viewModel?.loadFeed()
 	}
 	
