@@ -7,5 +7,13 @@
 //
 
 struct FeedLoadingErrorViewModel {
-    let errorMessage: String
+    let errorMessage: String?
+    
+    static var noError: FeedLoadingErrorViewModel {
+        return FeedLoadingErrorViewModel(errorMessage: nil)
+    }
+    
+    static var errorMessage: FeedLoadingErrorViewModel {
+        return FeedLoadingErrorViewModel(errorMessage: Localized.Feed.loadError)
+    }
 }
