@@ -26,4 +26,5 @@ final class FeedViewAdapter: FeedView {
 			return view
 		})
 	}
+    
 }
