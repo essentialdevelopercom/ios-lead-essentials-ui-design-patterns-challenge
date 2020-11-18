@@ -343,6 +343,19 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertFalse(sut.isShowingErrorMessage, "Expected no error message displayed on screen when feed is loaded correctly")
     }
     
+    func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.errorView?.message, nil)
+
+        loader.completeFeedLoadingWithError(at: 0)
+        XCTAssertEqual(sut.errorView?.message, localized("FEED_VIEW_CONNECTION_ERROR"))
+        
+        sut.simulateUserInitiatedFeedReload()
+        XCTAssertEqual(sut.errorView?.message, nil)
+    }
+    
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
