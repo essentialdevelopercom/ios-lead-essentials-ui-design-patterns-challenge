@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03E569272566CE0E00E9C6BA /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E569262566CE0E00E9C6BA /* FeedErrorViewModel.swift */; };
+		03E569392566D2B100E9C6BA /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E569382566D2B100E9C6BA /* FeedErrorViewModel.swift */; };
 		082072D223226B5700759471 /* FeedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082072CF23226B5700759471 /* FeedImage.swift */; };
 		082072D323226B5700759471 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082072D023226B5700759471 /* FeedImageDataLoader.swift */; };
 		082072D423226B5700759471 /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082072D123226B5700759471 /* FeedLoader.swift */; };
@@ -214,6 +215,7 @@
 		039D77BB2553558900654F80 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Feed.strings"; sourceTree = "<group>"; };
 		039D77BC2553558900654F80 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Feed.strings"; sourceTree = "<group>"; };
 		03E569262566CE0E00E9C6BA /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
+		03E569382566D2B100E9C6BA /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
 		082072CF23226B5700759471 /* FeedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedImage.swift; sourceTree = "<group>"; };
 		082072D023226B5700759471 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 		082072D123226B5700759471 /* FeedLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
@@ -739,6 +741,7 @@
 			children = (
 				08F3B6412322564500510CE7 /* FeedImageViewModel.swift */,
 				08F3B6432322564500510CE7 /* FeedViewModel.swift */,
+				03E569382566D2B100E9C6BA /* FeedErrorViewModel.swift */,
 				08D6262E24C9CE6B00EF6D46 /* Localized.swift */,
 				08F3B63E2322564500510CE7 /* Feed.strings */,
 			);
@@ -1347,6 +1350,7 @@
 				08F3B6442322564500510CE7 /* FeedUIComposer.swift in Sources */,
 				08F3B6492322564500510CE7 /* FeedImageCell.swift in Sources */,
 				08F3B6472322564500510CE7 /* UIImageView+Animations.swift in Sources */,
+				03E569392566D2B100E9C6BA /* FeedErrorViewModel.swift in Sources */,
 				08F3B6742322571C00510CE7 /* MainQueueDispatchDecorator.swift in Sources */,
 				08F3B64B2322564500510CE7 /* UIView+Shimmering.swift in Sources */,
 				08F3B6462322564500510CE7 /* FeedViewController.swift in Sources */,
