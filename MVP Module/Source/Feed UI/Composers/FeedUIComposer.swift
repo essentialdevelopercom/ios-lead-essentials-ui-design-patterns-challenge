@@ -16,12 +16,14 @@ public final class FeedUIComposer {
 			delegate: presentationAdapter,
             title: Localized.Feed.title)
 
-		presentationAdapter.presenter = FeedPresenter(
-			feedView: FeedViewAdapter(
-				controller: feedController,
-				imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
-			loadingView: WeakRefVirtualProxy(feedController))
-		
+        let weakRefFeedController = WeakRefVirtualProxy(feedController)
+        presentationAdapter.presenter = FeedPresenter(
+            feedView: FeedViewAdapter(
+                controller: feedController,
+                imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
+            loadingView: weakRefFeedController,
+        errorView: weakRefFeedController)
+
 		return feedController
 	}
 
