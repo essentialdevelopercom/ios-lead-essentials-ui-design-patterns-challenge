@@ -23,6 +23,9 @@
                                     <state key="normal" title="Error">
                                         <color key="titleColor" red="0.83529411760000005" green="0.90980392160000001" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="hideMessage" destination="dDf-7R-wsE" eventType="touchUpInside" id="M6A-01-trY"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
