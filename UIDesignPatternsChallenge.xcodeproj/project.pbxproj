@@ -129,6 +129,7 @@
 		27A9A4EE24C760E4009EBB8F /* FeedUISnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4ED24C760E4009EBB8F /* FeedUISnapshotTests.swift */; };
 		27A9A4F124C76120009EBB8F /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4EF24C76119009EBB8F /* XCTestCase+Snapshot.swift */; };
 		27A9A4F324C76163009EBB8F /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4F224C76163009EBB8F /* UIViewController+Snapshot.swift */; };
+		6A4B0042256BA76C00A1CC17 /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4B0041256BA76C00A1CC17 /* FeedErrorViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -343,6 +344,7 @@
 		6A4B0036256B7B3100A1CC17 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Feed.strings; sourceTree = "<group>"; };
 		6A4B0037256B7B3100A1CC17 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Feed.strings; sourceTree = "<group>"; };
 		6A4B0038256B7B3100A1CC17 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Feed.strings; sourceTree = "<group>"; };
+		6A4B0041256BA76C00A1CC17 /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -868,6 +870,7 @@
 				08F3B6AC2322585E00510CE7 /* FeedLoadingViewModel.swift */,
 				08F3B6AE2322585E00510CE7 /* FeedImagePresenter.swift */,
 				08F3B6AF2322585E00510CE7 /* FeedViewModel.swift */,
+				6A4B0041256BA76C00A1CC17 /* FeedErrorViewModel.swift */,
 				08D6263624C9D76C00EF6D46 /* Localized.swift */,
 				08F3B6A72322585E00510CE7 /* Feed.strings */,
 			);
@@ -1386,6 +1389,7 @@
 				082072E62322D1B700759471 /* UITableView+HeaderSizing.swift in Sources */,
 				08F3B6C02322585E00510CE7 /* FeedImageViewModel.swift in Sources */,
 				082072E72322D1B700759471 /* ErrorView.swift in Sources */,
+				6A4B0042256BA76C00A1CC17 /* FeedErrorViewModel.swift in Sources */,
 				08F3B6C32322585E00510CE7 /* FeedViewModel.swift in Sources */,
 				08F3B6BF2322585E00510CE7 /* FeedPresenter.swift in Sources */,
 				08D6263724C9D76C00EF6D46 /* Localized.swift in Sources */,
