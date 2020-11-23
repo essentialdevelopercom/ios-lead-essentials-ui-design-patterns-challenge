@@ -281,23 +281,16 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
-    func test_loadFeedCompletion_rendersErrorMessageOnFailure() {
+    func test_loadFeedErrorView_visibility() {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        loader.completeFeedLoadingWithError()
         
-        XCTAssertEqual(sut.isShowingErrorMessage, true)
-    }
-    
-    func test_errorViewHideMessage_hideErrorMessageOnTap() {
-        let (sut, loader) = makeSUT()
-        
-        sut.loadViewIfNeeded()
         loader.completeFeedLoadingWithError()
+        XCTAssertEqual(sut.isShowingErrorMessage, true, "Expected to show error message on load feed completes with error")
         
         sut.simulateUserTapOnErrorMessage()
-        XCTAssertEqual(sut.isShowingErrorMessage, false)
+        XCTAssertEqual(sut.isShowingErrorMessage, false, "Expected to hide error message once user tap on error message")
     }
     
 	// MARK: - Helpers
