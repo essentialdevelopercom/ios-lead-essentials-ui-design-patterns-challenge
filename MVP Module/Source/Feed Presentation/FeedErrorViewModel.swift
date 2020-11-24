@@ -10,8 +10,4 @@ import Foundation
 
 struct FeedErrorViewModel {
     let message: String?
-    
-    var shouldShowErrorMessage: Bool {
-        return message != nil
-    }
 }
