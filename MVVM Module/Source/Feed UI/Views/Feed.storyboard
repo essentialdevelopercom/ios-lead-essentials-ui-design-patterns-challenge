@@ -14,7 +14,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="clu-9B-M8g" userLabel="Error View">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="clu-9B-M8g" userLabel="Error View" customClass="ErrorView" customModule="MVVM" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -33,6 +33,9 @@
                                 <constraint firstItem="mgz-RL-aEp" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="pEk-e3-dbV"/>
                                 <constraint firstAttribute="bottom" secondItem="mgz-RL-aEp" secondAttribute="bottom" id="tFl-O2-QzQ"/>
                             </constraints>
+                            <connections>
+                                <outlet property="button" destination="mgz-RL-aEp" id="Cs6-M5-Tph"/>
+                            </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
                             <rect key="frame" x="0.0" y="670" width="414" height="16"/>
@@ -156,9 +159,12 @@ Location</string>
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="OPy-Q1-D7T"/>
+                            <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="D9c-wE-ytN"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="errorView" destination="clu-9B-M8g" id="RXx-PI-Pfz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
