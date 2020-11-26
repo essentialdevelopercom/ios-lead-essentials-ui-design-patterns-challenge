@@ -40,4 +40,8 @@ public final class ErrorView: UIView {
                 }
             })
 	}
+    
+    @IBAction func errorButtonTap() {
+        hideMessage()
+    }
 }
