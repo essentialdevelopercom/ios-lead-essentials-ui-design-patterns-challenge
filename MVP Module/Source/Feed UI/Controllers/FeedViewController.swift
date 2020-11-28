@@ -24,14 +24,26 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	@IBAction private func refresh() {
 		delegate?.didRequestFeedRefresh()
 	}
+    
+    @IBOutlet public var errorView: ErrorView?
 	
 	func display(_ viewModel: FeedLoadingViewModel) {
+        errorView?.hideMessage()
 		if viewModel.isLoading {
 			refreshControl?.beginRefreshing()
-		} else {
-			refreshControl?.endRefreshing()
-		}
+        } else {
+            showErrorMessage(message: viewModel.error)
+        }
 	}
+    
+    private func showErrorMessage(message: String?) {
+        if let message = message {
+            errorView?.show(message: message)
+        } else {
+            errorView?.hideMessage()
+        }
+        refreshControl?.endRefreshing()
+    }
     
     func display(_ cellControllers: [FeedImageCellController]) {
         tableModel = cellControllers

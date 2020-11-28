@@ -47,6 +47,16 @@ extension FeedViewController {
 	func numberOfRenderedFeedImageViews() -> Int {
 		return tableView.numberOfRows(inSection: feedImagesSection)
 	}
+    
+    var errorMessage: String? {
+        let errorView = tableView.tableHeaderView as! ErrorView
+        return errorView.message
+    }
+
+    func simulateTapOnErrorMessage() {
+        let errorView = tableView.tableHeaderView as! ErrorView
+        errorView.button.simulateTap()
+    }
 	
 	func feedImageView(at row: Int) -> UITableViewCell? {
 		let ds = tableView.dataSource
