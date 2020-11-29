@@ -15,9 +15,9 @@ final class FeedViewModel {
 	}
 	
 	var title: String {
-        Localized.Feed.title
+		Localized.Feed.title
 	}
-
+	
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
     var onErrorStateChange: Observer<String?>?

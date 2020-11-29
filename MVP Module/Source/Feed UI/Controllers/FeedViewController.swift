@@ -14,7 +14,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	private var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
-
+	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -36,18 +36,18 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
         }
 	}
     
-    private func showErrorMessage(message: String?) {
-        if let message = message {
-            errorView?.show(message: message)
-        } else {
-            errorView?.hideMessage()
-        }
-        refreshControl?.endRefreshing()
-    }
-    
-    func display(_ cellControllers: [FeedImageCellController]) {
-        tableModel = cellControllers
-    }
+  private func showErrorMessage(message: String?) {
+      if let message = message {
+          errorView?.show(message: message)
+      } else {
+          errorView?.hideMessage()
+      }
+      refreshControl?.endRefreshing()
+  }
+
+  func display(_ cellControllers: [FeedImageCellController]) {
+      tableModel = cellControllers
+  }
 
 	public override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()

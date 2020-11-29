@@ -21,7 +21,7 @@ final class FeedPresenter {
 		self.feedView = feedView
 		self.loadingView = loadingView
 	}
-    
+	
 	func didStartLoadingFeed() {
 		loadingView.display(FeedLoadingViewModel(isLoading: true, error: nil))
 	}

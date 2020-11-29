@@ -11,7 +11,7 @@ final class FeedImageCellController {
 	init(viewModel: FeedImageViewModel<UIImage>) {
 		self.viewModel = viewModel
 	}
-
+	
 	func view(in tableView: UITableView) -> UITableViewCell {
 		let cell = binded(tableView.dequeueReusableCell())
 		viewModel.loadImageData()
@@ -49,7 +49,7 @@ final class FeedImageCellController {
 		
 		return cell
 	}
-
+	
 	private func releaseCellForReuse() {
 		cell = nil
 	}

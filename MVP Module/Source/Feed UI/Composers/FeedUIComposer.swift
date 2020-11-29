@@ -10,12 +10,12 @@ public final class FeedUIComposer {
 	
 	public static func feedComposedWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
 		let presentationAdapter = FeedLoaderPresentationAdapter(feedLoader:
-			MainQueueDispatchDecorator(decoratee: feedLoader))
+																	MainQueueDispatchDecorator(decoratee: feedLoader))
 		
 		let feedController = makeFeedViewController(
 			delegate: presentationAdapter,
-            title: Localized.Feed.title)
-
+			title: Localized.Feed.title)
+		
 		presentationAdapter.presenter = FeedPresenter(
 			feedView: FeedViewAdapter(
 				controller: feedController,
@@ -24,7 +24,7 @@ public final class FeedUIComposer {
 		
 		return feedController
 	}
-
+	
 	private static func makeFeedViewController(delegate: FeedViewControllerDelegate, title: String) -> FeedViewController {
 		let bundle = Bundle(for: FeedViewController.self)
 		let storyboard = UIStoryboard(name: "Feed", bundle: bundle)

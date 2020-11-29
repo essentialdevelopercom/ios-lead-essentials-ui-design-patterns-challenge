@@ -23,7 +23,7 @@ extension AlwaysFailingLoader: FeedLoader {
 		}
 	}
 }
-	
+
 extension AlwaysFailingLoader: FeedImageDataLoader {
 	private final class Task: FeedImageDataLoaderTask {
 		func cancel() {}
