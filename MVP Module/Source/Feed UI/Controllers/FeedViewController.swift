@@ -14,7 +14,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	private var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
-	
+    
+    private var errorView: ErrorView? {
+        tableView.tableHeaderView as? ErrorView
+    }
+
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -31,12 +35,16 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		} else {
 			refreshControl?.endRefreshing()
 		}
+        
+        if let errorMessage = viewModel.errorMessage {
+            errorView?.show(message: errorMessage)
+        }
 	}
-	
-	func display(_ cellControllers: [FeedImageCellController]) {
-		tableModel = cellControllers
-	}
-	
+    
+    func display(_ cellControllers: [FeedImageCellController]) {
+        tableModel = cellControllers
+    }
+
 	public override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		

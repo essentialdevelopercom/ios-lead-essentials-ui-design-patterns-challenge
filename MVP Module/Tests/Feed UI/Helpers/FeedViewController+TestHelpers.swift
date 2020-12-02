@@ -55,7 +55,7 @@ extension FeedViewController {
 	}
     
     var errorMessage: String? {
-        return nil
+        return (tableView.tableHeaderView as? ErrorView)?.message
     }
 	
 	private var feedImagesSection: Int {
