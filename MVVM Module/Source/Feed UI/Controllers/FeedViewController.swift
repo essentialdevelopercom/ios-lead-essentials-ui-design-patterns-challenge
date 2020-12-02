@@ -5,42 +5,25 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-	var viewModel: FeedViewModel? {
+    
+    @IBOutlet var refreshController: FeedRefreshController!
+    
+    var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}
 	
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
-    
-    private var errorView: ErrorView? {
-        tableView.tableHeaderView as? ErrorView
-    }
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		refresh()
-	}
-	
-	@IBAction private func refresh() {
-        errorView?.hideMessage()
-		viewModel?.loadFeed()
+        refreshController.viewModel?.refreshFeed()
 	}
 	
 	func bind() {
         title = viewModel?.title
-		viewModel?.onLoadingStateChange = { [weak self] isLoading in
-			if isLoading {
-				self?.refreshControl?.beginRefreshing()
-			} else {
-				self?.refreshControl?.endRefreshing()
-			}
-		}
-        
-        viewModel?.onFeedError = {[weak self] errorMessage in
-            self?.errorView?.show(message: errorMessage)
-        }
 	}
 
 	public override func viewDidLayoutSubviews() {

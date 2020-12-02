@@ -14,11 +14,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="qz7-Pk-Qhm" customClass="ErrorView" customModule="MVC" customModuleProvider="target">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="6Uf-hr-rdh" customClass="ErrorView" customModule="MVVM" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGY-eP-c3j">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bj0-yj-UBd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
@@ -26,20 +26,20 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="hideMessage" destination="qz7-Pk-Qhm" eventType="touchUpInside" id="TuW-5l-M1G"/>
+                                        <action selector="hideMessage" destination="6Uf-hr-rdh" eventType="touchUpInside" id="rq9-Y3-6Ov"/>
                                     </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <gestureRecognizers/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="qGY-eP-c3j" secondAttribute="bottom" id="Egf-8o-5wc"/>
-                                <constraint firstItem="qGY-eP-c3j" firstAttribute="leading" secondItem="qz7-Pk-Qhm" secondAttribute="leading" id="Wwn-V5-P53"/>
-                                <constraint firstItem="qGY-eP-c3j" firstAttribute="top" secondItem="qz7-Pk-Qhm" secondAttribute="top" id="Ygn-kP-kjR"/>
-                                <constraint firstAttribute="trailing" secondItem="qGY-eP-c3j" secondAttribute="trailing" id="xHx-vn-dkR"/>
+                                <constraint firstItem="Bj0-yj-UBd" firstAttribute="leading" secondItem="6Uf-hr-rdh" secondAttribute="leading" id="FLK-84-vPI"/>
+                                <constraint firstAttribute="trailing" secondItem="Bj0-yj-UBd" secondAttribute="trailing" id="ND0-aW-56b"/>
+                                <constraint firstAttribute="bottom" secondItem="Bj0-yj-UBd" secondAttribute="bottom" id="QVf-pi-BCR"/>
+                                <constraint firstItem="Bj0-yj-UBd" firstAttribute="top" secondItem="6Uf-hr-rdh" secondAttribute="top" id="xXU-cs-MWj"/>
                             </constraints>
                             <connections>
-                                <outlet property="button" destination="qGY-eP-c3j" id="RRd-qD-jJ9"/>
+                                <outlet property="button" destination="Bj0-yj-UBd" id="6MP-fE-FM5"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
@@ -164,11 +164,20 @@ Location</string>
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="OPy-Q1-D7T"/>
+                            <action selector="refresh" destination="vle-Z4-E5F" eventType="valueChanged" id="KEg-nH-7hV"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="refreshController" destination="vle-Z4-E5F" id="veg-va-ngP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="vle-Z4-E5F" customClass="FeedRefreshController" customModule="MVVM" customModuleProvider="target">
+                    <connections>
+                        <outlet property="errorView" destination="6Uf-hr-rdh" id="TH4-l8-cKd"/>
+                        <outlet property="view" destination="yrT-VT-7jR" id="BmO-tv-MO4"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1105.7971014492755" y="-11.383928571428571"/>
         </scene>
