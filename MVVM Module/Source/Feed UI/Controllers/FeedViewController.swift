@@ -12,7 +12,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
-	
+    
+    private var errorView: ErrorView? {
+        tableView.tableHeaderView as? ErrorView
+    }
+
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -24,7 +28,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	}
 	
 	func bind() {
-		title = viewModel?.title
+        title = viewModel?.title
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
 			if isLoading {
 				self?.refreshControl?.beginRefreshing()
@@ -32,8 +36,12 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.endRefreshing()
 			}
 		}
+        
+        viewModel?.onFeedError = {[weak self] errorMessage in
+            self?.errorView?.show(message: errorMessage)
+        }
 	}
-	
+
 	public override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
