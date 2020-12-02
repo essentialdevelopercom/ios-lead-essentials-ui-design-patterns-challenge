@@ -164,11 +164,20 @@ Location</string>
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="OPy-Q1-D7T"/>
+                            <action selector="refresh" destination="8Te-gA-TVI" eventType="valueChanged" id="gse-UY-ocX"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="refreshController" destination="8Te-gA-TVI" id="wfb-Ey-Z7T"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="8Te-gA-TVI" customClass="FeedRefreshController" customModule="MVP" customModuleProvider="target">
+                    <connections>
+                        <outlet property="errorView" destination="AKa-04-T1h" id="LRh-3P-UF7"/>
+                        <outlet property="view" destination="yrT-VT-7jR" id="8HT-e1-FNT"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1105.7971014492755" y="-11.383928571428571"/>
         </scene>

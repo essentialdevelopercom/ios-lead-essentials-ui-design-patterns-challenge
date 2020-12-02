@@ -4,42 +4,18 @@
 
 import UIKit
 
-protocol FeedViewControllerDelegate {
-	func didRequestFeedRefresh()
-}
-
-public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
-	var delegate: FeedViewControllerDelegate?
-	
+public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+    
+    @IBOutlet var refreshController: FeedRefreshController!
+    
 	private var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
-    
-    private var errorView: ErrorView? {
-        tableView.tableHeaderView as? ErrorView
-    }
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		refresh()
-	}
-	
-	@IBAction private func refresh() {
-        errorView?.hideMessage()
-		delegate?.didRequestFeedRefresh()
-	}
-	
-	func display(_ viewModel: FeedLoadingViewModel) {
-		if viewModel.isLoading {
-			refreshControl?.beginRefreshing()
-		} else {
-			refreshControl?.endRefreshing()
-		}
-        
-        if let errorMessage = viewModel.errorMessage {
-            errorView?.show(message: errorMessage)
-        }
+        refreshController?.refresh()
 	}
     
     func display(_ cellControllers: [FeedImageCellController]) {
