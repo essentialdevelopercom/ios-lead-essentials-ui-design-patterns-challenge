@@ -12,6 +12,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
+    
+    private var errorView: ErrorView? {
+        return tableView.tableHeaderView as? ErrorView
+    }
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
@@ -28,10 +32,15 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
 			if isLoading {
 				self?.refreshControl?.beginRefreshing()
+                self?.errorView?.hideMessage()
 			} else {
 				self?.refreshControl?.endRefreshing()
 			}
 		}
+        viewModel?.onFailure = { [weak self] error in
+            guard let self = self else { return }
+            self.errorView?.show(message: self.viewModel?.errorMessage ?? "")
+        }
 	}
 
 	public override func viewDidLayoutSubviews() {
