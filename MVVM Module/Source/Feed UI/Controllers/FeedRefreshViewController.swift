@@ -19,6 +19,11 @@ final class FeedRefreshController: NSObject {
     }
     
     private func bind() {
+        bindLoadingStateChange()
+        bindErrorStateChange()
+    }
+    
+    private func bindLoadingStateChange() {
         viewModel?.onLoadingStateChange = { [weak self] isLoading in
             if isLoading {
                 self?.view?.beginRefreshing()
@@ -26,7 +31,9 @@ final class FeedRefreshController: NSObject {
                 self?.view?.endRefreshing()
             }
         }
-        
+    }
+    
+    private func bindErrorStateChange() {
         viewModel?.onFeedError = { [weak self] errorMessage in
             self?.errorView?.show(message: errorMessage)
         }
