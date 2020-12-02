@@ -53,6 +53,10 @@ extension FeedViewController {
 		let index = IndexPath(row: row, section: feedImagesSection)
 		return ds?.tableView(tableView, cellForRowAt: index)
 	}
+    
+    var errorMessage: String? {
+        return nil
+    }
 	
 	private var feedImagesSection: Int {
 		return 0
