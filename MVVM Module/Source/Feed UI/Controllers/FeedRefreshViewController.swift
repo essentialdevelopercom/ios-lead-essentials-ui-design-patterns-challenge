@@ -34,8 +34,12 @@ final class FeedRefreshController: NSObject {
     }
     
     private func bindErrorStateChange() {
-        viewModel?.onFeedError = { [weak self] errorMessage in
-            self?.errorView?.show(message: errorMessage)
+        viewModel?.onErrorStateChange = { [weak self] errorMessage in
+            if let message = errorMessage {
+                self?.errorView?.show(message: message)
+            } else {
+                self?.errorView?.hideMessage()
+            }
         }
     }
     
