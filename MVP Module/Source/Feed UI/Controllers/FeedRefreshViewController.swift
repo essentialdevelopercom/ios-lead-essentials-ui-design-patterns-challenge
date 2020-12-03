@@ -19,6 +19,9 @@ final class FeedRefreshController: NSObject, FeedRefreshView {
     
     func display(_ viewModel: FeedLoadingViewModel) {
         displayRefreshLoader(viewModel.isLoading)
+    }
+    
+    func display(_ viewModel: FeedErrorViewModel) {
         handleErrorViewVisibility(viewModel.errorMessage)
     }
     

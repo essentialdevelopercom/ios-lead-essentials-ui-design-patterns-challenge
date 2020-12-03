@@ -4,6 +4,7 @@ import FeedFeature
 
 protocol FeedRefreshView {
     func display(_ viewModel: FeedLoadingViewModel)
+    func display(_ viewModel: FeedErrorViewModel)
 }
 
 final class FeedRefreshPresenter {
@@ -14,14 +15,16 @@ final class FeedRefreshPresenter {
     }
     
     func didStartLoadingFeed() {
-        refreshView.display(FeedLoadingViewModel(isLoading: true, errorMessage: nil))
+        refreshView.display(FeedLoadingViewModel(isLoading: true))
+        refreshView.display(FeedErrorViewModel(errorMessage: nil))
     }
     
     func didFinishLoadingFeed() {
-        refreshView.display(FeedLoadingViewModel(isLoading: false, errorMessage: nil))
+        refreshView.display(FeedLoadingViewModel(isLoading: false))
     }
     
     func didFinishLoadingFeed(with error: Error) {
-        refreshView.display(FeedLoadingViewModel(isLoading: false, errorMessage: Localized.Feed.loadError))
+        refreshView.display(FeedLoadingViewModel(isLoading: false))
+        refreshView.display(FeedErrorViewModel(errorMessage: Localized.Feed.loadError))
     }
 }
