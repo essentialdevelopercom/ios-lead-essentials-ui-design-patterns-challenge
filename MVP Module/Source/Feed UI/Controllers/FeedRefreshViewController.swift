@@ -14,7 +14,6 @@ final class FeedRefreshController: NSObject, FeedRefreshView {
     var delegate: FeedRefreshControllerDelegate?
     
     @IBAction func refresh() {
-        errorView?.hideMessage()
         delegate?.didRequestFeedRefresh()
     }
     
