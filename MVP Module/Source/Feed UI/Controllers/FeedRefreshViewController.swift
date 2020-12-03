@@ -20,10 +20,7 @@ final class FeedRefreshController: NSObject, FeedRefreshView {
     
     func display(_ viewModel: FeedLoadingViewModel) {
         displayRefreshLoader(viewModel.isLoading)
-        
-        if let errorMessage = viewModel.errorMessage {
-            displayErrorMessage(errorMessage)
-        }
+        handleErrorViewVisibility(viewModel.errorMessage)
     }
     
     private func displayRefreshLoader(_ isLoading: Bool) {
@@ -34,8 +31,12 @@ final class FeedRefreshController: NSObject, FeedRefreshView {
         }
     }
     
-    private func displayErrorMessage(_ message: String) {
-        errorView?.show(message: message)
+    private func handleErrorViewVisibility(_ message: String?) {
+        if let errorMessage = message {
+            errorView?.show(message: errorMessage)
+        } else {
+            errorView?.hideMessage()
+        }
     }
     
 }
