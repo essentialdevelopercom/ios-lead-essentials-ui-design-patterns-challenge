@@ -19,6 +19,8 @@ final class FeedRefreshViewModel {
     
     func refreshFeed() {
         onLoadingStateChange?(true)
+        onErrorStateChange?(.none)
+        
         feedLoader.load { [weak self] result in
             switch result {
             case let .success(feed):
