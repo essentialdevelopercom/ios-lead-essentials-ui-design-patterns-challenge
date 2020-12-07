@@ -6,7 +6,7 @@ protocol FeedRefreshControllerDelegate {
     func didRequestFeedRefresh()
 }
 
-final class FeedRefreshController: NSObject, FeedRefreshView {
+final class FeedRefreshController: NSObject, FeedRefreshView, FeedErrorView {
     
     @IBOutlet var view: UIRefreshControl?
     @IBOutlet var errorView: ErrorView?
