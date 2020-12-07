@@ -6,10 +6,9 @@ protocol FeedRefreshControllerDelegate {
     func didRequestFeedRefresh()
 }
 
-final class FeedRefreshController: NSObject, FeedRefreshView, FeedErrorView {
+final class FeedRefreshController: NSObject, FeedRefreshView {
     
     @IBOutlet var view: UIRefreshControl?
-    @IBOutlet var errorView: ErrorView?
     
     var delegate: FeedRefreshControllerDelegate?
     
@@ -22,14 +21,6 @@ final class FeedRefreshController: NSObject, FeedRefreshView, FeedErrorView {
             view?.beginRefreshing()
         } else {
             view?.endRefreshing()
-        }
-    }
-    
-    func display(_ viewModel: FeedErrorViewModel) {
-        if let errorMessage = viewModel.errorMessage {
-            errorView?.show(message: errorMessage)
-        } else {
-            errorView?.hideMessage()
         }
     }
     

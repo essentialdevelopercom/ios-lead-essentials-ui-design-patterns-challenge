@@ -163,13 +163,18 @@ Location</string>
                         </connections>
                     </refreshControl>
                     <connections>
+                        <outlet property="errorController" destination="zvr-W1-Vq7" id="Ce8-bQ-bDZ"/>
                         <outlet property="refreshController" destination="8Te-gA-TVI" id="wfb-Ey-Z7T"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="zvr-W1-Vq7" customClass="FeedErrorViewController" customModule="MVP" customModuleProvider="target">
+                    <connections>
+                        <outlet property="view" destination="AKa-04-T1h" id="Etm-cD-RP2"/>
+                    </connections>
+                </customObject>
                 <customObject id="8Te-gA-TVI" customClass="FeedRefreshController" customModule="MVP" customModuleProvider="target">
                     <connections>
-                        <outlet property="errorView" destination="AKa-04-T1h" id="LRh-3P-UF7"/>
                         <outlet property="view" destination="yrT-VT-7jR" id="8HT-e1-FNT"/>
                     </connections>
                 </customObject>

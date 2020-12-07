@@ -46,6 +46,6 @@ class FeedUISnapshotTests: XCTestCase {
 private extension FeedViewController {
 	func display(errorMessage: String) {
         let errorViewModel = FeedErrorViewModel(errorMessage: errorMessage)
-        refreshController.display(errorViewModel)
+        errorController.display(errorViewModel)
 	}
 }
