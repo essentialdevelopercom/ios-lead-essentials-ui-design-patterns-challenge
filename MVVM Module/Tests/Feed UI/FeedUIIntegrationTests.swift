@@ -17,7 +17,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertEqual(sut.title, localized("FEED_VIEW_TITLE"))
 	}
 	
-	func test_loadFeedActions_requestFeedFromLoader() {
+    func test_loadFeedActions_requestFeedFromLoader() {
 		let (sut, loader) = makeSUT()
 		XCTAssertEqual(loader.loadFeedCallCount, 0, "Expected no loading requests before view is loaded")
 		
@@ -281,6 +281,82 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
+    func test_loadFeed_noErrorMessageIsDisplayedWhenFeedIsLoadedSuccessfully() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(at: 0)
+        XCTAssertFalse(sut.isErrorMessageDisplayedOnScreen, "Expected no error message displayed on screen when feed is loaded correctly")
+    }
+    
+    func test_loadFeed_errorMessageIsDisplayedWhenFeedIsLoadedWithAnError() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError(at: 0)
+        XCTAssertTrue(sut.isErrorMessageDisplayedOnScreen, "Expected an error message displayed on screen when feed fails to load")
+    }
+    
+    func test_errorMessage_isDismissedWhenFeedRefreshSucceeds() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        loader.completeFeedLoadingWithError()
+        XCTAssertTrue(sut.isErrorMessageDisplayedOnScreen, "Expected an error message displayed on screen when feed fails to load")
+
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoading(with: [], at: 1)
+        XCTAssertFalse(sut.isErrorMessageDisplayedOnScreen, "Expected no error message displayed on screen when feed is loaded correctly")
+    }
+    
+    func test_errorMessage_isDisplayedWhenFeedRefreshFails() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        loader.completeFeedLoading()
+        XCTAssertFalse(sut.isErrorMessageDisplayedOnScreen, "Expected no error message displayed on screen when feed is loaded correctly")
+
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoadingWithError(at: 1)
+        XCTAssertTrue(sut.isErrorMessageDisplayedOnScreen, "Expected an error message displayed on screen when feed fails to load")
+    }
+    
+    func test_errorMessage_hideErrorMessageAsSoonAsUserReloadsAndBeforeItCompletes() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        
+        loader.completeFeedLoadingWithError()
+        XCTAssertTrue(sut.isErrorMessageDisplayedOnScreen, "Expected an error message displayed on screen when feed fails to load")
+
+        sut.simulateUserInitiatedFeedReload()
+        XCTAssertFalse(sut.isErrorMessageDisplayedOnScreen, "Expected no error message displayed on screen when feed is loaded correctly")
+    }
+    
+    func test_errorMessage_isDismissedOnTap() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        
+        loader.completeFeedLoadingWithError()
+        XCTAssertEqual(sut.errorView?.message, localized("FEED_VIEW_CONNECTION_ERROR"))
+        XCTAssertTrue(sut.isErrorMessageDisplayedOnScreen, "Expected an error message displayed on screen when feed fails to load")
+        
+        sut.errorView?.button.simulateTap()
+        XCTAssertFalse(sut.isErrorMessageDisplayedOnScreen, "Expected no error message displayed on screen when feed is loaded correctly")
+    }
+    
+    func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.errorView?.message, nil)
+
+        loader.completeFeedLoadingWithError(at: 0)
+        XCTAssertEqual(sut.errorView?.message, localized("FEED_VIEW_CONNECTION_ERROR"))
+        
+        sut.simulateUserInitiatedFeedReload()
+        XCTAssertEqual(sut.errorView?.message, nil)
+    }
+    
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {

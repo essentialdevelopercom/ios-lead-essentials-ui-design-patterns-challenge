@@ -281,6 +281,81 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
+    func test_loadFeed_noErrorMessageIsDisplayedWhenFeedIsLoadedSuccessfully() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoading(at: 0)
+        XCTAssertFalse(sut.isShowingErrorMessage, "Expected no error message displayed on screen when feed is loaded correctly")
+    }
+    
+    func test_loadFeed_errorMessageIsDisplayedWhenFeedIsLoadedWithAnError() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        loader.completeFeedLoadingWithError(at: 0)
+        XCTAssertTrue(sut.isShowingErrorMessage, "Expected an error message displayed on screen when feed fails to load")
+    }
+    
+    func test_errorMessage_isDismissedWhenFeedRefreshSucceeds() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        loader.completeFeedLoadingWithError()
+        XCTAssertTrue(sut.isShowingErrorMessage, "Expected an error message displayed on screen when feed fails to load")
+
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoading(with: [], at: 1)
+        XCTAssertFalse(sut.isShowingErrorMessage, "Expected no error message displayed on screen when feed is loaded correctly")
+    }
+    
+    func test_errorMessage_isDisplayedWhenFeedRefreshFails() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        loader.completeFeedLoading()
+        XCTAssertFalse(sut.isShowingErrorMessage, "Expected no error message displayed on screen when feed is loaded correctly")
+
+        sut.simulateUserInitiatedFeedReload()
+        loader.completeFeedLoadingWithError(at: 1)
+        XCTAssertTrue(sut.isShowingErrorMessage, "Expected an error message displayed on screen when feed fails to load")
+    }
+    
+    func test_errorMessage_hideErrorMessageAsSoonAsUserReloadsAndBeforeItCompletes() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        
+        loader.completeFeedLoadingWithError()
+        XCTAssertTrue(sut.isShowingErrorMessage, "Expected an error message displayed on screen when feed fails to load")
+
+        sut.simulateUserInitiatedFeedReload()
+        XCTAssertFalse(sut.isShowingErrorMessage, "Expected no error message displayed on screen when feed is loaded correctly")
+    }
+    
+    func test_errorMessage_isDismissedOnTap() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+        
+        loader.completeFeedLoadingWithError()
+        XCTAssertTrue(sut.isShowingErrorMessage, "Expected an error message displayed on screen when feed fails to load")
+        
+        sut.errorView?.button.simulateTap()
+        XCTAssertFalse(sut.isShowingErrorMessage, "Expected no error message displayed on screen when feed is loaded correctly")
+    }
+    
+    func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.errorView?.message, nil)
+
+        loader.completeFeedLoadingWithError(at: 0)
+        XCTAssertEqual(sut.errorView?.message, localized("FEED_VIEW_CONNECTION_ERROR"))
+        
+        sut.simulateUserInitiatedFeedReload()
+        XCTAssertEqual(sut.errorView?.message, nil)
+    }
+    
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
