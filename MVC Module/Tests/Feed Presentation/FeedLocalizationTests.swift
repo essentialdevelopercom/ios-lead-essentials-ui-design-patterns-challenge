@@ -19,7 +19,7 @@ final class FeedLocalizationTests: XCTestCase {
 				
 				if localizedString == key {
 					let language = Locale.current.localizedString(forLanguageCode: localization) ?? ""
-
+					
 					XCTFail("Missing \(language) (\(localization)) localized string for key: '\(key)' in table: '\(table)'")
 				}
 			}

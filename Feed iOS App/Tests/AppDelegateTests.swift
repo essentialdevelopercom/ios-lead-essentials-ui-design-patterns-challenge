@@ -17,7 +17,7 @@ final class AppDelegateTests: XCTestCase {
 		
 		XCTAssertTrue(finished, "Expected `didFinishLaunchingWithOptions` to return true")
 	}
-
+	
 	func test_didFinishLaunching_setsKeyWindow() {
 		let sut = makeSUT()
 		
@@ -35,7 +35,7 @@ final class AppDelegateTests: XCTestCase {
 		
 		XCTAssertNotNil(root, "Expected window to have a `rootViewController`")
 	}
-
+	
 	func test_rootViewController_isTabBarWithThreeTabs() {
 		let sut = makeSUT()
 		
@@ -52,7 +52,7 @@ final class AppDelegateTests: XCTestCase {
 		_ = sut.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
 		
 		let tab = sut.tab(at: 0)
-
+		
 		XCTAssertEqual(tab.title, "MVC", "Expected first tab title to be `MVC`")
 		XCTAssertTrue(tab.view is MVC.FeedViewController, "Expected first tab to be a `MVC.FeedViewController`, got \(String(describing: tab.view)) instead")
 	}
@@ -66,17 +66,17 @@ final class AppDelegateTests: XCTestCase {
 		XCTAssertEqual(tab.title, "MVVM", "Expected first tab title to be `MVVM`")
 		XCTAssertTrue(tab.view is MVVM.FeedViewController, "Expected first tab to be a `MVVM.FeedViewController`, got \(String(describing: tab.view)) instead")
 	}
-
+	
 	func test_thirdTab_isMVPFeedViewController() {
 		let sut = makeSUT()
 		_ = sut.application(UIApplication.shared, didFinishLaunchingWithOptions: nil)
-
+		
 		let tab = sut.tab(at: 2)
-
+		
 		XCTAssertEqual(tab.title, "MVP", "Expected first tab title to be `MVP`")
 		XCTAssertTrue(tab.view is MVP.FeedViewController, "Expected first tab to be a `MVP.FeedViewController`, got \(String(describing: tab.view)) instead")
 	}
-
+	
 	// MARK: - Helpers
 	
 	func makeSUT() -> AppDelegate {

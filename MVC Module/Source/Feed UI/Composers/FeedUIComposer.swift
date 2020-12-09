@@ -31,7 +31,7 @@ private extension FeedViewController {
 		let bundle = Bundle(for: FeedViewController.self)
 		let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
 		let feedController = storyboard.instantiateInitialViewController() as! FeedViewController		
-        feedController.title = Localized.Feed.title
+		feedController.title = Localized.Feed.title
 		return feedController
 	}
 }

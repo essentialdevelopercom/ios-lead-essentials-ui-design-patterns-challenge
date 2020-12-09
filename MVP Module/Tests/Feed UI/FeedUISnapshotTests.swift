@@ -7,7 +7,7 @@ import FeedFeature
 @testable import MVP
 
 class FeedUISnapshotTests: XCTestCase {
-    
+
     //  ***********************
     //
     //  Uncomment and run one test at a time
@@ -34,8 +34,8 @@ class FeedUISnapshotTests: XCTestCase {
     }
 	
 	// MARK: - Helpers
-
-    private func makeSUT() -> FeedViewController {
+	
+	private func makeSUT() -> FeedViewController {
 		let bundle = Bundle(for: FeedViewController.self)
 		let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
 		let controller = storyboard.instantiateInitialViewController() as! FeedViewController
@@ -44,10 +44,10 @@ class FeedUISnapshotTests: XCTestCase {
 		controller.tableView.showsHorizontalScrollIndicator = false
 		return controller
 	}
-    
-    private func emptyFeed() -> [FeedImageCellController] {
-        []
-    }
+	
+	private func emptyFeed() -> [FeedImageCellController] {
+		[]
+	}
 }
 
 private extension FeedViewController {

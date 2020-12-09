@@ -11,13 +11,13 @@ public final class FeedUIComposer {
 	public static func feedComposedWith(feedLoader: FeedLoader, imageLoader: FeedImageDataLoader) -> FeedViewController {
 		let feedViewModel = FeedViewModel(
 			feedLoader: MainQueueDispatchDecorator(decoratee: feedLoader))
-
+		
 		let feedController = FeedViewController.makeWith(
 			viewModel: feedViewModel)
 		feedViewModel.onFeedLoad = adaptFeedToCellControllers(
 			forwardingTo: feedController,
 			imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader))
-
+		
 		return feedController
 	}
 	
@@ -25,7 +25,7 @@ public final class FeedUIComposer {
 		return { [weak controller] feed in
 			controller?.tableModel = feed.map { model in
 				FeedImageCellController(viewModel:
-					FeedImageViewModel(model: model, imageLoader: imageLoader, imageTransformer: UIImage.init))
+											FeedImageViewModel(model: model, imageLoader: imageLoader, imageTransformer: UIImage.init))
 			}
 		}
 	}

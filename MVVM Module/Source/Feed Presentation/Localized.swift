@@ -5,9 +5,9 @@
 import Foundation
 
 final class Localized {
-    static var bundle: Bundle {
-        Bundle(for: Localized.self)
-    }
+	static var bundle: Bundle {
+		Bundle(for: Localized.self)
+	}
 }
 
 extension Localized {

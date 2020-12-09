@@ -26,7 +26,9 @@ You can study and use the MVC solution as a guide to help you implement the same
 3) The customer should be able to tap to dismiss the error message.
 
 4) The layout should match the MVC guide and support Dark Mode.
+
 	- The challenge project comes with automated snapshot tests to validate the layout is pixel-perfect in Light and Dark Mode.
+
 	- Uncomment and run one test at a time. All snapshot tests must pass before you submit the pull request.
 
 5) Write tests to validate your implementation, including dismiss on tap (aim to write the test first!).
@@ -36,7 +38,9 @@ You can study and use the MVC solution as a guide to help you implement the same
 
 1) Fork the latest version of this repository. Here's <a href="https://guides.github.com/activities/forking" target="_blank">how forking works</a>.
 
-2) Open the `UIDesignPatternsChallenge.xcodeproj` project on Xcode 12.
+2) Open the `UIDesignPatternsChallenge.xcodeproj` project on Xcode 12.2 (you can use other Xcode versions by switching to the appropriate branch, e.g., `xcode11`/`xcode12`).
+
+	- ⚠️ Important: ***On Xcode 12.2, run the snapshot tests using the 'iPhone 12 - iOS 14.2' simulator*** (the same simulator used to take the snapshots). On older Xcode branches, run the tests with the 'iPhone 11 - iOS 13.x or 14.x' simulator.
 
 3) The project is separated into modules:
 	- The `Feed Feature Module` is the shared module containing the `FeedItem` data model and abstract interfaces. ***You won’t need to change anything in this module.***

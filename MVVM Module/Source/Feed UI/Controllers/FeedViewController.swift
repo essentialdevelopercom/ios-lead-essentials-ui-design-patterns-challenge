@@ -16,7 +16,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
-
+	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
         errorView.hideMessage()
@@ -28,7 +28,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	}
 	
 	func bind() {
-        title = viewModel?.title
+		title = viewModel?.title
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
 			if isLoading {
                 self?.errorView.hideMessage()
@@ -42,7 +42,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
             self?.errorView.show(message: error)
         }
 	}
-
+	
 	public override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		

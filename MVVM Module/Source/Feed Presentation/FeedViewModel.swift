@@ -15,9 +15,9 @@ final class FeedViewModel {
 	}
 	
 	var title: String {
-        Localized.Feed.title
+		Localized.Feed.title
 	}
-    
+	
     var errorMessage: String {
         Localized.Feed.loadError
     }

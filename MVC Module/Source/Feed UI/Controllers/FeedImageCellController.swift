@@ -11,7 +11,7 @@ final class FeedImageCellController {
 	
 	private var task: FeedImageDataLoaderTask?
 	private var cell: FeedImageCell?
-
+	
 	init(model: FeedImage, imageLoader: FeedImageDataLoader) {
 		self.model = model
 		self.imageLoader = imageLoader
