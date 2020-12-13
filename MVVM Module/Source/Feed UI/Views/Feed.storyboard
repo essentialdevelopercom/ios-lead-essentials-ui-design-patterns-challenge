@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,30 +15,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="clu-9B-M8g" userLabel="Error View" customClass="ErrorView" customModule="MVVM" customModuleProvider="target">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="ijb-03-BHJ" customClass="ErrorView" customModule="MVVM" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IIe-PW-eiN">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OMS-0l-pmd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
                                     <state key="normal" title="Error label">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="FDt-gd-kbo"/>
+                                        <action selector="hideMessage" destination="ijb-03-BHJ" eventType="touchUpInside" id="ZZc-qx-SDN"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemPinkColor"/>
+                            <viewLayoutGuide key="safeArea" id="kjT-9I-AHT"/>
+                            <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <gestureRecognizers/>
                             <constraints>
-                                <constraint firstItem="IIe-PW-eiN" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="PZj-KR-UPX"/>
-                                <constraint firstAttribute="trailing" secondItem="IIe-PW-eiN" secondAttribute="trailing" id="i7a-op-5Uv"/>
-                                <constraint firstItem="IIe-PW-eiN" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" id="jaB-4p-gT3"/>
-                                <constraint firstAttribute="bottom" secondItem="IIe-PW-eiN" secondAttribute="bottom" id="neH-St-41O"/>
+                                <constraint firstItem="OMS-0l-pmd" firstAttribute="leading" secondItem="ijb-03-BHJ" secondAttribute="leading" id="DE9-Er-pRY"/>
+                                <constraint firstAttribute="bottom" secondItem="OMS-0l-pmd" secondAttribute="bottom" id="dGh-Nk-Kgp"/>
+                                <constraint firstItem="OMS-0l-pmd" firstAttribute="top" secondItem="ijb-03-BHJ" secondAttribute="top" id="eSg-j1-JrM"/>
+                                <constraint firstAttribute="trailing" secondItem="OMS-0l-pmd" secondAttribute="trailing" id="kcr-nt-6Uk"/>
                             </constraints>
                             <connections>
-                                <outlet property="button" destination="IIe-PW-eiN" id="Yh4-ki-Xm4"/>
+                                <outlet property="button" destination="OMS-0l-pmd" id="bn5-aR-NXv"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
@@ -166,7 +169,7 @@ Location</string>
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="errorView" destination="clu-9B-M8g" id="2vK-v1-FfP"/>
+                        <outlet property="errorView" destination="ijb-03-BHJ" id="xnE-2u-yyl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -176,8 +179,5 @@ Location</string>
     </scenes>
     <resources>
         <image name="pin" width="10" height="14"/>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
