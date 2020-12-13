@@ -25,9 +25,10 @@ final class FeedViewModel {
 	func loadFeed() {
 		onLoadingStateChange?(true)
 		feedLoader.load { [weak self] result in
-			if let feed = try? result.get() {
+			switch result {
+			case let .success(feed):
 				self?.onFeedLoad?(feed)
-			} else {
+			case .failure:
 				self?.onFeedLoadError?("FEED_VIEW_CONNECTION_ERROR")
 			}
 			self?.onLoadingStateChange?(false)
