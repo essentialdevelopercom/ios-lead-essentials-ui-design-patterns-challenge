@@ -6,7 +6,7 @@ import UIKit
 import MVP
 
 extension FeedViewController {
-    private var errorView: ErrorView? {
+    var errorView: ErrorView? {
         get {
             return tableView.tableHeaderView as? ErrorView
         }
