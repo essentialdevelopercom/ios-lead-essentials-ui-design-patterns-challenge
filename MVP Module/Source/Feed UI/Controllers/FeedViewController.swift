@@ -41,6 +41,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     func display(_ viewModel: FeedErrorViewModel) {
         if let message = viewModel.message, !message.isEmpty {
             errorView.show(message: message)
+        } else {
+            errorView.hideMessage()
         }
     }
 
