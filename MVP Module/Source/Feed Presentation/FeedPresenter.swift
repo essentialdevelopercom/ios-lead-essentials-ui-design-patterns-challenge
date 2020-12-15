@@ -38,7 +38,7 @@ final class FeedPresenter {
 	}
 	
 	func didFinishLoadingFeed(with error: Error) {
-		feedErrorView.display("FEED_VIEW_CONNECTION_ERROR")
+		feedErrorView.display(Localized.Feed.errorMessage)
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 }
