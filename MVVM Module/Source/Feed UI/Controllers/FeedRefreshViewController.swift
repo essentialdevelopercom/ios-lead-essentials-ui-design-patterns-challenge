@@ -8,20 +8,19 @@ import FeedFeature
 final class FeedRefreshViewController: NSObject {
     var viewModel: FeedViewModel?
     
-    var refreshControl: UIRefreshControl? {
+    @IBOutlet var refreshControl: UIRefreshControl! {
         didSet {
             bind(refreshControl)
         }
     }
     
-    var errorView: ErrorView? {
+    @IBOutlet var errorView: ErrorView! {
         didSet {
             bind(errorView)
         }
     }
     
     @objc func refresh() {
-        errorView?.hideMessage()
         viewModel?.loadFeed()
     }
     
@@ -37,8 +36,12 @@ final class FeedRefreshViewController: NSObject {
     }
     
     private func bind(_ errorView: ErrorView?) {
-        viewModel?.onFeedError = { message in
-            errorView?.show(message: message)
+        viewModel?.onErrorStateChange = { message in
+            if let message = message, !message.isEmpty {
+                errorView?.show(message: message)
+            } else {
+                errorView?.hideMessage()
+            }
         }
     }
 }

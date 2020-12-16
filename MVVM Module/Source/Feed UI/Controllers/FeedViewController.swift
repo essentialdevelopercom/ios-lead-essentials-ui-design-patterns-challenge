@@ -4,8 +4,7 @@
 
 import UIKit
 
-public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-    @IBOutlet private var errorView: ErrorView!
+public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching { 
     @IBOutlet var refreshController: FeedRefreshViewController!
 	
 	var tableModel = [FeedImageCellController]() {
@@ -16,8 +15,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-        refreshController.errorView = errorView
-        refreshController.refreshControl = self.refreshControl
         refreshController.refresh()
 	}
 
