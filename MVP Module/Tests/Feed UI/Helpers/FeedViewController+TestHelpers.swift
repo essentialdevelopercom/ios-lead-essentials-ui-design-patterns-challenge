@@ -6,9 +6,25 @@ import UIKit
 import MVP
 
 extension FeedViewController {
+    var errorView: ErrorView? {
+        get {
+            return tableView.tableHeaderView as? ErrorView
+        }
+    }
+    
+    var errorMessage: String? {
+        get {
+            return errorView?.message
+        }
+    }
+    
 	func simulateUserInitiatedFeedReload() {
 		refreshControl?.simulatePullToRefresh()
 	}
+    
+    func simulateTapOnErrorMessage() {
+        errorView?.button.simulateTap()
+    }
 	
 	@discardableResult
 	func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {
