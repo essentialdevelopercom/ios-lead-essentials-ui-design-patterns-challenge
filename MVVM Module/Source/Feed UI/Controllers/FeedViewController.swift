@@ -22,7 +22,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	}
 	
 	@IBAction private func refresh() {
-		errorView?.hideMessage()
 		viewModel?.loadFeed()
 	}
 	
@@ -36,8 +35,12 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			}
 		}
 		
-		viewModel?.onFeedLoadError = { [weak self] errorMessage in
-			self?.errorView?.show(message: errorMessage)
+		viewModel?.onErrorStateChange = { [weak self] errorMessage in
+			if let errorMessage = errorMessage {
+				self?.errorView?.show(message: errorMessage)
+			} else {
+				self?.errorView?.hideMessage()
+			}
 		}
 	}
 	
