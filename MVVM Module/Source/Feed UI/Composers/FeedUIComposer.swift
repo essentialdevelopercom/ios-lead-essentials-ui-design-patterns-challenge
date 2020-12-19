@@ -12,8 +12,8 @@ public final class FeedUIComposer {
 		let feedViewModel = FeedViewModel(
 			feedLoader: MainQueueDispatchDecorator(decoratee: feedLoader))
 		
-		let feedController = FeedViewController.makeWith(
-			viewModel: feedViewModel)
+		let feedController = FeedViewController.make()
+		feedController.refreshController?.viewModel = feedViewModel
 		feedViewModel.onFeedLoad = adaptFeedToCellControllers(
 			forwardingTo: feedController,
 			imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader))
@@ -32,11 +32,11 @@ public final class FeedUIComposer {
 }
 
 private extension FeedViewController {
-	static func makeWith(viewModel: FeedViewModel) -> FeedViewController {
+	static func make() -> FeedViewController {
 		let bundle = Bundle(for: FeedViewController.self)
 		let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
 		let feedController = storyboard.instantiateInitialViewController() as! FeedViewController
-		feedController.viewModel = viewModel
+		feedController.title = Localized.Feed.title
 		return feedController
 	}
 }

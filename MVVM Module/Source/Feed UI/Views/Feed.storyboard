@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="DKn-gq-o8a" customClass="ErrorView" customModule="MVC" customModuleProvider="target">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="DKn-gq-o8a" customClass="ErrorView" customModule="MVVM" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -168,14 +168,20 @@ Location</string>
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
-                            <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="OPy-Q1-D7T"/>
+                            <action selector="refresh" destination="E1L-OP-p3L" eventType="valueChanged" id="12b-fO-tPe"/>
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="errorView" destination="DKn-gq-o8a" id="RR3-eF-Ba9"/>
+                        <outlet property="refreshController" destination="E1L-OP-p3L" id="S7Z-h9-yzd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="E1L-OP-p3L" userLabel="Feed Refresh View Controller" customClass="FeedRefreshViewController" customModule="MVVM" customModuleProvider="target">
+                    <connections>
+                        <outlet property="errorView" destination="DKn-gq-o8a" id="orS-ot-a2Z"/>
+                        <outlet property="view" destination="yrT-VT-7jR" id="hat-J1-vNh"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1105.7971014492755" y="-11.383928571428571"/>
         </scene>

@@ -40,7 +40,7 @@ class FeedUISnapshotTests: XCTestCase {
 		let bundle = Bundle(for: FeedViewController.self)
 		let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
 		let controller = storyboard.instantiateInitialViewController() as! FeedViewController
-		controller.viewModel = FeedViewModel(feedLoader: loader)
+		controller.refreshController?.viewModel = FeedViewModel(feedLoader: loader)
 		controller.loadViewIfNeeded()
 		controller.tableView.showsVerticalScrollIndicator = false
 		controller.tableView.showsHorizontalScrollIndicator = false
@@ -66,7 +66,7 @@ private class FeedLoaderStub: FeedLoader {
 
 private extension FeedViewController {
 	func display(errorMessage: String) {
-		errorView.show(message: errorMessage)
+		refreshController?.errorView?.show(message: errorMessage)
 	}
 	
 	func display(_ feed: [FeedImageCellController]) {

@@ -141,6 +141,7 @@
 		27A9A4EE24C760E4009EBB8F /* FeedUISnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4ED24C760E4009EBB8F /* FeedUISnapshotTests.swift */; };
 		27A9A4F124C76120009EBB8F /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4EF24C76119009EBB8F /* XCTestCase+Snapshot.swift */; };
 		27A9A4F324C76163009EBB8F /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4F224C76163009EBB8F /* UIViewController+Snapshot.swift */; };
+		567BDFCD258DDC5500A6BA01 /* FeedRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567BDFCC258DDC5500A6BA01 /* FeedRefreshViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -367,6 +368,7 @@
 		565AA8292588F81600AA868E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Feed.strings"; sourceTree = "<group>"; };
 		565AA82A2588F81600AA868E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Feed.strings"; sourceTree = "<group>"; };
 		565AA82B2588F81700AA868E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Feed.strings"; sourceTree = "<group>"; };
+		567BDFCC258DDC5500A6BA01 /* FeedRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -775,6 +777,7 @@
 			children = (
 				08F3B6342322564500510CE7 /* FeedImageCellController.swift */,
 				08F3B6352322564500510CE7 /* FeedViewController.swift */,
+				567BDFCC258DDC5500A6BA01 /* FeedRefreshViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1422,6 +1425,7 @@
 				08F3B6462322564500510CE7 /* FeedViewController.swift in Sources */,
 				082072E32322D13000759471 /* UITableView+HeaderSizing.swift in Sources */,
 				08F3B6482322564500510CE7 /* UITableView+Dequeueing.swift in Sources */,
+				567BDFCD258DDC5500A6BA01 /* FeedRefreshViewController.swift in Sources */,
 				08F3B64E2322564500510CE7 /* FeedImageViewModel.swift in Sources */,
 				08F3B6452322564500510CE7 /* FeedImageCellController.swift in Sources */,
 				08F3B64F2322564500510CE7 /* FeedViewModel.swift in Sources */,
