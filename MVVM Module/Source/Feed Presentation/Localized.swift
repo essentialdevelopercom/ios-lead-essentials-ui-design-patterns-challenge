@@ -25,7 +25,7 @@ extension Localized {
 			NSLocalizedString("FEED_VIEW_CONNECTION_ERROR",
 								tableName: table,
 								bundle: bundle,
-								comment: "Error message for load feed error")
+								comment: "Error message displayed when we can't load the image feed from the server")
 		}
 	}
 }
