@@ -9,7 +9,7 @@ final class FeedRefreshViewController: NSObject {
 		didSet { bind() }
 	}
 
-	@objc func refresh() {
+	@IBAction func refresh() {
 		viewModel?.loadFeed()
 	}
 
