@@ -7,7 +7,7 @@ import UIKit
 
 extension FeedViewController {
 	func simulateUserInitiatedFeedReload() {
-		refreshControl?.simulatePullToRefresh()
+		refreshController?.view?.simulatePullToRefresh()
 	}
 	
 	@discardableResult
@@ -59,10 +59,10 @@ extension FeedViewController {
 	}
 
 	var errorMessage: String? {
-		return errorView?.message
+		return refreshController?.errorView?.message
 	}
 
 	func simulateTapOnErrorMessage() {
-		errorView?.button.simulateTap()
+		refreshController?.errorView?.button.simulateTap()
 	}
 }
