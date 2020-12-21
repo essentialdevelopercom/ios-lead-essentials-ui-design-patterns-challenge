@@ -179,7 +179,7 @@ Location</string>
                 <customObject id="E1L-OP-p3L" userLabel="Feed Refresh View Controller" customClass="FeedRefreshViewController" customModule="MVVM" customModuleProvider="target">
                     <connections>
                         <outlet property="errorView" destination="DKn-gq-o8a" id="orS-ot-a2Z"/>
-                        <outlet property="view" destination="yrT-VT-7jR" id="hat-J1-vNh"/>
+                        <outlet property="refreshControl" destination="yrT-VT-7jR" id="kd0-sG-npq"/>
                     </connections>
                 </customObject>
             </objects>
