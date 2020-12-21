@@ -3,7 +3,7 @@ import FeedFeature
 
 final class FeedRefreshViewController: NSObject {
 	var delegate: FeedViewControllerDelegate?
-	@IBOutlet var view: UIRefreshControl?
+	@IBOutlet var refreshControl: UIRefreshControl?
 	@IBOutlet var errorView: ErrorView?
 
 	@IBAction func refresh() {
@@ -15,9 +15,9 @@ extension FeedRefreshViewController: FeedLoadingView {
 
 	func display(_ viewModel: FeedLoadingViewModel) {
 		if viewModel.isLoading {
-			view?.beginRefreshing()
+			refreshControl?.beginRefreshing()
 		} else {
-			view?.endRefreshing()
+			refreshControl?.endRefreshing()
 		}
 	}
 }

@@ -7,7 +7,7 @@ import UIKit
 
 extension FeedViewController {
 	func simulateUserInitiatedFeedReload() {
-		refreshController?.view?.simulatePullToRefresh()
+		refreshController?.refreshControl?.simulatePullToRefresh()
 	}
 	
 	@discardableResult

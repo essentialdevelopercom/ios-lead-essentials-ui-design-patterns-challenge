@@ -174,7 +174,7 @@ Location</string>
                 <customObject id="d4z-we-3dN" userLabel="Feed Refresh View Controller" customClass="FeedRefreshViewController" customModule="MVP" customModuleProvider="target">
                     <connections>
                         <outlet property="errorView" destination="gfx-lx-KFY" id="aK4-uG-Kq6"/>
-                        <outlet property="view" destination="yrT-VT-7jR" id="Icj-qf-EXd"/>
+                        <outlet property="refreshControl" destination="yrT-VT-7jR" id="n6a-zX-wZs"/>
                     </connections>
                 </customObject>
             </objects>
