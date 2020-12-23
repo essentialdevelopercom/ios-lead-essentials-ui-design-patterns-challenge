@@ -6,6 +6,14 @@ import UIKit
 import FeedFeature
 
 final class FeedViewAdapter: FeedView {
+	func display(_ viewModel: Error?) {
+		let message: String? = viewModel.map{
+			_ in
+			Localized.Feed.loadError
+		}
+		controller?.display(message)
+	}
+	
 	private weak var controller: FeedViewController?
 	private let imageLoader: FeedImageDataLoader
 	
