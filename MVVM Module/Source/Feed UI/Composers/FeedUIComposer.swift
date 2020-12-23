@@ -23,6 +23,14 @@ public final class FeedUIComposer {
 				? feedController?.errorView.hideMessage()
 				: feedController?.errorView.show(message: Localized.Feed.loadError)
 		}
+		feedViewModel.onLoadingStateChange = {
+			[weak feedController] isLoading in
+			if isLoading {
+				feedController?.refreshControl?.beginRefreshing()
+			} else {
+				feedController?.refreshControl?.endRefreshing()
+			}
+		}
 		return feedController
 	}
 	

@@ -26,13 +26,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	func bind() {
 		title = viewModel?.title
-		viewModel?.onLoadingStateChange = { [weak self] isLoading in
-			if isLoading {
-				self?.refreshControl?.beginRefreshing()
-			} else {
-				self?.refreshControl?.endRefreshing()
-			}
-		}
 	}
 	
 	public override func viewDidLayoutSubviews() {
