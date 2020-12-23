@@ -9,6 +9,9 @@ extension FeedViewController {
 	func simulateUserInitiatedFeedReload() {
 		refreshControl?.simulatePullToRefresh()
 	}
+	func simulateTapOnErrorMessage() {
+		errorView.button.simulateTap()
+	}
 	
 	@discardableResult
 	func simulateFeedImageViewVisible(at index: Int) -> FeedImageCell? {

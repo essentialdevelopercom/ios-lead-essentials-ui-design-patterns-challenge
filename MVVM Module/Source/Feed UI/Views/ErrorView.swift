@@ -5,7 +5,7 @@
 import UIKit
 
 public final class ErrorView: UIView {
-	private(set) public var button: UIButton = UIButton()
+	@IBOutlet private(set) public var button: UIButton!
 	
 	public var message: String? {
 		get { return isVisible ? button.title(for: .normal) : nil }
