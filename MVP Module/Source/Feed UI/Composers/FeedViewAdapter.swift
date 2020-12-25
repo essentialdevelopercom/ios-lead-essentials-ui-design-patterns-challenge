@@ -29,10 +29,6 @@ final class FeedViewAdapter: FeedView {
 	}
 	
 	func display(_ viewModel: FeedErrorViewModel) {
-		let message: String? = viewModel.error.map{
-			_ in
-			Localized.Feed.loadError
-		}
-		controller?.display(message)
+		controller?.display(viewModel.errorMessage)
 	}
 }

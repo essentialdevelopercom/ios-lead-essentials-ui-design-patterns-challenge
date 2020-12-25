@@ -10,5 +10,5 @@
 
 import Foundation
 struct FeedErrorViewModel {
-	var error:Error?
+	var errorMessage:String?
 }
