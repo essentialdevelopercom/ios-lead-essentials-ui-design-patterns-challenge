@@ -18,10 +18,12 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		super.viewDidLoad()
 		
 		viewModel?.onFeedErroStateChange = {
-			[weak self] error in
-			error == nil
-				? self?.errorView.hideMessage()
-				: self?.errorView.show(message: Localized.Feed.loadError)
+			[weak self] errorMessage in
+			if let errorMessage = errorMessage {
+				 self?.errorView.show(message: errorMessage)
+			} else {
+				 self?.errorView.hideMessage()
+			}
 		}
 		viewModel?.onLoadingStateChange = {
 			[weak self] isLoading in
