@@ -17,20 +17,6 @@ public final class FeedUIComposer {
 		feedViewModel.onFeedLoad = adaptFeedToCellControllers(
 			forwardingTo: feedController,
 			imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader))
-		feedViewModel.onFeedErroStateChange = {
-			[weak feedController] error in
-			error == nil
-				? feedController?.errorView.hideMessage()
-				: feedController?.errorView.show(message: Localized.Feed.loadError)
-		}
-		feedViewModel.onLoadingStateChange = {
-			[weak feedController] isLoading in
-			if isLoading {
-				feedController?.refreshControl?.beginRefreshing()
-			} else {
-				feedController?.refreshControl?.endRefreshing()
-			}
-		}
 		return feedController
 	}
 	

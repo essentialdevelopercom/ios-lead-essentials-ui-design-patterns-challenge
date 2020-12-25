@@ -17,6 +17,20 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		viewModel?.onFeedErroStateChange = {
+			[weak self] error in
+			error == nil
+				? self?.errorView.hideMessage()
+				: self?.errorView.show(message: Localized.Feed.loadError)
+		}
+		viewModel?.onLoadingStateChange = {
+			[weak self] isLoading in
+			if isLoading {
+				self?.refreshControl?.beginRefreshing()
+			} else {
+				self?.refreshControl?.endRefreshing()
+			}
+		}
 		refresh()
 	}
 	
