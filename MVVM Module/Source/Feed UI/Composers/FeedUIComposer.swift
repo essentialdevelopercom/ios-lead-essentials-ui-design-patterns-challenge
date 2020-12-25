@@ -18,6 +18,7 @@ public final class FeedUIComposer {
 			forwardingTo: feedController,
 			imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader))
 		
+		feedController.errorController?.viewModel = feedViewModel
 		return feedController
 	}
 	
