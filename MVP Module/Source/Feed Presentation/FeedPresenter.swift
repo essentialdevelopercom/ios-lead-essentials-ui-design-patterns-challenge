@@ -8,24 +8,27 @@ import FeedFeature
 protocol FeedLoadingView {
 	func display(_ viewModel: FeedLoadingViewModel)
 }
-
+protocol FeedErrorView {
+	func display(_ viewModel: FeedErrorViewModel)
+}
 protocol FeedView {
 	func display(_ viewModel: FeedViewModel)
-	func display(_ viewModel: FeedErrorViewModel)
 }
 
 final class FeedPresenter {
 	private let feedView: FeedView
 	private let loadingView: FeedLoadingView
+	private let errorView: FeedErrorView
 	
-	init(feedView: FeedView, loadingView: FeedLoadingView) {
+	init(feedView: FeedView, loadingView: FeedLoadingView, errorView: FeedErrorView) {
 		self.feedView = feedView
 		self.loadingView = loadingView
+		self.errorView = errorView
 	}
 	
 	func didStartLoadingFeed() {
 		loadingView.display(FeedLoadingViewModel(isLoading: true))
-		feedView.display(FeedErrorViewModel(errorMessage: nil))
+		errorView.display(FeedErrorViewModel(errorMessage: nil))
 	}
 	
 	func didFinishLoadingFeed(with feed: [FeedImage]) {
@@ -35,6 +38,6 @@ final class FeedPresenter {
 	
 	func didFinishLoadingFeed(with error: Error) {
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
-		feedView.display(FeedErrorViewModel(errorMessage: Localized.Feed.loadError))
+		errorView.display(FeedErrorViewModel(errorMessage: Localized.Feed.loadError))
 	}
 }
