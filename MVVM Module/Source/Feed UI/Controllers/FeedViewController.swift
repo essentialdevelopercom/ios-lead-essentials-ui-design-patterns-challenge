@@ -16,23 +16,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		viewModel?.onFeedErroStateChange = {
-			[weak self] errorMessage in
-			if let errorMessage = errorMessage {
-				 self?.errorView.show(message: errorMessage)
-			} else {
-				 self?.errorView.hideMessage()
-			}
-		}
-		viewModel?.onLoadingStateChange = {
-			[weak self] isLoading in
-			if isLoading {
-				self?.refreshControl?.beginRefreshing()
-			} else {
-				self?.refreshControl?.endRefreshing()
-			}
-		}
 		refresh()
 	}
 	
@@ -40,8 +23,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		viewModel?.loadFeed()
 	}
 	
-	func bind() {
-		title = viewModel?.title
+	private func bind() {
+		reconnectingViewModelTitle()
+		reconnectingViewModelFeedErrorSateChange()
+		reconnectingViewModelLoadingStateChange()
 	}
 	
 	public override func viewDidLayoutSubviews() {
@@ -78,5 +63,31 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
 		cellController(forRowAt: indexPath).cancelLoad()
+	}
+	// MARK: - helpers
+	private func reconnectingViewModelTitle() {
+		title = viewModel?.title
+	}
+	
+	private func reconnectingViewModelFeedErrorSateChange() {
+		viewModel?.onFeedErroStateChange = {
+			[weak self] errorMessage in
+			if let errorMessage = errorMessage {
+				self?.errorView.show(message: errorMessage)
+			} else {
+				self?.errorView.hideMessage()
+			}
+		}
+	}
+	
+	private func reconnectingViewModelLoadingStateChange() {
+		viewModel?.onLoadingStateChange = {
+			[weak self] isLoading in
+			if isLoading {
+				self?.refreshControl?.beginRefreshing()
+			} else {
+				self?.refreshControl?.endRefreshing()
+			}
+		}
 	}
 }
