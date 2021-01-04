@@ -13,7 +13,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { tableView.reloadData() }
 	}
     
-    var errorView: ErrorView? {
+    private var errorView: ErrorView? {
         return tableView.tableHeaderView as? ErrorView
     }
 
