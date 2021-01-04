@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1hh-nG-9OR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1hh-nG-9OR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -14,11 +14,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="clu-9B-M8g" customClass="ErrorView" customModule="MVVM" customModuleProvider="target">
+                        <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="TlW-qP-Ql1" customClass="ErrorView" customModule="MVC" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbC-bm-SaN">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9I-yM-nr6">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
@@ -26,25 +27,26 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="NHv-UV-x3m"/>
+                                        <action selector="hideMessage" destination="TlW-qP-Ql1" eventType="touchUpInside" id="OQt-ei-03X"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <gestureRecognizers/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="hbC-bm-SaN" secondAttribute="trailing" id="Ac4-1P-CUT"/>
-                                <constraint firstItem="hbC-bm-SaN" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" id="ZF6-5c-VHx"/>
-                                <constraint firstAttribute="bottom" secondItem="hbC-bm-SaN" secondAttribute="bottom" id="bR0-wj-RCm"/>
-                                <constraint firstItem="hbC-bm-SaN" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="rXe-4K-ZZA"/>
+                                <constraint firstAttribute="bottom" secondItem="B9I-yM-nr6" secondAttribute="bottom" id="Gnv-ne-oeQ"/>
+                                <constraint firstItem="B9I-yM-nr6" firstAttribute="top" secondItem="TlW-qP-Ql1" secondAttribute="top" id="l81-s6-qAc"/>
+                                <constraint firstAttribute="trailing" secondItem="B9I-yM-nr6" secondAttribute="trailing" id="pM3-ax-kBZ"/>
+                                <constraint firstItem="B9I-yM-nr6" firstAttribute="leading" secondItem="TlW-qP-Ql1" secondAttribute="leading" id="vsw-uJ-jEd"/>
                             </constraints>
                             <connections>
-                                <outlet property="button" destination="hbC-bm-SaN" id="gAE-fN-cdH"/>
+                                <outlet property="button" destination="B9I-yM-nr6" id="BUn-U6-s0Y"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
                             <rect key="frame" x="0.0" y="670" width="414" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedImageCell" rowHeight="580" id="4Aa-lg-gTp" customClass="FeedImageCell" customModule="MVVM" customModuleProvider="target">
