@@ -13,6 +13,10 @@ final class WeakRefVirtualProxy<T: AnyObject> {
 }
 
 extension WeakRefVirtualProxy: FeedLoadingView where T: FeedLoadingView {
+    func display(error: String) {
+        object?.display(error: error)
+    }
+    
 	func display(_ viewModel: FeedLoadingViewModel) {
 		object?.display(viewModel)
 	}

@@ -11,6 +11,10 @@ protocol FeedViewControllerDelegate {
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
 	var delegate: FeedViewControllerDelegate?
 	
+    private var errorView: ErrorView? {
+        return tableView.tableHeaderView as? ErrorView
+    }
+    
 	private var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
@@ -27,11 +31,16 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	func display(_ viewModel: FeedLoadingViewModel) {
 		if viewModel.isLoading {
+            errorView?.hideMessage()
 			refreshControl?.beginRefreshing()
 		} else {
 			refreshControl?.endRefreshing()
 		}
 	}
+    
+    func display(error: String) {
+        errorView?.show(message: error)
+    }
     
     func display(_ cellControllers: [FeedImageCellController]) {
         tableModel = cellControllers
