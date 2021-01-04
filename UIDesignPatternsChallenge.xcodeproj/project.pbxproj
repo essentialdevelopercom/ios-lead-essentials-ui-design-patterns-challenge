@@ -1529,13 +1529,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GBSDWT5KVD;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Feed iOS App/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.essentialdeveloper.UIDesignPatternsChallenge.FeediOSApp.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.essentialdeveloper.UIDesignPatternsChallenge.FeediOSApp;
 				PRODUCT_MODULE_NAME = FeediOSApp;
 				PRODUCT_NAME = "UI Challenge";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1551,13 +1551,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GBSDWT5KVD;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Feed iOS App/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.essentialdeveloper.UIDesignPatternsChallenge.FeediOSApp.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.essentialdeveloper.UIDesignPatternsChallenge.FeediOSApp;
 				PRODUCT_MODULE_NAME = FeediOSApp;
 				PRODUCT_NAME = "UI Challenge";
 				SWIFT_VERSION = 5.0;
