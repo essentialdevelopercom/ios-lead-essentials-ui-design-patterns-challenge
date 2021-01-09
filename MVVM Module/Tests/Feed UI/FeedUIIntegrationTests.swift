@@ -91,6 +91,19 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertEqual(sut.errorMessage, nil)
 	}
 	
+	func test_errorView_dismissesErrorMessageOnTap() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		XCTAssertEqual(sut.errorMessage, nil)
+		
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+		
+		sut.simulateTapOnErrorMessage()
+		XCTAssertEqual(sut.errorMessage, nil)
+	}
+	
 	func test_feedImageView_loadsImageURLWhenVisible() {
 		let image0 = makeImage(url: URL(string: "http://url-0.com")!)
 		let image1 = makeImage(url: URL(string: "http://url-1.com")!)
@@ -107,6 +120,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.simulateFeedImageViewVisible(at: 1)
 		XCTAssertEqual(loader.loadedImageURLs, [image0.url, image1.url], "Expected second image URL request once second view also becomes visible")
 	}
+	
 	
 	func test_feedImageView_cancelsImageLoadingWhenNotVisibleAnymore() {
 		let image0 = makeImage(url: URL(string: "http://url-0.com")!)
