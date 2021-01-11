@@ -31,14 +31,17 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	func display(_ viewModel: FeedLoadingViewModel) {
 		if viewModel.isLoading {
-            errorView?.hideMessage()
 			refreshControl?.beginRefreshing()
 		} else {
 			refreshControl?.endRefreshing()
 		}
 	}
     
-    func display(error: String) {
+    func display(error: String?) {
+        guard let error = error else {
+            errorView?.hideMessage()
+            return
+        }
         errorView?.show(message: error)
     }
     
