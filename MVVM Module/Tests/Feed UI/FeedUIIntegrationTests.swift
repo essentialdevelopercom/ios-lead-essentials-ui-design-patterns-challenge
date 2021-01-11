@@ -294,6 +294,19 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.errorMessage, nil)
     }
     
+    func test_errorView_dismissesErrorMessageOnTap() {
+        let (sut, loader) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.errorMessage, nil)
+
+        loader.completeFeedLoadingWithError(at: 0)
+        XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+        
+        sut.simulateTapOnErrorMessage()
+        XCTAssertEqual(sut.errorMessage, nil)
+    }
+    
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
@@ -311,15 +324,4 @@ final class FeedUIIntegrationTests: XCTestCase {
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
 	}
-}
-
-private extension FeedViewController {
-    
-    private var errorView: ErrorView? {
-        tableView.tableHeaderView as? ErrorView
-    }
-    
-    var errorMessage: String? {
-        return errorView?.message
-    }
 }
