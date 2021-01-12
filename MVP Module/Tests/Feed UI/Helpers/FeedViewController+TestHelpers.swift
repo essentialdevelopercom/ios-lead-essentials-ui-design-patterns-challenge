@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import MVP
+@testable import MVP
 
 extension FeedViewController {
 	func simulateUserInitiatedFeedReload() {
@@ -52,6 +52,10 @@ extension FeedViewController {
 		let ds = tableView.dataSource
 		let index = IndexPath(row: row, section: feedImagesSection)
 		return ds?.tableView(tableView, cellForRowAt: index)
+	}
+	
+	var errorMessage: String? {
+		errorView?.message
 	}
 	
 	private var feedImagesSection: Int {
