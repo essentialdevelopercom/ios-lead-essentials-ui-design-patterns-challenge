@@ -21,6 +21,9 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n05-52-gIt">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                                     <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="obP-am-aQl"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.96676164870000003" green="0.464281261" blue="0.45167958740000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
