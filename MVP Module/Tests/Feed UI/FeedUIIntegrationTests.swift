@@ -280,6 +280,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		}
 		wait(for: [exp], timeout: 1.0)
 	}
+
 	
 	// MARK: - Helpers
 	
