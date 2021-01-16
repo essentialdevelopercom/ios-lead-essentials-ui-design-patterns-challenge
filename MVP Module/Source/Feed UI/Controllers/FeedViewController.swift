@@ -11,9 +11,7 @@ protocol FeedViewControllerDelegate {
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView, FeedErrorView {
 	
 	var delegate: FeedViewControllerDelegate?
-	public var errorMessage: String? {
-		errorView.message
-	}
+
 	@IBOutlet private(set) public var errorView: ErrorView!
 	
 	private var tableModel = [FeedImageCellController]() {

@@ -61,4 +61,8 @@ extension FeedViewController {
 	func simulateTapOnErrorMessage() {
 		errorView.button.simulate(event: .touchUpInside)
 	}
+	
+	var errorMessage: String? {
+		errorView.message
+	}
 }
