@@ -9,7 +9,7 @@
 import UIKit
 
 final class FeedErrorViewController: NSObject {
-	@IBOutlet var errorView: ErrorView?
+	@IBOutlet private var errorView: ErrorView?
 	
 	var viewModel: FeedViewModel? {
 		didSet {
@@ -21,9 +21,13 @@ final class FeedErrorViewController: NSObject {
 		errorView?.hideMessage()
 	}
 	
+	func showError(message: String) {
+		errorView?.show(message: message)
+	}
+	
 	private func bind() {		
-		viewModel?.onFeedLoadError = { [weak self] errorMessage in 
-            self?.errorView?.show(message: errorMessage)
+		viewModel?.onFeedLoadError = { [weak self] message in 
+            self?.showError(message: message)
 		}		
 	}
 }
