@@ -10,8 +10,4 @@ import Foundation
 
 struct FeedErrorViewModel {
 	let errorMessage: String?
-	
-	static func error(message: String) -> FeedErrorViewModel {
-		FeedErrorViewModel(errorMessage: message)
-	}
 }
