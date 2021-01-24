@@ -13,9 +13,13 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { tableView.reloadData() }
 	}
 	
+	var errorView: UIView? {
+		return tableView.tableHeaderView
+	}
+	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		errorView?.isHidden = true
 		refresh()
 	}
 	

@@ -54,6 +54,10 @@ extension FeedViewController {
 		return ds?.tableView(tableView, cellForRowAt: index)
 	}
 	
+	var isShowingErrorMessage: Bool {
+		return !tableView.tableHeaderView!.isHidden
+	}
+	
 	private var feedImagesSection: Int {
 		return 0
 	}
