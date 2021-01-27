@@ -55,7 +55,7 @@ extension FeedViewController {
 	}
 	
 	var isShowingErrorMessage: Bool {
-		return !tableView.tableHeaderView!.isHidden
+		return tableView.tableHeaderView!.alpha == CGFloat(1)
 	}
 	
 	private var feedImagesSection: Int {

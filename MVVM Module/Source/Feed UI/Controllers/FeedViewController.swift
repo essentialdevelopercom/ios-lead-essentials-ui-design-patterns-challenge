@@ -13,13 +13,13 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { tableView.reloadData() }
 	}
 	
-	var errorView: UIView? {
-		return tableView.tableHeaderView
+	var errorView: ErrorView? {
+		return tableView.tableHeaderView as? ErrorView
 	}
 	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-		errorView?.isHidden = true
+		errorView?.hideMessage()
 		refresh()
 	}
 	
@@ -34,6 +34,14 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.beginRefreshing()
 			} else {
 				self?.refreshControl?.endRefreshing()
+			}
+		}
+		
+		viewModel?.onErrorStatus = { [weak self] hasErrorResponse in
+			if hasErrorResponse {
+				self?.errorView?.show(message: "Error")
+			} else {
+				self?.errorView?.hideMessage()
 			}
 		}
 	}

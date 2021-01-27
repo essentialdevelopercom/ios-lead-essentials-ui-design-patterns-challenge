@@ -289,6 +289,15 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertFalse(sut.isShowingErrorMessage, "Expected no error message when first loading the view")
 	}
 	
+	func test_errorMessage_showErrorMessageWhenCompletesWithError() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoadingWithError()
+		
+		XCTAssertTrue(sut.isShowingErrorMessage, "Expected error message when there is an error in the response")
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
