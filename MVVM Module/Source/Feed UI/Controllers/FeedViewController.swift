@@ -27,6 +27,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		viewModel?.loadFeed()
 	}
 	
+	@IBAction private func hideErrorMessage() {
+		errorView?.hideMessage()
+	}
+	
 	func bind() {
 		title = viewModel?.title
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in

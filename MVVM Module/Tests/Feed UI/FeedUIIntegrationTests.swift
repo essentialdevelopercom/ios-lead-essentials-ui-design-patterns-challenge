@@ -318,6 +318,17 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertFalse(sut.isShowingErrorMessage, "Expected no error message when user initiate feed reloading")
 	}
 	
+	func test_errorMessage_hideErrorMessageWhenUserTapOverErrorMessage() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoadingWithError()
+		
+		sut.simulateUserDismissErrorMessage()
+		
+		XCTAssertFalse(sut.isShowingErrorMessage)
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
