@@ -1,5 +1,5 @@
 //
 
 struct FeedLoadErrorViewModel {
-	let message: String
+	let message: String?
 }

@@ -29,6 +29,7 @@ final class FeedPresenter {
 	}
 	
 	func didStartLoadingFeed() {
+		loadErrorView.display(FeedLoadErrorViewModel(message: .none))
 		loadingView.display(FeedLoadingViewModel(isLoading: true))
 	}
 	
