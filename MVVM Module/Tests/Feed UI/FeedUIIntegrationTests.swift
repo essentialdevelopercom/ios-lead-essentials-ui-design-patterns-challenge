@@ -326,7 +326,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		
 		sut.simulateUserDismissErrorMessage()
 		
-		XCTAssertFalse(sut.isShowingErrorMessage)
+		XCTAssertFalse(sut.isShowingErrorMessage, "Expected hide error message when user tap over it")
 	}
 	
 	// MARK: - Helpers
