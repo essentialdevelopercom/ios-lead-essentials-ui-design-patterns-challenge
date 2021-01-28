@@ -33,7 +33,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		}
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
 			if isLoading {
-				self?.hideErrorMessage()
 				self?.refreshControl?.beginRefreshing()
 			} else {
 				self?.refreshControl?.endRefreshing()
@@ -41,8 +40,12 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		}
 	}
 
-	private func display(errorMessage: String) {
-		errorView.show(message: errorMessage)
+	private func display(errorMessage: String?) {
+		if let message = errorMessage {
+			errorView.show(message: message)
+		} else {
+			errorView.hideMessage()
+		}
 	}
 
 	private func hideErrorMessage() {
