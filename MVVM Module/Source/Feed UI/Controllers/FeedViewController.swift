@@ -43,7 +43,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		
 		viewModel?.onErrorStatus = { [weak self] hasErrorResponse in
 			if hasErrorResponse {
-				self?.errorView?.show(message: "Error")
+				self?.errorView?.show(message: self?.viewModel?.errorConnectionrMessage ?? "")
 			} else {
 				self?.errorView?.hideMessage()
 			}

@@ -18,6 +18,10 @@ final class FeedViewModel {
 		Localized.Feed.title
 	}
 	
+	var errorConnectionrMessage: String {
+		Localized.Feed.errorMessage
+	}
+	
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
 	var onErrorStatus: Observer<Bool>?

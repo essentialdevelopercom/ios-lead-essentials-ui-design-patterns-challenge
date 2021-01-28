@@ -329,6 +329,16 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertFalse(sut.isShowingErrorMessage, "Expected hide error message when user tap over it")
 	}
 	
+	func test_errorMessage_showsLocalizedMessage() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoadingWithError()
+		
+		let erroView = sut.tableView.tableHeaderView as! ErrorView
+		XCTAssertEqual(erroView.message, localized("FEED_VIEW_CONNECTION_ERROR"))
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
