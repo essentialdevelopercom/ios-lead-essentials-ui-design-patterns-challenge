@@ -25,9 +25,12 @@
                                     <state key="normal" title="Error Label">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="4c4-Dt-7n6"/>
+                                    </connections>
                                 </button>
                             </subviews>
-							<color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="2NA-Dt-0zs" secondAttribute="trailing" id="Mlq-nq-oGN"/>
                                 <constraint firstItem="2NA-Dt-0zs" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" id="NA0-OD-QK2"/>
