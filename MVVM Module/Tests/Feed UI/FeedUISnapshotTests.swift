@@ -8,13 +8,6 @@ import FeedFeature
 
 class FeedUISnapshotTests: XCTestCase {
 	
-	//  ***********************
-	//
-	//  Uncomment and run one test at a time
-	//  to validate the layout (including Dark Mode support).
-	//
-	//  ***********************
-	
 	func test_emptyFeed() {
 		let sut = makeSUT()
 
