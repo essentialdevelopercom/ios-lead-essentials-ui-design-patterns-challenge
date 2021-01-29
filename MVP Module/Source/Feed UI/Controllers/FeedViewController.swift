@@ -10,7 +10,7 @@ protocol FeedViewControllerDelegate {
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView, FeedErrorView {
 	
-	@IBOutlet weak var errorView: ErrorView!
+	@IBOutlet public weak var errorView: ErrorView!
 	
 	var delegate: FeedViewControllerDelegate?
 	
