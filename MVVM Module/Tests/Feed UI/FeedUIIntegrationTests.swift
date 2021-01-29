@@ -286,7 +286,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		
 		sut.loadViewIfNeeded()
 		
-		XCTAssertFalse(sut.errorViewIsShowing)
+		XCTAssertNil(sut.errorMessage)
 	}
 	
 	func test_loadFeedCompletion_showsErrorView() {
@@ -295,7 +295,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.loadViewIfNeeded()
 		loader.completeFeedLoadingWithError(at: 0)
 		
-		XCTAssertTrue(sut.errorViewIsShowing)
+		XCTAssertEqual(sut.errorMessage, "Error")
 	}
 	
 	// MARK: - Helpers
@@ -322,7 +322,7 @@ private extension FeedViewController {
 		tableView.tableHeaderView as? ErrorView
 	}
 	
-	var errorViewIsShowing: Bool {
-		return errorView?.message != nil
+	var errorMessage: String? {
+		return errorView?.message
 	}
 }
