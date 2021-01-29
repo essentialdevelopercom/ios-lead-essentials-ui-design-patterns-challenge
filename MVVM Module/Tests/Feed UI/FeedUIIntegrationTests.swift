@@ -281,6 +281,14 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
+	func test_viewDidLoad_errorViewIsNotShowing() {
+		let (sut, _) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		
+		XCTAssertFalse(sut.errorViewIsShowing)
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
@@ -297,5 +305,15 @@ final class FeedUIIntegrationTests: XCTestCase {
 	
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
+	}
+}
+
+private extension FeedViewController {
+	private var errorView: ErrorView? {
+		tableView.tableHeaderView as? ErrorView
+	}
+	
+	var errorViewIsShowing: Bool {
+		return errorView?.message != nil
 	}
 }
