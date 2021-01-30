@@ -64,6 +64,13 @@ final class FeedUIIntegrationTests: XCTestCase {
 		loader.completeFeedLoading(with: [image0, image1, image2, image3], at: 1)
 		assertThat(sut, isRendering: [image0, image1, image2, image3])
 	}
+
+	func test_loadFeedCompletion_doesNotRendersErrorMessageOnLoad() {
+		let (sut, _) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertEqual(sut.errorMessage, nil)
+	}
 	
 	func test_loadFeedCompletion_doesNotAlterCurrentRenderingStateOnError() {
 		let image0 = makeImage()
