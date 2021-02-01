@@ -47,10 +47,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			errorView.hideMessage()
 		}
 	}
-
-	private func hideErrorMessage() {
-		errorView.hideMessage()
-	}
 	
 	public override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
