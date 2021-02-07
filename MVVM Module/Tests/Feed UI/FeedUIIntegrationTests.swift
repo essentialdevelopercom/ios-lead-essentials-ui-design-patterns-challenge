@@ -301,6 +301,21 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.errorMessage, "Couldn't connect to server")
     }
 
+    func test_errorView_dismissWhenTapOnTop() {
+
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        XCTAssertEqual(sut.errorMessage, nil)
+
+        loader.completeFeedLoadingWithError()
+
+        XCTAssertEqual(sut.errorMessage, "Couldn't connect to server")
+
+        sut.simulateTapOnErrorMessage()
+        XCTAssertEqual(sut.errorMessage, nil)
+    }
+
 
 	// MARK: - Helpers
 	
