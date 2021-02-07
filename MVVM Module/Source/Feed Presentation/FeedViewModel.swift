@@ -18,15 +18,24 @@ final class FeedViewModel {
         Localized.Feed.title
 	}
 
+    private var errorMessage: String {
+        return "Couldn't connect to server"
+    }
+
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
-	
+    var onErrorMessage: Observer<String>?
+
 	func loadFeed() {
 		onLoadingStateChange?(true)
-		feedLoader.load { [weak self] result in
-			if let feed = try? result.get() {
-				self?.onFeedLoad?(feed)
-			}
+		feedLoader.load { [weak self, errorMessage] result in
+            switch result {
+            case .success(let feed):
+                self?.onFeedLoad?(feed)
+            case .failure:
+                self?.onErrorMessage?(errorMessage)
+            }
+
 			self?.onLoadingStateChange?(false)
 		}
 	}
