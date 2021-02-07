@@ -19,11 +19,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-		errorView?.hideMessage()
 		refresh()
 	}
 	
 	@IBAction private func refresh() {
+		hideErrorMessage()
 		viewModel?.loadFeed()
 	}
 	
@@ -45,7 +45,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			if hasErrorResponse {
 				self?.errorView?.show(message: self?.viewModel?.errorConnectionrMessage ?? "")
 			} else {
-				self?.errorView?.hideMessage()
+				self?.hideErrorMessage()
 			}
 		}
 	}
