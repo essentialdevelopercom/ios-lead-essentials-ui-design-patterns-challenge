@@ -19,7 +19,7 @@ final class FeedViewModel {
 	}
 
     private var errorMessage: String {
-        return "Couldn't connect to server"
+        return Localized.Feed.loadError
     }
 
 	var onLoadingStateChange: Observer<Bool>?
