@@ -289,6 +289,14 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertTrue(sut.tableView.tableHeaderView is ErrorView)
 	}
 	
+	func test_loadWithNoErrorMessage() {
+		let (sut, _) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		
+		XCTAssertFalse(sut.isShowingErrorMessage)
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
