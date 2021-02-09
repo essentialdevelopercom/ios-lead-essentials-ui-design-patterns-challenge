@@ -319,6 +319,17 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertFalse(sut.isShowingErrorIndicator, "Expected not show error message when refresh action")
 	}
 	
+	func test_errorView_hideErrorMessageWhenUserDismissMessage() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoadingWithError()
+		
+		sut.simulateUserDismissError()
+		
+		XCTAssertFalse(sut.isShowingErrorIndicator, "Expected not show error message when refresh action")
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
