@@ -15,10 +15,14 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { tableView.reloadData() }
 	}
 	
+	var errorView: ErrorView? {
+		tableView.tableHeaderView as? ErrorView
+	}
+	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		tableView.tableHeaderView?.alpha = 0
+		errorView?.hideMessage()
 		refresh()
 	}
 	
@@ -36,6 +40,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	func display(_ cellControllers: [FeedImageCellController]) {
 		tableModel = cellControllers
+	}
+	
+	func displayError() {
+		errorView?.show(message: "")
 	}
 	
 	public override func viewDidLayoutSubviews() {

@@ -14,16 +14,23 @@ final class FeedViewAdapter: FeedView {
 		self.imageLoader = imageLoader
 	}
 	
-	func display(_ viewModel: FeedViewModel) {
+	func display(_ result: Result<FeedViewModel, Error>) {
+		
+		switch result {
+		case .success(let viewModel):
 		controller?.display(viewModel.feed.map { model in
 			let adapter = FeedImageDataLoaderPresentationAdapter<WeakRefVirtualProxy<FeedImageCellController>, UIImage>(model: model, imageLoader: imageLoader)
 			let view = FeedImageCellController(delegate: adapter)
-			
+
 			adapter.presenter = FeedImagePresenter(
 				view: WeakRefVirtualProxy(view),
 				imageTransformer: UIImage.init)
-			
+
 			return view
 		})
+
+		case .failure:
+			controller?.displayError()
+		}
 	}
 }

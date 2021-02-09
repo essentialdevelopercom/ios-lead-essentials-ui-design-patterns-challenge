@@ -10,7 +10,7 @@ protocol FeedLoadingView {
 }
 
 protocol FeedView {
-	func display(_ viewModel: FeedViewModel)
+	func display(_ result: Result<FeedViewModel, Error>)
 }
 
 final class FeedPresenter {
@@ -27,11 +27,12 @@ final class FeedPresenter {
 	}
 	
 	func didFinishLoadingFeed(with feed: [FeedImage]) {
-		feedView.display(FeedViewModel(feed: feed))
+		feedView.display(.success(FeedViewModel(feed: feed)))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 	
 	func didFinishLoadingFeed(with error: Error) {
+		feedView.display(.failure(error))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 }
