@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import MVP
+@testable import MVP
 
 extension FeedViewController {
 	func simulateUserInitiatedFeedReload() {
@@ -56,5 +56,9 @@ extension FeedViewController {
 	
 	private var feedImagesSection: Int {
 		return 0
+	}
+	
+	var isShowingErrorMessage: Bool {
+		return errorView.message != nil
 	}
 }
