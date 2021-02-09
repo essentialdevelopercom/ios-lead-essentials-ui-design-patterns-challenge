@@ -28,7 +28,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		delegate?.didRequestFeedRefresh()
 	}
 	
-	func display(_ errorMessage: String?) {
+	func display(errorMessage: String?) {
 		if let em = errorMessage {
 			errorView.show(message: em)
 		} else {
