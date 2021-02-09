@@ -5,6 +5,9 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+	
+	@IBOutlet private(set) var errorView: ErrorView!
+	
 	var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}
@@ -13,19 +16,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { tableView.reloadData() }
 	}
 	
-	private lazy var errorView: ErrorView = {
-		return ErrorView()
-	}()
-	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		refresh()
-		setupViews()
-	}
-	
-	private func setupViews() {
-		tableView.tableHeaderView = errorView
 	}
 	
 	@IBAction private func refresh() {
