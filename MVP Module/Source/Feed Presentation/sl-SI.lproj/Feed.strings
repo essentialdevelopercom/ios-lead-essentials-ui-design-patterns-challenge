@@ -1,2 +1,3 @@
 
 "FEED_VIEW_TITLE" = "Moj seznam";
+"FEED_VIEW_CONNECTION_ERROR" = "Ni bilo mogoče vzpostaviti povezave s strežnikom";
