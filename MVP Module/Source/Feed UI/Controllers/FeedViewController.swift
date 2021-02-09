@@ -22,11 +22,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		errorView?.hideMessage()
 		refresh()
 	}
 	
 	@IBAction private func refresh() {
+		errorView?.hideMessage()
 		delegate?.didRequestFeedRefresh()
 	}
 	
