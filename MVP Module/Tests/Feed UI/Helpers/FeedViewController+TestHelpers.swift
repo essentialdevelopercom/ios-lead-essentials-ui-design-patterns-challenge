@@ -58,7 +58,7 @@ extension FeedViewController {
 		return 0
 	}
 	
-	var isShowingErrorMessage: Bool {
-		return errorView.message != nil
+	var displayedErrorMessage: String? {
+		return errorView.message
 	}
 }

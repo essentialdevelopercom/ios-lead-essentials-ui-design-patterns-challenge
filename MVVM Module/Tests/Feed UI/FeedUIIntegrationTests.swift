@@ -294,7 +294,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		
 		sut.loadViewIfNeeded()
 		
-		XCTAssertFalse(sut.isShowingErrorMessage)
+		XCTAssertNil(sut.displayedErrorMessage)
 	}
 	
 	func test_showErrorMessageOnLoadError() {
@@ -303,7 +303,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.loadViewIfNeeded()
 		loader.completeFeedLoadingWithError()
 		
-		XCTAssertTrue(sut.isShowingErrorMessage)
+		XCTAssertEqual(sut.displayedErrorMessage, localized(ERROR_MESSAGE_KEY))
 	}
 	
 	func test_hidesErrorOnRefresh() {
@@ -313,10 +313,13 @@ final class FeedUIIntegrationTests: XCTestCase {
 		loader.completeFeedLoadingWithError()
 		sut.simulateUserInitiatedFeedReload()
 		
-		XCTAssertFalse(sut.isShowingErrorMessage)
+		XCTAssertNil(sut.displayedErrorMessage)
 	}
 	
 	// MARK: - Helpers
+	private var ERROR_MESSAGE_KEY: String {
+		"FEED_VIEW_CONNECTION_ERROR"
+	}
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
 		let loader = LoaderSpy()
