@@ -330,6 +330,16 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertFalse(sut.isShowingErrorIndicator, "Expected not show error message when refresh action")
 	}
 	
+	func test_errorView_showLocalizedErrorMessage() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoadingWithError()
+		
+		let erroView = sut.tableView.tableHeaderView as! ErrorView
+		XCTAssertEqual(erroView.message, localized("FEED_VIEW_CONNECTION_ERROR"))
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {

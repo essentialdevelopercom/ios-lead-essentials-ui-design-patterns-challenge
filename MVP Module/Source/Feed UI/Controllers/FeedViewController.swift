@@ -15,6 +15,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { tableView.reloadData() }
 	}
 	
+	var errorMessage: String?
+	
 	var errorView: ErrorView? {
 		tableView.tableHeaderView as? ErrorView
 	}
@@ -43,7 +45,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	}
 	
 	func displayError() {
-		errorView?.show(message: "")
+		errorView?.show(message: errorMessage ?? "")
 	}
 	
 	public override func viewDidLayoutSubviews() {
