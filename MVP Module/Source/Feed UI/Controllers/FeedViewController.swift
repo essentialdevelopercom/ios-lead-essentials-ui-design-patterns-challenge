@@ -26,7 +26,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		delegate?.didRequestFeedRefresh()
 	}
 
-    @IBOutlet private(set) public weak var errorView: ErrorView? 
+    @IBOutlet private weak var errorView: ErrorView? 
 
 	func display(_ viewModel: FeedLoadingViewModel) {
 		if viewModel.isLoading {
