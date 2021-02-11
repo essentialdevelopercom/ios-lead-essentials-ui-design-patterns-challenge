@@ -15,32 +15,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="clu-9B-M8g" customClass="ErrorView" customModule="MVP" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="ll2-ed-Dyj" customClass="ErrorView" customModule="MVP" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeQ-BJ-XYb">
-                                    <rect key="frame" x="184" y="-7" width="46" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPu-SW-Ht6">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="37"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <state key="normal" title="Long Long Long Long Long Button">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
                                     <connections>
-                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="CR8-Ev-y8B"/>
+                                        <action selector="hideMessage" destination="ll2-ed-Dyj" eventType="touchUpInside" id="ZEY-9H-tXd"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" red="1" green="0.41568627450000001" blue="0.41568627450000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="yPu-SW-Ht6" secondAttribute="bottom" id="PhO-UK-d8a"/>
+                                <constraint firstItem="yPu-SW-Ht6" firstAttribute="top" secondItem="ll2-ed-Dyj" secondAttribute="top" id="QKO-rc-KcN"/>
+                                <constraint firstItem="yPu-SW-Ht6" firstAttribute="leading" secondItem="ll2-ed-Dyj" secondAttribute="leading" id="R3u-tm-BDA"/>
+                                <constraint firstAttribute="trailing" secondItem="yPu-SW-Ht6" secondAttribute="trailing" id="XtX-3R-eqN"/>
+                            </constraints>
                             <connections>
-                                <outlet property="button" destination="aeQ-BJ-XYb" id="MNe-MZ-a4W"/>
+                                <outlet property="button" destination="yPu-SW-Ht6" id="nWt-hG-vyD"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
-                            <rect key="frame" x="0.0" y="652" width="414" height="16"/>
+                            <rect key="frame" x="0.0" y="673" width="414" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedImageCell" rowHeight="580" id="4Aa-lg-gTp" customClass="FeedImageCell" customModule="MVP" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="580"/>
+                                <rect key="frame" x="0.0" y="65" width="414" height="580"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Aa-lg-gTp" id="ZOf-kB-Mm6">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="580"/>
