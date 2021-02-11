@@ -301,6 +301,21 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertNotNil(sut.errorView?.message)
     }
 
+    func test_errorView_notVisibleWhileUserTapOnTop() {
+        let (sut, loader) = makeSUT()
+
+        sut.loadViewIfNeeded()
+
+        XCTAssertNil(sut.errorView?.message)
+
+        loader.completeFeedLoadingWithError()
+
+        XCTAssertNotNil(sut.errorView?.message)
+
+        sut.errorView?.button.simulate(event: .touchUpInside)
+        XCTAssertNil(sut.errorView?.message)
+    }
+
 
 	// MARK: - Helpers
 	
