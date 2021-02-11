@@ -24,7 +24,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	@IBAction private func refresh() {
 		delegate?.didRequestFeedRefresh()
 	}
-	
+
+    @IBOutlet public weak var errorView: ErrorView? 
+
 	func display(_ viewModel: FeedLoadingViewModel) {
 		if viewModel.isLoading {
 			refreshControl?.beginRefreshing()
