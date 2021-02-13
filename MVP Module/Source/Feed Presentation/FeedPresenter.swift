@@ -5,10 +5,6 @@
 import Foundation
 import FeedFeature
 
-struct FeedErrorViewModel {
-    let message: String?
-}
-
 protocol FeedLoadingView {
 	func display(_ viewModel: FeedLoadingViewModel)
 }
