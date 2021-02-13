@@ -296,6 +296,19 @@ final class FeedUIIntegrationTests: XCTestCase {
         XCTAssertEqual(sut.errorMessage, nil)
     }
 
+    func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextLoad() {
+        let (sut, loader) = makeSUT()
+        sut.loadViewIfNeeded()
+
+        XCTAssertEqual(sut.errorMessage, nil)
+
+        loader.completeFeedLoadingWithError()
+
+        XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+
+        sut.simulateUserInitiatedFeedReload()
+        XCTAssertEqual(sut.errorMessage, nil)
+    }
 
 	// MARK: - Helpers
 	
