@@ -1,3 +1,2 @@
-
-"FEED_VIEW_TITLE" = "My Feed";
-"FEED_VIEW_CONNECTION_ERROR" = "Couldn't connect to server";
+"FEED_VIEW_TITLE" = "我的來源";
+"FEED_VIEW_CONNECTION_ERROR" = "無法連到伺服器";
