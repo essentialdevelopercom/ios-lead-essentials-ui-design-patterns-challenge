@@ -6,7 +6,7 @@ import Foundation
 import FeedFeature
 
 struct FeedErrorViewModel {
-    let message: String
+    let message: String?
 }
 
 protocol FeedLoadingView {
@@ -33,6 +33,7 @@ final class FeedPresenter {
 	}
     
 	func didStartLoadingFeed() {
+        feedErrorView.display(FeedErrorViewModel(message: .none))
 		loadingView.display(FeedLoadingViewModel(isLoading: true))
 	}
 	
