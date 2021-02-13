@@ -366,6 +366,7 @@
 		EF33850825C2655C001CFDEA /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Feed.strings"; sourceTree = "<group>"; };
 		EF33850925C2655C001CFDEA /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Feed.strings"; sourceTree = "<group>"; };
 		EF33850A25C2655C001CFDEA /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Feed.strings"; sourceTree = "<group>"; };
+		EFBEAEAE25D84CCF00D0A57F /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1553,6 +1554,7 @@
 				08F9A7B82534632300B1568F /* en */,
 				08F9A7BA2534635300B1568F /* el */,
 				08F9A7BC2534635700B1568F /* pt-BR */,
+				EFBEAEAE25D84CCF00D0A57F /* es-419 */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
