@@ -41,7 +41,7 @@ extension FeedViewController {
 	}
 	
 	func simulateUserDismissError() {
-		errorView.button.simulateTap()
+		errorView?.button.simulateTap()
 	}
 	
 	var isShowingLoadingIndicator: Bool {
@@ -49,7 +49,7 @@ extension FeedViewController {
 	}
 	
 	var isShowingErrorIndicator: Bool {
-		return tableView.tableHeaderView!.alpha == 1.0
+		return errorMessage != nil
 	}
 	
 	func numberOfRenderedFeedImageViews() -> Int {
@@ -63,15 +63,15 @@ extension FeedViewController {
 	}
 	
 	var errorMessage: String? {
-		return errorView.message
+		return errorView?.message
 	}
 	
 	private var feedImagesSection: Int {
 		return 0
 	}
 	
-	private var errorView: ErrorView {
-		tableView.tableHeaderView as! ErrorView
+	private var errorView: ErrorView? {
+		tableView.tableHeaderView as? ErrorView
 	}
 	
 }

@@ -59,11 +59,14 @@ extension FeedViewController {
 	}
 	
 	func simulateUserDismissErrorMessage() {
-		let errorView = tableView.tableHeaderView as! ErrorView		
-		errorView.button.simulateTap()
+		errorView?.button.simulateTap()
 	}
 	
 	private var feedImagesSection: Int {
 		return 0
+	}
+	
+	private var errorView: ErrorView? {
+		return tableView.tableHeaderView as? ErrorView
 	}
 }
