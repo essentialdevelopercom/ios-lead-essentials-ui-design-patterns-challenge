@@ -44,6 +44,10 @@ extension FeedViewController {
 		tableView.tableHeaderView as? ErrorView
 	}
 
+	func simulateTapOnErrorMessage() {
+		errorView?.button.simulateTap()
+	}
+
 	var errorMessage: String? {
 		return errorView?.message
 	}
