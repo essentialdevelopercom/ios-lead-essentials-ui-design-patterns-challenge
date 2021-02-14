@@ -16,9 +16,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { tableView.reloadData() }
 	}
 		
-	var errorView: ErrorView? {
-		tableView.tableHeaderView as? ErrorView
-	}
+	@IBOutlet weak var errorView: ErrorView!
 	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
@@ -44,9 +42,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	func display(_ viewModel: FeedErrorViewModel) {
 		if let errorMessage = viewModel.errorMessage {
-			errorView?.show(message: errorMessage)
+			errorView.show(message: errorMessage)
 		} else {
-			errorView?.hideMessage()
+			errorView.hideMessage()
 		}
 	}
 	
