@@ -14,25 +14,24 @@ public final class FeedUIComposer {
 		
 		let feedController = makeFeedViewController(
 			delegate: presentationAdapter,
-			title: Localized.Feed.title,
-			errorMessage: Localized.Feed.errorMessage)
+			title: Localized.Feed.title)
 		
 		presentationAdapter.presenter = FeedPresenter(
 			feedView: FeedViewAdapter(
 				controller: feedController,
 				imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
+			feedViewError: WeakRefVirtualProxy(feedController),
 			loadingView: WeakRefVirtualProxy(feedController))
 		
 		return feedController
 	}
 	
-	private static func makeFeedViewController(delegate: FeedViewControllerDelegate, title: String, errorMessage: String) -> FeedViewController {
+	private static func makeFeedViewController(delegate: FeedViewControllerDelegate, title: String) -> FeedViewController {
 		let bundle = Bundle(for: FeedViewController.self)
 		let storyboard = UIStoryboard(name: "Feed", bundle: bundle)
 		let feedController = storyboard.instantiateInitialViewController() as! FeedViewController
 		feedController.delegate = delegate
 		feedController.title = title
-		feedController.errorMessage = errorMessage
 		return feedController
 	}
 }
