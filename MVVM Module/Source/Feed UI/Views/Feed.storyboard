@@ -27,7 +27,7 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="hideErrorMessage" destination="1hh-nG-9OR" eventType="touchUpInside" id="cGi-2e-n6A"/>
+                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="4vz-yE-Fvh"/>
                                     </connections>
                                 </button>
                             </subviews>
