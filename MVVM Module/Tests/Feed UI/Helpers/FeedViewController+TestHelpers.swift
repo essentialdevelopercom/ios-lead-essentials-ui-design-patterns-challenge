@@ -59,7 +59,7 @@ extension FeedViewController {
 	}
 	
 	var isShowingErrorMessage: Bool {
-		return tableView.tableHeaderView!.alpha == 1.0
+		return errorMessage != nil
 	}
 	
 	func simulateUserDismissErrorMessage() {
