@@ -54,6 +54,10 @@ extension FeedViewController {
 		return ds?.tableView(tableView, cellForRowAt: index)
 	}
 	
+	var errorMessage: String? {
+		return errorView?.message
+	}
+	
 	var isShowingErrorMessage: Bool {
 		return tableView.tableHeaderView!.alpha == 1.0
 	}
@@ -61,6 +65,7 @@ extension FeedViewController {
 	func simulateUserDismissErrorMessage() {
 		errorView?.button.simulateTap()
 	}
+	
 	
 	private var feedImagesSection: Int {
 		return 0
