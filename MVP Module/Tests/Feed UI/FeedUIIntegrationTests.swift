@@ -314,7 +314,6 @@ final class FeedUIIntegrationTests: XCTestCase {
 		loader.completeFeedLoadingWithError()
 		
 		sut.simulateUserInitiatedFeedReload()
-		loader.completeFeedLoading(with: [makeImage()])
 		
 		XCTAssertFalse(sut.isShowingErrorIndicator, "Expected not show error message when refresh action")
 	}
