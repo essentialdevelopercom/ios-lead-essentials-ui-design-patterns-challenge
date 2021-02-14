@@ -304,7 +304,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.loadViewIfNeeded()
 		loader.completeFeedLoadingWithError()
 		
-		XCTAssertTrue(sut.isShowingErrorIndicator, "Expected show error message when completes with errror")
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Expected show error message when completes with errror")
 	}
 	
 	func test_errorView_hideErrorMessageWhenUserInitiateReload() {
@@ -328,16 +328,6 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.simulateUserDismissError()
 		
 		XCTAssertFalse(sut.isShowingErrorIndicator, "Expected not show error message when refresh action")
-	}
-	
-	func test_errorView_showLocalizedErrorMessage() {
-		let (sut, loader) = makeSUT()
-		
-		sut.loadViewIfNeeded()
-		loader.completeFeedLoadingWithError()
-		
-		let erroView = sut.tableView.tableHeaderView as! ErrorView
-		XCTAssertEqual(erroView.message, localized("FEED_VIEW_CONNECTION_ERROR"))
 	}
 	
 	// MARK: - Helpers
