@@ -18,16 +18,25 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3QJ-ds-SEP">
-                                    <rect key="frame" x="184" y="-7" width="46" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3QJ-ds-SEP">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
+                                    <state key="normal" title="Error label">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
                                     <connections>
                                         <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="9PF-DB-Ugi"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="3QJ-ds-SEP" secondAttribute="trailing" id="LtH-uc-Wqw"/>
+                                <constraint firstItem="3QJ-ds-SEP" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" id="Osr-DW-bDL"/>
+                                <constraint firstItem="3QJ-ds-SEP" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="PuK-nw-LxW"/>
+                                <constraint firstAttribute="bottom" secondItem="3QJ-ds-SEP" secondAttribute="bottom" id="fGM-vb-Seq"/>
+                            </constraints>
                             <connections>
                                 <outlet property="button" destination="3QJ-ds-SEP" id="ROu-14-HdO"/>
                             </connections>
