@@ -45,7 +45,7 @@ extension FeedViewController {
 	}
 	
 	var isShowingErrorView: Bool {
-		return errorView?.alpha == 1
+		return errorView?.isShowing == true
 	}
 	
 	func numberOfRenderedFeedImageViews() -> Int {
