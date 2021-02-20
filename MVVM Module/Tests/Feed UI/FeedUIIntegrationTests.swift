@@ -286,6 +286,9 @@ final class FeedUIIntegrationTests: XCTestCase {
 		
 		sut.loadViewIfNeeded()
 		XCTAssertFalse(sut.isShowingErrorView, "Expected no error view on view did load")
+		
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertTrue(sut.isShowingErrorView, "Expected error view on initial feed load error")
 	}
 	
 	// MARK: - Helpers
