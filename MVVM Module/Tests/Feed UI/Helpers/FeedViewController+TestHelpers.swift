@@ -44,8 +44,8 @@ extension FeedViewController {
 		return refreshControl?.isRefreshing == true
 	}
 	
-	var isShowingErrorView: Bool {
-		return errorView?.isShowing == true
+	var errorMessage: String? {
+		return errorView?.message
 	}
 	
 	func numberOfRenderedFeedImageViews() -> Int {
