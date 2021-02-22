@@ -292,8 +292,8 @@ final class FeedUIIntegrationTests: XCTestCase {
 	
 	func test_loadFeedCompletionWithError_showsErrorMessage() {
 		let (sut, loader) = makeSUT()
-		sut.loadViewIfNeeded()
 		
+		sut.loadViewIfNeeded()
 		loader.completeFeedLoadingWithError()
 		
 		XCTAssertNotNil((sut.tableView.tableHeaderView as? ErrorView)?.message)
