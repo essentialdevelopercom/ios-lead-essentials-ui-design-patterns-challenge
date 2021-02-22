@@ -35,8 +35,12 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			}
 		}
 		
-		viewModel?.onError = { [weak self] message in
+		viewModel?.onShowError = { [weak self] message in
 			self?.errorView?.show(message: message)
+		}
+		
+		viewModel?.onDismissError = { [weak self] _ in
+			self?.errorView?.hideMessage()
 		}
 	}
 	
