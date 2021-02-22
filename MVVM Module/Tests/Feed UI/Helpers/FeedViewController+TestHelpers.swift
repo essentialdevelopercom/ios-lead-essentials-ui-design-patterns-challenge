@@ -40,8 +40,16 @@ extension FeedViewController {
 		ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
 	}
 	
+	func simulateErrorViewButtonTap() {
+		errorView?.button.simulateTap()
+	}
+	
 	var isShowingLoadingIndicator: Bool {
 		return refreshControl?.isRefreshing == true
+	}
+	
+	var errorMessage: String? {
+		return errorView?.message
 	}
 	
 	func numberOfRenderedFeedImageViews() -> Int {
