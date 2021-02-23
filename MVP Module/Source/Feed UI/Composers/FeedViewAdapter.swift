@@ -27,11 +27,4 @@ final class FeedViewAdapter: FeedView {
 		})
 	}
 	
-	func hideError() {
-		controller?.hideError()
-	}
-	
-	func showError(message: String) {
-		controller?.showError(message: message)
-	}
 }
