@@ -47,6 +47,7 @@ extension FeedViewController {
 	func numberOfRenderedFeedImageViews() -> Int {
 		return tableView.numberOfRows(inSection: feedImagesSection)
 	}
+	
 	private var errorView: ErrorView? {
 		tableView.tableHeaderView as? ErrorView
 	}
