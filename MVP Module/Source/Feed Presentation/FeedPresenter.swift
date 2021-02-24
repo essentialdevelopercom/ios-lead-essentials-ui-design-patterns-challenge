@@ -35,11 +35,11 @@ final class FeedPresenter {
 	func didFinishLoadingFeed(with feed: [FeedImage]) {
 		feedView.display(FeedViewModel(feed: feed))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
-		errorView.display(FeedErrorStateViewModel(state: .hidden))
+		errorView.display(FeedErrorStateViewModel(message: nil))
 	}
 	
 	func didFinishLoadingFeed(with error: Error) {
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
-		errorView.display(FeedErrorStateViewModel(state: .shown(message: Localized.Feed.loadError)))
+		errorView.display(FeedErrorStateViewModel(message: Localized.Feed.loadError))
 	}
 }

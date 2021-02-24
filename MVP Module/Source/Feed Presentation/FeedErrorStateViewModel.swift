@@ -6,11 +6,6 @@
 //  Copyright © 2021 Essential Developer. All rights reserved.
 //
 
-enum FeedErrorState {
-	case hidden
-	case shown(message: String)
-}
-
 struct FeedErrorStateViewModel {
-	let state: FeedErrorState
+	let message: String?
 }
