@@ -22,6 +22,14 @@ public final class ErrorView: UIView {
 		alpha = 0
 	}
 	
+	func display(_ model: FeedErrorViewModel) {
+		if let message = model.message {
+			show(message: message)
+		} else {
+			hideMessage()
+		}
+	}
+	
 	func show(message: String) {
 		button.setTitle(message, for: .normal)
 		
