@@ -23,15 +23,15 @@ class FeedUISnapshotTests: XCTestCase {
 		assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "EMPTY_FEED_light")
 		assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "EMPTY_FEED_dark")
 	}
-//	
-//	func test_feedWithError() {
-//		let sut = makeSUT()
-//		
-//		sut.display(errorMessage: "An error message")
-//		
-//		assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_ERROR_light")
-//		assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_ERROR_dark")
-//	}
+	
+	func test_feedWithError() {
+		let sut = makeSUT()
+		
+		sut.display(errorMessage: "An error message")
+		
+		assert(snapshot: sut.snapshot(for: .iPhone8(style: .light)), named: "FEED_WITH_ERROR_light")
+		assert(snapshot: sut.snapshot(for: .iPhone8(style: .dark)), named: "FEED_WITH_ERROR_dark")
+	}
 	
 	// MARK: - Helpers
 	
@@ -52,6 +52,10 @@ class FeedUISnapshotTests: XCTestCase {
 
 private extension FeedViewController {
 	func display(errorMessage: String) {
-		fatalError("Must be implemented - follow the MVC solution as a guide")
+		errorView?.show(message: errorMessage)
+	}
+	
+	private var errorView: ErrorView? {
+		tableView.tableHeaderView as? ErrorView
 	}
 }
