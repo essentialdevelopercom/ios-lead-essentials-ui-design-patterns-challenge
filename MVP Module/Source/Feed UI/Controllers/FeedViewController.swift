@@ -8,7 +8,7 @@ protocol FeedViewControllerDelegate {
 	func didRequestFeedRefresh()
 }
 
-public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
+public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView, ErrorPresentingView {
 	var delegate: FeedViewControllerDelegate?
 	
 	private var tableModel = [FeedImageCellController]() {
@@ -35,6 +35,18 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	func display(_ cellControllers: [FeedImageCellController]) {
 		tableModel = cellControllers
+	}
+	
+	func display(_ viewModel: ErrorViewModel) {
+		if viewModel.isVisible {
+			errorView?.show(message: Localized.Feed.loadError)
+		}else{
+			errorView?.hideMessage()
+		}
+	}
+	
+	private var errorView: ErrorView? {
+		tableView.tableHeaderView as? ErrorView
 	}
 	
 	public override func viewDidLayoutSubviews() {
