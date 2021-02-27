@@ -69,10 +69,6 @@ private extension FeedViewController {
 		errorView?.show(message: errorMessage)
 	}
 	
-	private var errorView: ErrorView? {
-		tableView.tableHeaderView as? ErrorView
-	}
-	
 	func display(_ feed: [FeedImageCellController]) {
 		tableModel = feed
 	}
