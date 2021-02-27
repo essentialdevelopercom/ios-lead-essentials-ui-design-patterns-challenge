@@ -1,3 +1,3 @@
 struct ErrorViewModel {
-	let isVisible: Bool
+	let message: String?
 }

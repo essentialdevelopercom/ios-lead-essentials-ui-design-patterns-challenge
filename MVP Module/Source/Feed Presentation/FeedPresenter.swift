@@ -29,7 +29,7 @@ final class FeedPresenter {
 	}
 	
 	func didStartLoadingFeed() {
-		errorPresentingView.display(ErrorViewModel(isVisible: false))
+		errorPresentingView.display(ErrorViewModel(message: nil))
 		loadingView.display(FeedLoadingViewModel(isLoading: true))
 	}
 	
@@ -39,7 +39,7 @@ final class FeedPresenter {
 	}
 	
 	func didFinishLoadingFeed(with error: Error) {
-		errorPresentingView.display(ErrorViewModel(isVisible: true))
+		errorPresentingView.display(ErrorViewModel(message: Localized.Feed.loadError))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 }
