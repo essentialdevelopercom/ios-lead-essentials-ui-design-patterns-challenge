@@ -54,8 +54,4 @@ private extension FeedViewController {
 	func display(errorMessage: String) {
 		errorView?.show(message: errorMessage)
 	}
-	
-	private var errorView: ErrorView? {
-		tableView.tableHeaderView as? ErrorView
-	}
 }
