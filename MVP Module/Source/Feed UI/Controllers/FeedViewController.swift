@@ -21,7 +21,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		refresh()
 	}
 	
-	@IBAction private func refresh() {
+    @IBOutlet weak var errorView: ErrorView!
+	
+    @IBAction private func refresh() {
 		delegate?.didRequestFeedRefresh()
 	}
 	
@@ -43,10 +45,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		}else{
 			errorView?.hideMessage()
 		}
-	}
-	
-	private var errorView: ErrorView? {
-		tableView.tableHeaderView as? ErrorView
 	}
 	
 	public override func viewDidLayoutSubviews() {
