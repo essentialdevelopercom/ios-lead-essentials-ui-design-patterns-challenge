@@ -42,7 +42,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	func display(_ viewModel: ErrorViewModel) {
 		if let errorMessage = viewModel.message {
 			errorView?.show(message: errorMessage)
-		}else{
+		} else {
 			errorView?.hideMessage()
 		}
 	}
