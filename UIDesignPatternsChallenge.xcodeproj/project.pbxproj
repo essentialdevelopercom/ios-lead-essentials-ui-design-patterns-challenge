@@ -365,6 +365,10 @@
 		27A9A4ED24C760E4009EBB8F /* FeedUISnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUISnapshotTests.swift; sourceTree = "<group>"; };
 		27A9A4EF24C76119009EBB8F /* XCTestCase+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Snapshot.swift"; sourceTree = "<group>"; };
 		27A9A4F224C76163009EBB8F /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
+		9FD70ABB25EBBA7700DB7E6A /* eu-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "eu-ES"; path = "eu-ES.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		9FD70ABC25EBBA7700DB7E6A /* eu-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "eu-ES"; path = "eu-ES.lproj/Feed.strings"; sourceTree = "<group>"; };
+		9FD70ABD25EBBA7700DB7E6A /* eu-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "eu-ES"; path = "eu-ES.lproj/Feed.strings"; sourceTree = "<group>"; };
+		9FD70ABE25EBBA7700DB7E6A /* eu-ES */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "eu-ES"; path = "eu-ES.lproj/Feed.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1230,6 +1234,7 @@
 				el,
 				"pt-BR",
 				Base,
+				"eu-ES",
 			);
 			mainGroup = 08F3B58B2322512F00510CE7;
 			productRefGroup = 08F3B5962322512F00510CE7 /* Products */;
@@ -1553,6 +1558,7 @@
 				08F9A7B82534632300B1568F /* en */,
 				08F9A7BA2534635300B1568F /* el */,
 				08F9A7BC2534635700B1568F /* pt-BR */,
+				9FD70ABB25EBBA7700DB7E6A /* eu-ES */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1563,6 +1569,7 @@
 				08F3B5DD232252F300510CE7 /* el */,
 				08F3B5DE232252F300510CE7 /* en */,
 				08F3B5E0232252F300510CE7 /* pt-BR */,
+				9FD70ABC25EBBA7700DB7E6A /* eu-ES */,
 			);
 			name = Feed.strings;
 			sourceTree = "<group>";
@@ -1573,6 +1580,7 @@
 				08F3B63F2322564500510CE7 /* el */,
 				08F3B6402322564500510CE7 /* en */,
 				08F3B6422322564500510CE7 /* pt-BR */,
+				9FD70ABD25EBBA7700DB7E6A /* eu-ES */,
 			);
 			name = Feed.strings;
 			sourceTree = "<group>";
@@ -1583,6 +1591,7 @@
 				08F3B6A82322585E00510CE7 /* el */,
 				08F3B6A92322585E00510CE7 /* en */,
 				08F3B6AD2322585E00510CE7 /* pt-BR */,
+				9FD70ABE25EBBA7700DB7E6A /* eu-ES */,
 			);
 			name = Feed.strings;
 			sourceTree = "<group>";
