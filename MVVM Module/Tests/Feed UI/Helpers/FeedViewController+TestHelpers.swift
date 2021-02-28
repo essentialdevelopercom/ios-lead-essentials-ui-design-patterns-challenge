@@ -40,7 +40,7 @@ extension FeedViewController {
 		ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
 	}
 	
-	private var errorView: ErrorView? {
+	var errorView: ErrorView? {
 		tableView.tableHeaderView as? ErrorView
 	}
 	
