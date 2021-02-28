@@ -13,10 +13,6 @@ protocol FeedErrorView {
 	func display(_ viewModel: FeedErrorViewModel)
 }
 
-struct FeedErrorViewModel {
-	var message: String?
-}
-
 protocol FeedView {
 	func display(_ viewModel: FeedViewModel)
 }
