@@ -11,6 +11,8 @@ protocol FeedViewControllerDelegate {
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
 	var delegate: FeedViewControllerDelegate?
 	
+	@IBOutlet weak var errorView: ErrorView!
+	
 	private var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
@@ -30,6 +32,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			refreshControl?.beginRefreshing()
 		} else {
 			refreshControl?.endRefreshing()
+		}
+		if let _ = viewModel.error {
+			errorView?.show(message: Localized.Feed.loadError)
 		}
 	}
 	
