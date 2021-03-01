@@ -33,8 +33,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		} else {
 			refreshControl?.endRefreshing()
 		}
-		if let _ = viewModel.error {
-			errorView?.show(message: Localized.Feed.loadError)
+		if let errorMessage = viewModel.errorMessage {
+			errorView?.show(message: errorMessage)
 		}
 	}
 	
