@@ -4,10 +4,8 @@
 
 struct FeedLoadingViewModel {
 	let isLoading: Bool
-	let errorMessage: String?
 	
-	init(isLoading: Bool, errorMessage: String? = nil) {
+	init(isLoading: Bool) {
 		self.isLoading = isLoading
-		self.errorMessage = errorMessage
 	}
 }
