@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import MVVM
+@testable import MVVM
 
 extension FeedViewController {
 	func simulateUserInitiatedFeedReload() {
@@ -38,6 +38,14 @@ extension FeedViewController {
 		let ds = tableView.prefetchDataSource
 		let index = IndexPath(row: row, section: feedImagesSection)
 		ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
+	}
+	
+	var errorMessage: String? {
+		return errorView?.message
+	}
+	
+	func simulateTapOnErrorMessage() {
+		errorView?.button.simulateTap()
 	}
 	
 	var isShowingLoadingIndicator: Bool {
