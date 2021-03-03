@@ -4,8 +4,4 @@
 
 struct FeedLoadingViewModel {
 	let isLoading: Bool
-	
-	init(isLoading: Bool) {
-		self.isLoading = isLoading
-	}
 }
