@@ -5,6 +5,9 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+	
+	@IBOutlet private var errorView: ErrorView?
+	
 	var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}
@@ -25,13 +28,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	func bind() {
 		title = viewModel?.title
-		viewModel?.onLoadingStateChange = { [weak self] isLoading in
-			if isLoading {
-				self?.refreshControl?.beginRefreshing()
-			} else {
-				self?.refreshControl?.endRefreshing()
-			}
-		}
+		bindToViewModelOnLoadingStateChange()
+		bindToViewModelOnErrorStateChange()
 	}
 	
 	public override func viewDidLayoutSubviews() {
@@ -68,5 +66,27 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
 		cellController(forRowAt: indexPath).cancelLoad()
+	}
+	
+	// MARK: viewModel bindings
+	
+	private func bindToViewModelOnLoadingStateChange() {
+		viewModel?.onLoadingStateChange = { [weak self] isLoading in
+			if isLoading {
+				self?.refreshControl?.beginRefreshing()
+			} else {
+				self?.refreshControl?.endRefreshing()
+			}
+		}
+	}
+	
+	private func bindToViewModelOnErrorStateChange() {
+		viewModel?.onErrorStateChange = { [weak self] errorMessage in
+			if let message = errorMessage {
+				self?.errorView?.show(message: message)
+			} else {
+				self?.errorView?.hideMessage()
+			}
+		}
 	}
 }
