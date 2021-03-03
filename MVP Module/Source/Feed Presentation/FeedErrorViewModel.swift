@@ -3,5 +3,5 @@
 //
 
 struct FeedErrorViewModel {
-	var message: String?
+	let message: String?
 }
