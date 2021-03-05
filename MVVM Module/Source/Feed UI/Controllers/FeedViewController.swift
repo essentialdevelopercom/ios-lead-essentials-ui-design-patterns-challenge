@@ -5,6 +5,9 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+	
+	@IBOutlet public var errorView: ErrorView?
+	
 	var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}
@@ -33,7 +36,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			}
 		}
 		viewModel?.onError =  { [weak self] errorMessage in
-			(self?.tableView.tableHeaderView as? ErrorView)?.show(message: errorMessage)
+			self?.errorView?.show(message: errorMessage)
 		}
 	}
 	
