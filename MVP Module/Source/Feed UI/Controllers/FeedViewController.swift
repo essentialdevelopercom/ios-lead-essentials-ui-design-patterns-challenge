@@ -35,10 +35,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		}
 	}
 	
-	func display(_ error: String) {
-		errorView?.show(message: error)
-	}
-
 	func display(_ cellControllers: [FeedImageCellController]) {
 		tableModel = cellControllers
 	}
@@ -77,5 +73,12 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
 		cellController(forRowAt: indexPath).cancelLoad()
+	}
+}
+
+extension FeedViewController: FeedErrorView {
+	
+	func display(_ viewModel: FeedErrorViewModel) {
+		errorView?.show(message: viewModel.error)
 	}
 }
