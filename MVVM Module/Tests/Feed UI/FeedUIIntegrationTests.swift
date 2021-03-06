@@ -94,7 +94,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertEqual(sut.errorMessage, nil)
 	}
 
-	func test_loadFeedCompletion_RendersErrorMessageOnFailure() {
+	func test_loadFeedCompletion_rendersErrorMessageOnFailure() {
 		let (sut, loader) = makeSUT()
 		
 		sut.loadViewIfNeeded()
