@@ -9,5 +9,13 @@
 import Foundation
 
 struct FeedErrorViewModel {
-	let error: String
+	let error: String?
+	
+	static var none: FeedErrorViewModel {
+		FeedErrorViewModel(error: nil)
+	}
+	
+	static func error(_ error: String) -> FeedErrorViewModel {
+		FeedErrorViewModel(error: error)
+	}
 }
