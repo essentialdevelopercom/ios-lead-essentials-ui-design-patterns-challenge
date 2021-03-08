@@ -25,16 +25,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		viewModel?.loadFeed()
 	}
 	
+	
 	func bind() {
 		title = viewModel?.title
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
-			if isLoading {
-				self?.refreshControl?.beginRefreshing()
-				self?.errorView?.hideMessage()
-
-			} else {
-				self?.refreshControl?.endRefreshing()
-			}
+			self?.handleLoadingStateChanges(isLoading)
 		}
 		viewModel?.onFeedLoadFailure = { [weak self] errorMSG in
 			self?.errorView?.show(message: errorMSG)
@@ -75,5 +70,18 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
 		cellController(forRowAt: indexPath).cancelLoad()
+	}
+	
+	private func clearErrorsWhenLoadingStart() {
+		self.errorView?.hideMessage()
+	}
+	
+	private func handleLoadingStateChanges(_ isLoading: Bool) {
+		if isLoading {
+			self.refreshControl?.beginRefreshing()
+			clearErrorsWhenLoadingStart()
+		} else {
+			self.refreshControl?.endRefreshing()
+		}
 	}
 }
