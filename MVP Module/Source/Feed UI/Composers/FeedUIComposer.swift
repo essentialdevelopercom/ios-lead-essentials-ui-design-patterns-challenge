@@ -15,12 +15,13 @@ public final class FeedUIComposer {
 		let feedController = makeFeedViewController(
 			delegate: presentationAdapter,
 			title: Localized.Feed.title)
-		
+		let weekFeedController = WeakRefVirtualProxy(feedController)
 		presentationAdapter.presenter = FeedPresenter(
 			feedView: FeedViewAdapter(
 				controller: feedController,
 				imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader)),
-			loadingView: WeakRefVirtualProxy(feedController))
+			loadingView: weekFeedController,
+			loadingError: weekFeedController)
 		
 		return feedController
 	}
