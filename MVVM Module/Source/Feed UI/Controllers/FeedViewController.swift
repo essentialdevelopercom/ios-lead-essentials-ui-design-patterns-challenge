@@ -12,6 +12,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
+
+	@IBOutlet private(set) var errorView: ErrorView!
 	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
@@ -31,6 +33,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			} else {
 				self?.refreshControl?.endRefreshing()
 			}
+		}
+		viewModel?.onFeedLoadFailed = { [weak self] _ in
+			self?.errorView.show(message: Localized.Feed.loadError)
 		}
 	}
 	
