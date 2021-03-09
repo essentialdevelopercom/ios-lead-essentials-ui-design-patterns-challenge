@@ -57,4 +57,8 @@ extension FeedViewController {
 	private var feedImagesSection: Int {
 		return 0
 	}
+
+	var isShowingErrorView: Bool {
+		return errorView.button.titleLabel?.text != nil
+	}
 }
