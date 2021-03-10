@@ -280,7 +280,53 @@ final class FeedUIIntegrationTests: XCTestCase {
 		}
 		wait(for: [exp], timeout: 1.0)
 	}
-	
+
+	func test_errorView_isShowingOnFeedLoadingCompleteWithError() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertFalse(sut.isShowingErrorView, "Expected not to show error view until feed loading finishes")
+
+		loader.completeFeedLoadingWithError()
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+	}
+
+	func test_errorView_isNotShowingOnFeedLoadingCompleteWithoutError() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertFalse(sut.isShowingErrorView, "Expected not to show error view until feed loading finishes")
+
+		loader.completeFeedLoading()
+		XCTAssertFalse(sut.isShowingErrorView, "Expected to hide errorView when feed loading finished without error")
+	}
+
+	func test_errorView_isDismissedOnTap() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertFalse(sut.isShowingErrorView, "Expected not to show error view until feed loading finishes")
+
+		loader.completeFeedLoadingWithError()
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+
+		sut.simulateTapOnErrorView()
+		XCTAssertFalse(sut.isShowingErrorView)
+	}
+
+	func test_errorView_isDismissedOnFeedReload() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertFalse(sut.isShowingErrorView, "Expected not to show error view until feed loading finishes")
+
+		loader.completeFeedLoadingWithError()
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+		
+		sut.simulateUserInitiatedFeedReload()
+		XCTAssertFalse(sut.isShowingErrorView, "Expected to hide the error view when the feed is loading")
+	}
+
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {

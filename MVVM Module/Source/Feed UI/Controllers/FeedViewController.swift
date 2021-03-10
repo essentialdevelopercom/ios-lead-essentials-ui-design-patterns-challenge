@@ -12,6 +12,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
+
+	@IBOutlet private(set) public var errorView: ErrorView!
 	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
@@ -30,6 +32,13 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.beginRefreshing()
 			} else {
 				self?.refreshControl?.endRefreshing()
+			}
+		}
+		viewModel?.onErrorStateChange = { [weak self] error in
+			if let error = error {
+				self?.errorView.show(message: error)
+			} else {
+				self?.errorView.hideMessage()
 			}
 		}
 	}
