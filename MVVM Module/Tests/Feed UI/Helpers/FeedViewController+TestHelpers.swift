@@ -59,6 +59,6 @@ extension FeedViewController {
 	}
 
 	var isShowingErrorView: Bool {
-		return errorView.button.titleLabel?.text != nil
+		return errorView.message != nil
 	}
 }
