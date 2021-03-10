@@ -285,7 +285,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
-		XCTAssertFalse(sut.isShowingErrorView)
+		XCTAssertFalse(sut.isShowingErrorView, "Expected not to show error view until feed loading finishes")
 
 		loader.completeFeedLoadingWithError()
 		XCTAssertTrue(sut.isShowingErrorView, "Expected to show errorView when feed loading finished with error")
@@ -296,6 +296,8 @@ final class FeedUIIntegrationTests: XCTestCase {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
+		XCTAssertFalse(sut.isShowingErrorView, "Expected not to show error view until feed loading finishes")
+
 		loader.completeFeedLoading()
 		XCTAssertFalse(sut.isShowingErrorView, "Expected to hide errorView when feed loading finished without error")
 	}
@@ -304,6 +306,8 @@ final class FeedUIIntegrationTests: XCTestCase {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
+		XCTAssertFalse(sut.isShowingErrorView, "Expected not to show error view until feed loading finishes")
+
 		loader.completeFeedLoadingWithError()
 		sut.simulateTapOnErrorView()
 		XCTAssertFalse(sut.isShowingErrorView)
@@ -313,6 +317,8 @@ final class FeedUIIntegrationTests: XCTestCase {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
+		XCTAssertFalse(sut.isShowingErrorView, "Expected not to show error view until feed loading finishes")
+
 		loader.completeFeedLoadingWithError()
 		XCTAssertTrue(sut.isShowingErrorView, "Expected to show the error view when feed loading finished with error")
 
