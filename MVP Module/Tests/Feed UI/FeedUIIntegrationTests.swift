@@ -288,7 +288,6 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertFalse(sut.isShowingErrorView, "Expected not to show error view until feed loading finishes")
 
 		loader.completeFeedLoadingWithError()
-		XCTAssertTrue(sut.isShowingErrorView, "Expected to show errorView when feed loading finished with error")
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 	}
 
@@ -309,6 +308,8 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertFalse(sut.isShowingErrorView, "Expected not to show error view until feed loading finishes")
 
 		loader.completeFeedLoadingWithError()
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+
 		sut.simulateTapOnErrorView()
 		XCTAssertFalse(sut.isShowingErrorView)
 	}
@@ -320,8 +321,8 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertFalse(sut.isShowingErrorView, "Expected not to show error view until feed loading finishes")
 
 		loader.completeFeedLoadingWithError()
-		XCTAssertTrue(sut.isShowingErrorView, "Expected to show the error view when feed loading finished with error")
-
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+		
 		sut.simulateUserInitiatedFeedReload()
 		XCTAssertFalse(sut.isShowingErrorView, "Expected to hide the error view when the feed is loading")
 	}
