@@ -35,6 +35,12 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.endRefreshing()
 			}
 		}
+		
+		viewModel?.onShowError = { [weak self] isError in
+			if isError {
+				self?.errorView?.show(message: Localized.Feed.loadError)
+			}
+		}
 	}
 	
 	public override func viewDidLayoutSubviews() {
