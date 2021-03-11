@@ -22,7 +22,7 @@ extension Localized {
 		}
 		
 		static var loadError: String {
-			NSLocalizedString("FEED_VIEW_TITLE",
+			NSLocalizedString("FEED_VIEW_CONNECTION_ERROR",
 							  tableName: table,
 							  bundle: bundle,
 							  comment: "Title for the feed view")
