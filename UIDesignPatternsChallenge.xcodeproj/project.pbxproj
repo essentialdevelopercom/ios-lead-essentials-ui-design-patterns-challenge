@@ -928,14 +928,14 @@
 		08F3B6A62322585E00510CE7 /* Feed Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				08F3B6AA2322585E00510CE7 /* FeedPresenter.swift */,
-				08F3B6AB2322585E00510CE7 /* FeedImageViewModel.swift */,
-				08F3B6AC2322585E00510CE7 /* FeedLoadingViewModel.swift */,
-				08F3B6AE2322585E00510CE7 /* FeedImagePresenter.swift */,
-				08F3B6AF2322585E00510CE7 /* FeedViewModel.swift */,
-				08D6263624C9D76C00EF6D46 /* Localized.swift */,
 				08F3B6A72322585E00510CE7 /* Feed.strings */,
 				0FDD243D25FCA12C00C02CBE /* FeedErrorViewModel.swift */,
+				08F3B6AE2322585E00510CE7 /* FeedImagePresenter.swift */,
+				08F3B6AB2322585E00510CE7 /* FeedImageViewModel.swift */,
+				08F3B6AC2322585E00510CE7 /* FeedLoadingViewModel.swift */,
+				08F3B6AA2322585E00510CE7 /* FeedPresenter.swift */,
+				08F3B6AF2322585E00510CE7 /* FeedViewModel.swift */,
+				08D6263624C9D76C00EF6D46 /* Localized.swift */,
 			);
 			path = "Feed Presentation";
 			sourceTree = "<group>";
