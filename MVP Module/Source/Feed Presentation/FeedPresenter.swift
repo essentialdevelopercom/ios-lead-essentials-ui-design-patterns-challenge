@@ -42,5 +42,4 @@ final class FeedPresenter {
 		errorView.display(FeedErrorViewModel(errorMessage: Localized.Feed.loadError))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
-
 }
