@@ -9,7 +9,6 @@
         <!--Feed View Controller-->
         <scene sceneID="mpX-1N-UIf">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="1hh-nG-9OR" customClass="FeedViewController" customModule="MVVM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="9C2-mb-zX4">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
@@ -31,7 +30,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-							<color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Gsh-Zo-9sF" secondAttribute="bottom" id="1k9-73-Meg"/>
                                 <constraint firstItem="Gsh-Zo-9sF" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="Fe9-Vn-dMM"/>
@@ -167,9 +166,10 @@ Location</string>
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="errorView" destination="clu-9B-M8g" id="jjh-wU-EKY"/>
+                        <outlet property="errorView" destination="clu-9B-M8g" id="wlf-05-cCH"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="437" y="-355"/>
         </scene>
