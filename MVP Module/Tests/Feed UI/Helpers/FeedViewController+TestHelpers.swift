@@ -62,4 +62,8 @@ extension FeedViewController {
 		return errorView?.message
 	}
 
+	func simulateUserOnTapDissmissButton()  {
+		errorView.button.simulateTap()
+	}
+
 }
