@@ -281,8 +281,17 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
-	// MARK: - Helpers
-	
+	func test_errorMessageDoesNotShowWhenFeedIsVisible() {
+		let (sut, _) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		
+		XCTAssertNil(sut.errorView)
+	}
+}
+
+// MARK: - Helpers
+extension FeedUIIntegrationTests {
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
 		let loader = LoaderSpy()
 		let sut = FeedUIComposer.feedComposedWith(feedLoader: loader, imageLoader: loader)
@@ -297,5 +306,12 @@ final class FeedUIIntegrationTests: XCTestCase {
 	
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
+	}
+}
+
+// MARK: - SUT DSL Helper
+extension FeedViewController {
+	var errorView: ErrorView? {
+		view.findChildView(byAccessibilityIdentifier: "error-view") as? ErrorView
 	}
 }

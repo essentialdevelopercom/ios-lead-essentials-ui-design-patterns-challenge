@@ -142,6 +142,7 @@
 		27A9A4EE24C760E4009EBB8F /* FeedUISnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4ED24C760E4009EBB8F /* FeedUISnapshotTests.swift */; };
 		27A9A4F124C76120009EBB8F /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4EF24C76119009EBB8F /* XCTestCase+Snapshot.swift */; };
 		27A9A4F324C76163009EBB8F /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4F224C76163009EBB8F /* UIViewController+Snapshot.swift */; };
+		8B23DC2026033FA800268179 /* UIView+ChildViewFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B23DC1F26033FA800268179 /* UIView+ChildViewFinder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -369,6 +370,7 @@
 		8B23DC142601FD2600268179 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Feed.strings; sourceTree = "<group>"; };
 		8B23DC152601FD2600268179 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Feed.strings; sourceTree = "<group>"; };
 		8B23DC162601FD2600268179 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Feed.strings; sourceTree = "<group>"; };
+		8B23DC1F26033FA800268179 /* UIView+ChildViewFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ChildViewFinder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -978,6 +980,7 @@
 			isa = PBXGroup;
 			children = (
 				08F3B6E5232258CE00510CE7 /* XCTestCase+MemoryLeakTracking.swift */,
+				8B23DC1F26033FA800268179 /* UIView+ChildViewFinder.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1496,6 +1499,7 @@
 				08F3B6E2232258BD00510CE7 /* FeedUIIntegrationTests.swift in Sources */,
 				08F3B6E1232258BD00510CE7 /* UIRefreshControl+TestHelpers.swift in Sources */,
 				08D6263324C9D5FC00EF6D46 /* XCTestCase+Snapshot.swift in Sources */,
+				8B23DC2026033FA800268179 /* UIView+ChildViewFinder.swift in Sources */,
 				08F3B6DD232258BD00510CE7 /* FeedImageCell+TestHelpers.swift in Sources */,
 				08F3B6DA232258BD00510CE7 /* FeedUIIntegrationTests+Localization.swift in Sources */,
 				08D6263524C9D61200EF6D46 /* FeedUISnapshotTests.swift in Sources */,
