@@ -285,8 +285,9 @@ final class FeedUIIntegrationTests: XCTestCase {
 		let (sut, _) = makeSUT()
 		
 		sut.loadViewIfNeeded()
-		
-		XCTAssertNil(sut.errorView)
+	
+		XCTAssertNotNil(sut.errorView)
+		XCTAssertEqual(sut.errorView?.isHidden, true)
 	}
 }
 
