@@ -280,7 +280,10 @@ final class FeedUIIntegrationTests: XCTestCase {
 		}
 		wait(for: [exp], timeout: 1.0)
 	}
-	
+}
+
+// MARK: - Error View Tests
+extension FeedUIIntegrationTests {
 	func test_errorView_doesNotShowWhenFeedIsVisible() {
 		let (sut, _) = makeSUT()
 		
@@ -295,7 +298,16 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.loadViewIfNeeded()
 		
 		loader.completeFeedLoading(at: 0)
-		XCTAssertEqual(sut.errorView?.isHidden, true, "Expected error view to not be visible once loading completes successfully")
+		XCTAssertEqual(sut.errorView?.isHidden, true, "Expected error view to *not be visible once loading completes successfully")
+	}
+	
+	func test_onFeedLoadError_errorMessageShown() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		
+		loader.completeFeedLoadingWithError()
+		XCTAssertEqual(sut.errorView?.isHidden, false, "Expected error view *be visible once loading completes with a failure")
 	}
 }
 
