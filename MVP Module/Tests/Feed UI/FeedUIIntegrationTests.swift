@@ -289,7 +289,7 @@ extension FeedUIIntegrationTests {
 		
 		sut.loadViewIfNeeded()
 			
-		XCTAssertEqual(sut.errorView?.isHidden, true)
+		test_errorView(sut.errorView, isVisible: false)
 	}
 	
 	func test_onFeedLoadSuccess_errorMessageNotShown() {
@@ -298,10 +298,7 @@ extension FeedUIIntegrationTests {
 		sut.loadViewIfNeeded()
 		
 		loader.completeFeedLoading(at: 0)
-		XCTAssertEqual(sut.errorView?.isVisible, false,
-					   "Expected error view to *not be visible once loading completes successfully")
-		XCTAssertEqual(sut.errorView?.button.title(for: .normal), nil,
-					   "Expected error view button title be nil")
+		test_errorView(sut.errorView, isVisible: false)
 	}
 	
 	func test_onFeedLoadError_errorMessageShown() {
@@ -310,14 +307,11 @@ extension FeedUIIntegrationTests {
 		sut.loadViewIfNeeded()
 		
 		loader.completeFeedLoadingWithError()
-		XCTAssertEqual(sut.errorView?.isVisible, true,
-					   "Expected error view to *be visible once loading completes successfully")
-		XCTAssertEqual(sut.errorView?.button.title(for: .normal), "Couldn't connect to server",
-					   "Could't connect to server")
+		test_errorView(sut.errorView, isVisible: true, withMessage: "Couldn't connect to server")
 	}
 }
 
-// MARK: - Helpers
+// MARK: - Make SUT
 extension FeedUIIntegrationTests {
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
 		let loader = LoaderSpy()
@@ -326,7 +320,26 @@ extension FeedUIIntegrationTests {
 		trackForMemoryLeaks(sut, file: file, line: line)
 		return (sut, loader)
 	}
-	
+}
+
+// MARK: - Test Helpers
+extension FeedUIIntegrationTests {
+	private func test_errorView(_ errorView: ErrorView?,
+								isVisible: Bool,
+								withMessage message: String? = nil,
+								file: StaticString = #filePath,
+								line: UInt = #line) {
+		XCTAssertEqual(errorView?.isVisible, isVisible,
+					   "Expected error view to be \(isVisible ? "visible" : "not visible")) once loading completes successfully",
+					   file: file, line: line)
+		XCTAssertEqual(errorView?.button.title(for: .normal), message,
+					   "Expected error view mesage to be \(message ?? "nil")) once loading completes successfully",
+					   file: file, line: line)
+	}
+}
+
+// MARK: - Factory Methods
+extension FeedUIIntegrationTests {
 	private func makeImage(description: String? = nil, location: String? = nil, url: URL = URL(string: "http://any-url.com")!) -> FeedImage {
 		return FeedImage(id: UUID(), description: description, location: location, url: url)
 	}
