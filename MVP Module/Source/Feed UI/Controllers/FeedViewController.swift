@@ -9,7 +9,6 @@ protocol FeedViewControllerDelegate {
 }
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-	
 	@IBOutlet var errorView: ErrorView!
 	
 	var delegate: FeedViewControllerDelegate?
@@ -20,7 +19,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		refresh()
 	}
 	
@@ -83,6 +81,10 @@ extension FeedViewController: FeedLoadingView {
 // MARK: - FeedErrorView
 extension FeedViewController: FeedErrorView {
 	func display(_ viewModel: FeedErrorViewModel) {
-		errorView.isHidden = viewModel.hasError ? false : true
+		if viewModel.hasError {
+			errorView?.show(message: Localized.Feed.loadError)
+		} else {
+			errorView.hideMessage()
+		}
 	}
 }

@@ -298,7 +298,10 @@ extension FeedUIIntegrationTests {
 		sut.loadViewIfNeeded()
 		
 		loader.completeFeedLoading(at: 0)
-		XCTAssertEqual(sut.errorView?.isHidden, true, "Expected error view to *not be visible once loading completes successfully")
+		XCTAssertEqual(sut.errorView?.isVisible, false,
+					   "Expected error view to *not be visible once loading completes successfully")
+		XCTAssertEqual(sut.errorView?.button.title(for: .normal), nil,
+					   "Expected error view button title be nil")
 	}
 	
 	func test_onFeedLoadError_errorMessageShown() {
@@ -307,7 +310,10 @@ extension FeedUIIntegrationTests {
 		sut.loadViewIfNeeded()
 		
 		loader.completeFeedLoadingWithError()
-		XCTAssertEqual(sut.errorView?.isHidden, false, "Expected error view *be visible once loading completes with a failure")
+		XCTAssertEqual(sut.errorView?.isVisible, true,
+					   "Expected error view to *be visible once loading completes successfully")
+		XCTAssertEqual(sut.errorView?.button.title(for: .normal), "Couldn't connect to server",
+					   "Could't connect to server")
 	}
 }
 
@@ -334,5 +340,11 @@ extension FeedUIIntegrationTests {
 extension FeedViewController {
 	var errorView: ErrorView? {
 		view.findChildView(byAccessibilityIdentifier: "error-view") as? ErrorView
+	}
+}
+
+extension ErrorView {
+	var isVisible: Bool {
+		return alpha > 0
 	}
 }
