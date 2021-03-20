@@ -27,10 +27,10 @@ final class FeedPresenter {
 	private let loadingView: FeedLoadingView
 	private let loadingErrorView: FeedErrorView
 	
-	init(feedView: FeedView, loadingView: FeedLoadingView, loadingErrorView: FeedErrorView) {
+	init(feedView: FeedView, loadingView: FeedLoadingView, errorView: FeedErrorView) {
 		self.feedView = feedView
 		self.loadingView = loadingView
-		self.loadingErrorView = loadingErrorView
+		self.loadingErrorView = errorView
 	}
 	
 	func didStartLoadingFeed() {
