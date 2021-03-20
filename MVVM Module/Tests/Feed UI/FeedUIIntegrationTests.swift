@@ -280,9 +280,21 @@ final class FeedUIIntegrationTests: XCTestCase {
 		}
 		wait(for: [exp], timeout: 1.0)
 	}
-	
-	// MARK: - Helpers
-	
+}
+
+// MARK: - Error View Tests
+extension FeedUIIntegrationTests {
+	func test_errorView_doesNotShowWhenFeedLoadsView() {
+		let (sut, _) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+			
+		test_errorView(sut.errorView, isVisible: false)
+	}
+}
+
+// MARK: - Make SUT
+extension FeedUIIntegrationTests {
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
 		let loader = LoaderSpy()
 		let sut = FeedUIComposer.feedComposedWith(feedLoader: loader, imageLoader: loader)
@@ -290,7 +302,10 @@ final class FeedUIIntegrationTests: XCTestCase {
 		trackForMemoryLeaks(sut, file: file, line: line)
 		return (sut, loader)
 	}
-	
+}
+
+// MARK: - Factory Methods
+extension FeedUIIntegrationTests {
 	private func makeImage(description: String? = nil, location: String? = nil, url: URL = URL(string: "http://any-url.com")!) -> FeedImage {
 		return FeedImage(id: UUID(), description: description, location: location, url: url)
 	}
@@ -299,3 +314,38 @@ final class FeedUIIntegrationTests: XCTestCase {
 		return UIImage.make(withColor: .red).pngData()!
 	}
 }
+
+// MARK: - Test Helpers
+extension FeedUIIntegrationTests {
+	private func test_errorView(_ errorView: ErrorView?,
+								isVisible: Bool,
+								withMessage message: String? = nil,
+								file: StaticString = #filePath,
+								line: UInt = #line) {
+		XCTAssertEqual(errorView?.isVisible, isVisible,
+					   "Expected error view to be \(isVisible ? "visible" : "not visible") once loading completes successfully",
+					   file: file, line: line)
+		XCTAssertEqual(errorView?.button.title(for: .normal), message,
+					   "Expected error view mesage to be \(message ?? "nil") once loading completes successfully",
+					   file: file, line: line)
+	}
+}
+
+// MARK: - FeedViewController DSL Helper Vars and Functions
+extension FeedViewController {
+	var errorView: ErrorView? {
+		view.findChildView(byAccessibilityIdentifier: "error-view") as? ErrorView
+	}
+}
+
+// MARK: - ErrorView DSL Helper Vars and Functions
+extension ErrorView {
+	var isVisible: Bool {
+		return alpha > 0
+	}
+	
+	func simulateTapToHideErrorView() {
+		button.simulateTap()
+	}
+}
+

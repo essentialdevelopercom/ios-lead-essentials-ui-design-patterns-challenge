@@ -284,7 +284,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 
 // MARK: - Error View Tests
 extension FeedUIIntegrationTests {
-	func test_errorView_doesNotShowWhenFeedIsVisible() {
+	func test_errorView_doesNotShowWhenFeedLoadsView() {
 		let (sut, _) = makeSUT()
 		
 		sut.loadViewIfNeeded()
@@ -336,6 +336,17 @@ extension FeedUIIntegrationTests {
 	}
 }
 
+// MARK: - Factory Methods
+extension FeedUIIntegrationTests {
+	private func makeImage(description: String? = nil, location: String? = nil, url: URL = URL(string: "http://any-url.com")!) -> FeedImage {
+		return FeedImage(id: UUID(), description: description, location: location, url: url)
+	}
+	
+	private func anyImageData() -> Data {
+		return UIImage.make(withColor: .red).pngData()!
+	}
+}
+
 // MARK: - Test Helpers
 extension FeedUIIntegrationTests {
 	private func test_errorView(_ errorView: ErrorView?,
@@ -352,24 +363,15 @@ extension FeedUIIntegrationTests {
 	}
 }
 
-// MARK: - Factory Methods
-extension FeedUIIntegrationTests {
-	private func makeImage(description: String? = nil, location: String? = nil, url: URL = URL(string: "http://any-url.com")!) -> FeedImage {
-		return FeedImage(id: UUID(), description: description, location: location, url: url)
-	}
-	
-	private func anyImageData() -> Data {
-		return UIImage.make(withColor: .red).pngData()!
-	}
-}
 
-// MARK: - SUT DSL Helper
+// MARK: - FeedViewController DSL Helper Vars and Functions
 extension FeedViewController {
 	var errorView: ErrorView? {
 		view.findChildView(byAccessibilityIdentifier: "error-view") as? ErrorView
 	}
 }
 
+// MARK: - ErrorView DSL Helper Vars and Functions
 extension ErrorView {
 	var isVisible: Bool {
 		return alpha > 0
