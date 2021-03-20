@@ -300,7 +300,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 	}
 	
-	func test_loadFeedCompletion_HidesErrorMessageWhenFeedCompletesSuccessfullyAfterError() {
+	func test_loadFeedCompletion_hidesErrorMessageWhenUserInitiatedReload() {
 		
 		let (sut, loader) = makeSUT()
 		
@@ -310,10 +310,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 		
 		sut.simulateUserInitiatedFeedReload()
-		loader.completeFeedLoading(at: 1)
-		
 		XCTAssertNil(sut.errorMessage)
-		assertThat(sut, isRendering: [])
 	}
 	
 	func test_loadFeedActions_hidesErrorWhenUserTapsOnError() {
