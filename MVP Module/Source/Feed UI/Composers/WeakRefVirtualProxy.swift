@@ -25,6 +25,10 @@ extension WeakRefVirtualProxy: FeedImageView where T: FeedImageView, T.Image == 
 }
 
 extension WeakRefVirtualProxy: FeedErrorView where T: FeedErrorView {
+	func hideError(_ viewModel: FeedErrorViewModel) {
+		object?.hideError(viewModel)
+	}
+	
 	func display(_ viewModel: FeedErrorViewModel) {
 		object?.display(viewModel)
 	}
