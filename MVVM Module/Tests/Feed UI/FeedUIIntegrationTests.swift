@@ -310,19 +310,19 @@ extension FeedUIIntegrationTests {
 		test_errorView(sut.errorView, isVisible: true, withMessage: "Couldn't connect to server")
 	}
 		
-	//	func test_touchUpInsideErrorView_hidesErrorView() {
-	//		let (sut, loader) = makeSUT()
-	//
-	//		sut.loadViewIfNeeded()
-	//		loader.completeFeedLoadingWithError()
-	//
-	//		sut.errorView?.simulateTapToHideErrorView()
-	//		expectation(for: .init { _, _ in
-	//			sut.errorView?.isVisible == false
-	//		}, evaluatedWith: nil, handler: nil)
-	//
-	//		waitForExpectations(timeout: 2.0, handler: nil)
-	//	}
+	func test_touchUpInsideErrorView_hidesErrorView() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoadingWithError()
+
+		sut.errorView?.simulateTapToHideErrorView()
+		expectation(for: .init { _, _ in
+			sut.errorView?.isVisible == false
+		}, evaluatedWith: nil, handler: nil)
+
+		waitForExpectations(timeout: 2.0, handler: nil)
+	}
 }
 
 // MARK: - Make SUT
