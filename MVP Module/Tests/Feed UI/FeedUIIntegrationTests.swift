@@ -309,6 +309,20 @@ extension FeedUIIntegrationTests {
 		loader.completeFeedLoadingWithError()
 		test_errorView(sut.errorView, isVisible: true, withMessage: "Couldn't connect to server")
 	}
+	
+	func test_touchUpInsideErrorView_hidesErrorView() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoadingWithError()
+		
+		sut.errorView?.simulateTapToHideErrorView()
+		expectation(for: .init { _, _ in
+			sut.errorView?.isVisible == false
+		}, evaluatedWith: nil, handler: nil)
+
+		waitForExpectations(timeout: 2.0, handler: nil)
+	}
 }
 
 // MARK: - Make SUT
@@ -330,10 +344,10 @@ extension FeedUIIntegrationTests {
 								file: StaticString = #filePath,
 								line: UInt = #line) {
 		XCTAssertEqual(errorView?.isVisible, isVisible,
-					   "Expected error view to be \(isVisible ? "visible" : "not visible")) once loading completes successfully",
+					   "Expected error view to be \(isVisible ? "visible" : "not visible") once loading completes successfully",
 					   file: file, line: line)
 		XCTAssertEqual(errorView?.button.title(for: .normal), message,
-					   "Expected error view mesage to be \(message ?? "nil")) once loading completes successfully",
+					   "Expected error view mesage to be \(message ?? "nil") once loading completes successfully",
 					   file: file, line: line)
 	}
 }
@@ -359,5 +373,9 @@ extension FeedViewController {
 extension ErrorView {
 	var isVisible: Bool {
 		return alpha > 0
+	}
+	
+	func simulateTapToHideErrorView() {
+		button.simulateTap()
 	}
 }
