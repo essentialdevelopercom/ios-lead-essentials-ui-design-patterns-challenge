@@ -291,6 +291,15 @@ extension FeedUIIntegrationTests {
 			
 		test_errorView(sut.errorView, isVisible: false)
 	}
+	
+	func test_onFeedLoadSuccess_errorMessageNotShown() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+
+		loader.completeFeedLoading(at: 0)
+		test_errorView(sut.errorView, isVisible: false)
+	}
 }
 
 // MARK: - Make SUT
