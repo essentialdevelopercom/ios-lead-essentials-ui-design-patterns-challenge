@@ -65,14 +65,6 @@ final class FeedUIIntegrationTests: XCTestCase {
 		assertThat(sut, isRendering: [image0, image1, image2, image3])
 	}
 	
-	func test_feedView_doesNotRenderErrorMessageOnViewLoad() {
-		let (sut, _) = makeSUT()
-		
-		sut.loadViewIfNeeded()
-		
-		XCTAssertNil(sut.errorMessage)
-	}
-	
 	func test_loadFeedCompletion_doesNotRenderErrorMessageOnSuccessfullyLoadedFeed() {
 		let (sut, loader) = makeSUT()
 		
@@ -88,17 +80,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		
 		sut.loadViewIfNeeded()
 		XCTAssertNil(sut.errorMessage)
-		
-		loader.completeFeedLoadingWithError(at: 0)
-		XCTAssertNotNil(sut.errorMessage)
-	}
-	
-	func test_loadFeedCompletion_rendersCorrectErrorMessageOnLoadingError() {
-		let (sut, loader) = makeSUT()
-		
-		sut.loadViewIfNeeded()
-		XCTAssertNil(sut.errorMessage)
-		
+
 		loader.completeFeedLoadingWithError(at: 0)
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 	}
