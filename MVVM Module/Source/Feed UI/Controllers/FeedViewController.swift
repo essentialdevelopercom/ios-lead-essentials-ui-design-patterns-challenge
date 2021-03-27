@@ -5,6 +5,17 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+	public enum LoadError {
+		case Bad_Request
+		case UnAuthorized
+		case ServerNotFound
+		case Service_Unavailable
+		case Timeout
+		case Other
+	}
+	
+	@IBOutlet public var errorView: ErrorView?
+	
 	var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}
@@ -19,7 +30,19 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		refresh()
 	}
 	
+	public func showError(_ errorMessage: LoadError) {
+		let errorDict: [LoadError: String] =
+			[.Bad_Request: "BAD_REQUEST_ERROR".localizedString(),
+			 .UnAuthorized: "UNAUTHORIZED_ERROR".localizedString(),
+			 .ServerNotFound: "SERVER_NOT_FOUND_ERROR".localizedString(),
+			 .Service_Unavailable: "SERVICE_UNAVAILABLE_ERROR".localizedString(),
+			 .Timeout: "TIMEOUT_ERROR".localizedString()]
+				
+		errorView?.show(message: errorDict[errorMessage] ?? "OTHER_ERROR".localizedString())
+	}
+	
 	@IBAction private func refresh() {
+		errorView?.hideMessage()
 		viewModel?.loadFeed()
 	}
 	
@@ -68,5 +91,13 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
 		cellController(forRowAt: indexPath).cancelLoad()
+	}
+}
+
+public extension String {
+	func localizedString() -> String {
+		let bundle = Bundle(for: FeedViewController.self)
+		let localizedString = bundle.localizedString(forKey: self, value: nil, table: "Feed")
+		return localizedString
 	}
 }
