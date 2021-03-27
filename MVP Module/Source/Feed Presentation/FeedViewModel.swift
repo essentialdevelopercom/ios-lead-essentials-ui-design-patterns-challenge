@@ -6,5 +6,4 @@ import FeedFeature
 
 struct FeedViewModel {
 	let feed: [FeedImage]
-	let errorText: String?
 }

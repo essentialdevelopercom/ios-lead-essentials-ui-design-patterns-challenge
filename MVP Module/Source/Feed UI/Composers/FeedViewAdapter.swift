@@ -5,7 +5,7 @@
 import UIKit
 import FeedFeature
 
-final class FeedViewAdapter: FeedView {
+final class FeedViewAdapter: FeedView, FeedErrorView {
 	private weak var controller: FeedViewController?
 	private let imageLoader: FeedImageDataLoader
 	
@@ -14,12 +14,11 @@ final class FeedViewAdapter: FeedView {
 		self.imageLoader = imageLoader
 	}
 	
-	func display(_ viewModel: FeedViewModel) {
+	func display(_ errorModel: FeedErrorModel) {
+		controller?.errorView?.show(message: errorModel.errorText)
+	}
 	
-		if let errorMesage = viewModel.errorText {
-			controller?.errorView?.show(message: errorMesage)
-			return
-		}
+	func display(_ viewModel: FeedViewModel) {
 		controller?.display(viewModel.feed.map { model in
 			let adapter = FeedImageDataLoaderPresentationAdapter<WeakRefVirtualProxy<FeedImageCellController>, UIImage>(model: model, imageLoader: imageLoader)
 			let view = FeedImageCellController(delegate: adapter)
