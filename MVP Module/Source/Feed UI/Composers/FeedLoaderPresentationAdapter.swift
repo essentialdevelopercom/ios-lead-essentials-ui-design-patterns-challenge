@@ -3,6 +3,7 @@
 //
 
 import FeedFeature
+import Foundation
 
 final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 	private let feedLoader: FeedLoader
@@ -16,13 +17,25 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 		presenter?.didStartLoadingFeed()
 		
 		feedLoader.load { [weak self] result in
+			guard let self = self else { return }
 			switch result {
 			case let .success(feed):
-				self?.presenter?.didFinishLoadingFeed(with: feed)
+				self.presenter?.didFinishLoadingFeed(with: feed)
 				
 			case let .failure(error):
-				self?.presenter?.didFinishLoadingFeed(with: error)
+				let errorText = self.mapToLoadError((error as NSError))
+				self.presenter?.didFinishLoadingFeed(with: errorText)
 			}
 		}
+	}
+	
+	private func mapToLoadError(_ error: Error) -> String {
+		let errorMessages: [Int: String] = [
+			401: "UNAUTHORIZED_ERROR".localizedString(),
+			403: "BAD_REQUEST_ERROR".localizedString(),
+			404: "SERVER_NOT_FOUND_ERROR".localizedString(),
+			503: "SERVICE_UNAVAILABLE_ERROR".localizedString(),
+			504: "TIMEOUT_ERROR".localizedString()]
+		return errorMessages[(error as NSError).code] ?? "OTHER_ERROR".localizedString()
 	}
 }

@@ -1,2 +1,8 @@
 
 "FEED_VIEW_TITLE" = "Meu Feed";
+"BAD_REQUEST_ERROR" = "Bad Request";
+"UNAUTHORIZED_ERROR" = "Unauthorized User";
+"SERVER_NOT_FOUND_ERROR" = "Server not found";
+"SERVICE_UNAVAILABLE_ERROR" = "Service Unavailable";
+"TIMEOUT_ERROR" = "Server timeout";
+"OTHER_ERROR" = "Something went wrong";

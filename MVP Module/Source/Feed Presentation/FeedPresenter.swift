@@ -27,11 +27,12 @@ final class FeedPresenter {
 	}
 	
 	func didFinishLoadingFeed(with feed: [FeedImage]) {
-		feedView.display(FeedViewModel(feed: feed))
+		feedView.display(FeedViewModel(feed: feed, errorText: nil))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 	
-	func didFinishLoadingFeed(with error: Error) {
+	func didFinishLoadingFeed(with errorMessage: String) {
+		feedView.display(FeedViewModel(feed: [], errorText: errorMessage))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 }

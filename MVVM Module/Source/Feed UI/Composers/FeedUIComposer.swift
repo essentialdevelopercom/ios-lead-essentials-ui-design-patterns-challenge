@@ -18,10 +18,6 @@ public final class FeedUIComposer {
 			forwardingTo: feedController,
 			imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader))
 		
-		feedViewModel.onFeedLoadError = {[weak feedController] error in
-			feedController?.showError(error)
-		}
-		
 		return feedController
 	}
 	

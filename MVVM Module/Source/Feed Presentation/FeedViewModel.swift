@@ -20,7 +20,7 @@ final class FeedViewModel {
 	
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
-	var onFeedLoadError: Observer<FeedViewController.LoadError>?
+	var onFeedLoadError: Observer<String>?
 	
 	func loadFeed() {
 		onLoadingStateChange?(true)
@@ -32,20 +32,20 @@ final class FeedViewModel {
 					self.onFeedLoad?(feed)
 				}
 			case let .failure(error):
-				self.onFeedLoadError?(self.mapToLoadError(error as NSError))
+				self.onFeedLoadError?(self.fetchErrorMessage(from: error as NSError))
 			}
 			
 			self.onLoadingStateChange?(false)
 		}
 	}
 	
-	private func mapToLoadError(_ error: NSError) -> FeedViewController.LoadError {
-		let errors: [Int: FeedViewController.LoadError] = [
-			403: .Bad_Request,
-			401: .UnAuthorized,
-			404: .ServerNotFound,
-			503: .Service_Unavailable,
-			504: .Timeout]
-		return errors[error.code] ?? .Other
+	private func fetchErrorMessage(from error: NSError) -> String {
+		let errorDict: [Int: String] =
+			[401: "UNAUTHORIZED_ERROR".localizedString(),
+			 403: "BAD_REQUEST_ERROR".localizedString(),
+			 404: "SERVER_NOT_FOUND_ERROR".localizedString(),
+			 503: "SERVICE_UNAVAILABLE_ERROR".localizedString(),
+			 504: "TIMEOUT_ERROR".localizedString()]
+		return errorDict[error.code] ?? "OTHER_ERROR".localizedString()
 	}
 }

@@ -10,18 +10,19 @@ protocol FeedViewControllerDelegate {
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
 	var delegate: FeedViewControllerDelegate?
-	
-	private var tableModel = [FeedImageCellController]() {
+
+    @IBOutlet public weak var errorView: ErrorView!
+    private var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
 	
 	public override func viewDidLoad() {
 		super.viewDidLoad()
-		
 		refresh()
 	}
 	
 	@IBAction private func refresh() {
+		errorView?.hideMessage()
 		delegate?.didRequestFeedRefresh()
 	}
 	
@@ -71,5 +72,13 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	
 	private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
 		cellController(forRowAt: indexPath).cancelLoad()
+	}
+}
+
+public extension String {
+	func localizedString() -> String {
+		let bundle = Bundle(for: FeedViewController.self)
+		let localizedString = bundle.localizedString(forKey: self, value: nil, table: "Feed")
+		return localizedString
 	}
 }

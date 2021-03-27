@@ -5,15 +5,6 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-	public enum LoadError {
-		case Bad_Request
-		case UnAuthorized
-		case ServerNotFound
-		case Service_Unavailable
-		case Timeout
-		case Other
-	}
-	
 	@IBOutlet public var errorView: ErrorView?
 	
 	var viewModel: FeedViewModel? {
@@ -30,17 +21,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		refresh()
 	}
 	
-	public func showError(_ errorMessage: LoadError) {
-		let errorDict: [LoadError: String] =
-			[.Bad_Request: "BAD_REQUEST_ERROR".localizedString(),
-			 .UnAuthorized: "UNAUTHORIZED_ERROR".localizedString(),
-			 .ServerNotFound: "SERVER_NOT_FOUND_ERROR".localizedString(),
-			 .Service_Unavailable: "SERVICE_UNAVAILABLE_ERROR".localizedString(),
-			 .Timeout: "TIMEOUT_ERROR".localizedString()]
-				
-		errorView?.show(message: errorDict[errorMessage] ?? "OTHER_ERROR".localizedString())
-	}
-	
 	@IBAction private func refresh() {
 		errorView?.hideMessage()
 		viewModel?.loadFeed()
@@ -54,6 +34,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			} else {
 				self?.refreshControl?.endRefreshing()
 			}
+		}
+		
+		viewModel?.onFeedLoadError = { [weak self] errorText in
+			self?.errorView?.show(message: errorText)
 		}
 	}
 	

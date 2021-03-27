@@ -47,6 +47,32 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
 	}
 	
+	func test_loadFeed_BadRequestError() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoading(at: 0)
+		sut.simulateUserInitiatedFeedReload()
+		
+		let errors = [
+					  401: "UNAUTHORIZED_ERROR",
+					  403: "BAD_REQUEST_ERROR",
+					  404: "SERVER_NOT_FOUND_ERROR",
+					  503: "SERVICE_UNAVAILABLE_ERROR",
+					  504: "TIMEOUT_ERROR",
+					  505: "OTHER_ERROR"]
+		
+		errors.forEach {[weak sut, loader] (key, value) in
+			let customErrorMessage = localized(value)
+			
+			let serverError = NSError(domain: "Some error", code: key, userInfo: nil)
+			loader.completeFeedLoadingWithError(error: serverError, at: 1)
+			
+			XCTAssertEqual(sut?.errorView?.message, customErrorMessage, "Expected errorLabel's text \(customErrorMessage), received \(String(describing: sut?.errorView?.message))")
+			XCTAssertEqual(sut?.errorView?.isHidden, false, "Expected errorView to be visible")
+		}
+	}
+	
 	func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
 		let image0 = makeImage(description: "a description", location: "a location")
 		let image1 = makeImage(description: nil, location: "another location")

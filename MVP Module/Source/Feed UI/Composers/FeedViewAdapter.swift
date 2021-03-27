@@ -15,6 +15,11 @@ final class FeedViewAdapter: FeedView {
 	}
 	
 	func display(_ viewModel: FeedViewModel) {
+	
+		if let errorMesage = viewModel.errorText {
+			controller?.errorView?.show(message: errorMesage)
+			return
+		}
 		controller?.display(viewModel.feed.map { model in
 			let adapter = FeedImageDataLoaderPresentationAdapter<WeakRefVirtualProxy<FeedImageCellController>, UIImage>(model: model, imageLoader: imageLoader)
 			let view = FeedImageCellController(delegate: adapter)
