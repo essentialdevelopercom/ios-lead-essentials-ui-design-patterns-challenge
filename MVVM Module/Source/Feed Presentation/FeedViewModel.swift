@@ -32,20 +32,20 @@ final class FeedViewModel {
 					self.onFeedLoad?(feed)
 				}
 			case let .failure(error):
-				self.onFeedLoadError?(self.fetchErrorMessage(from: error as NSError))
+				self.onFeedLoadError?(self.getCustomizedErrorText(from: error as NSError))
 			}
 			
 			self.onLoadingStateChange?(false)
 		}
 	}
 	
-	private func fetchErrorMessage(from error: NSError) -> String {
+	private func getCustomizedErrorText(from error: NSError) -> String {
 		let errorCode = (error as NSError).code
-		return (LoadError(errorCode).rawValue).localizedString()
+		return (CustomError(errorCode).rawValue).localizedString()
 	}
 }
 
-enum LoadError: String {
+enum CustomError: String {
 	case Unauthorized = "UNAUTHORIZED_ERROR"
 	case BadRequest = "BAD_REQUEST_ERROR"
 	case ServerNotFound = "SERVER_NOT_FOUND_ERROR"
@@ -54,7 +54,7 @@ enum LoadError: String {
 	case Other = "OTHER_ERROR"
 	
 	init(_ errorCode: Int) {
-		let errorMessages: [Int: LoadError] = [
+		let errorMessages: [Int: CustomError] = [
 			401: .Unauthorized,
 			403: .BadRequest,
 			404: .ServerNotFound,

@@ -23,19 +23,19 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 				self.presenter?.didFinishLoadingFeed(with: feed)
 				
 			case let .failure(error):
-				let errorText = self.mapToLoadError((error as NSError))
+				let errorText = self.getCustomizedErrorText(from: (error as NSError))
 				self.presenter?.didFinishLoadingFeed(with: errorText)
 			}
 		}
 	}
 	
-	private func mapToLoadError(_ error: Error) -> String {
+	private func getCustomizedErrorText(from error: Error) -> String {
 		let errorCode = (error as NSError).code
-		return (LoadError(errorCode).rawValue).localizedString()
+		return (CustomError(errorCode).rawValue).localizedString()
 	}
 }
 
-enum LoadError: String {
+enum CustomError: String {
 	case Unauthorized = "UNAUTHORIZED_ERROR"
 	case BadRequest = "BAD_REQUEST_ERROR"
 	case ServerNotFound = "SERVER_NOT_FOUND_ERROR"
@@ -44,7 +44,7 @@ enum LoadError: String {
 	case Other = "OTHER_ERROR"
 	
 	init(_ errorCode: Int) {
-		let errorMessages: [Int: LoadError] = [
+		let errorMessages: [Int: CustomError] = [
 			401: .Unauthorized,
 			403: .BadRequest,
 			404: .ServerNotFound,
