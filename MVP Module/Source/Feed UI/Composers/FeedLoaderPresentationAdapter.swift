@@ -30,12 +30,26 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 	}
 	
 	private func mapToLoadError(_ error: Error) -> String {
-		let errorMessages: [Int: String] = [
-			401: "UNAUTHORIZED_ERROR".localizedString(),
-			403: "BAD_REQUEST_ERROR".localizedString(),
-			404: "SERVER_NOT_FOUND_ERROR".localizedString(),
-			503: "SERVICE_UNAVAILABLE_ERROR".localizedString(),
-			504: "TIMEOUT_ERROR".localizedString()]
-		return errorMessages[(error as NSError).code] ?? "OTHER_ERROR".localizedString()
+		let errorCode = (error as NSError).code
+		return (LoadError(errorCode).rawValue).localizedString()
+	}
+}
+
+enum LoadError: String {
+	case Unauthorized = "UNAUTHORIZED_ERROR"
+	case BadRequest = "BAD_REQUEST_ERROR"
+	case ServerNotFound = "SERVER_NOT_FOUND_ERROR"
+	case ServiceUnavailable = "SERVICE_UNAVAILABLE_ERROR"
+	case Timeout = "TIMEOUT_ERROR"
+	case Other = "OTHER_ERROR"
+	
+	init(_ errorCode: Int) {
+		let errorMessages: [Int: LoadError] = [
+			401: .Unauthorized,
+			403: .BadRequest,
+			404: .ServerNotFound,
+			503: .ServiceUnavailable,
+			504: .Timeout]
+		self = errorMessages[errorCode] ?? .Other
 	}
 }
