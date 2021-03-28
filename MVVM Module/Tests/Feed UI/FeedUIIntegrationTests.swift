@@ -280,16 +280,13 @@ final class FeedUIIntegrationTests: XCTestCase {
 		}
 		wait(for: [exp], timeout: 1.0)
 	}
-}
 
-// MARK: - Error View Tests
-extension FeedUIIntegrationTests {
 	func test_errorView_doesNotShowWhenFeedLoadsView() {
 		let (sut, _) = makeSUT()
 		
 		sut.loadViewIfNeeded()
 			
-		test_errorView(sut.errorView, isVisible: false)
+		assert(errorView: sut.errorView, isVisible: false)
 	}
 	
 	func test_onFeedLoadSuccess_errorMessageNotShown() {
@@ -298,7 +295,7 @@ extension FeedUIIntegrationTests {
 		sut.loadViewIfNeeded()
 
 		loader.completeFeedLoading(at: 0)
-		test_errorView(sut.errorView, isVisible: false)
+		assert(errorView: sut.errorView, isVisible: false)
 	}
 		
 	func test_onFeedLoadError_errorMessageShown() {
@@ -307,7 +304,7 @@ extension FeedUIIntegrationTests {
 		sut.loadViewIfNeeded()
 
 		loader.completeFeedLoadingWithError()
-		test_errorView(sut.errorView, isVisible: true, withMessage: "Couldn't connect to server")
+		assert(errorView: sut.errorView, isVisible: true, withMessage: "Couldn't connect to server")
 	}
 		
 	func test_touchUpInsideErrorView_hidesErrorView() {
@@ -325,7 +322,7 @@ extension FeedUIIntegrationTests {
 	}
 }
 
-// MARK: - Make SUT
+// MARK: - Helpers
 extension FeedUIIntegrationTests {
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
 		let loader = LoaderSpy()
@@ -334,10 +331,7 @@ extension FeedUIIntegrationTests {
 		trackForMemoryLeaks(sut, file: file, line: line)
 		return (sut, loader)
 	}
-}
 
-// MARK: - Factory Methods
-extension FeedUIIntegrationTests {
 	private func makeImage(description: String? = nil, location: String? = nil, url: URL = URL(string: "http://any-url.com")!) -> FeedImage {
 		return FeedImage(id: UUID(), description: description, location: location, url: url)
 	}
@@ -345,14 +339,11 @@ extension FeedUIIntegrationTests {
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
 	}
-}
 
-// MARK: - Test Helpers
-extension FeedUIIntegrationTests {
-	private func test_errorView(_ errorView: ErrorView?,
-								isVisible: Bool,
-								withMessage message: String? = nil,
-								file: StaticString = #filePath,
+	private func assert(errorView: ErrorView?,
+						isVisible: Bool,
+						withMessage message: String? = nil,
+						file: StaticString = #filePath,
 								line: UInt = #line) {
 		XCTAssertEqual(errorView?.isVisible, isVisible,
 					   "Expected error view to be \(isVisible ? "visible" : "not visible") once loading completes successfully",

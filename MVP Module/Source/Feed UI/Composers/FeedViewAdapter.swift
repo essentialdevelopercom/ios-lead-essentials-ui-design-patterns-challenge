@@ -5,6 +5,9 @@
 import UIKit
 import FeedFeature
 
+// Like a UK to EU adapter - it converts intercase of component to be one that a client expect
+// - * it enables components with incompatible interfaces to work together seamlessly *
+// - i.e from feed: [FeedImage] to [FeedImageCellController]
 final class FeedViewAdapter: FeedView {
 	private weak var controller: FeedViewController?
 	private let imageLoader: FeedImageDataLoader
@@ -21,8 +24,8 @@ final class FeedViewAdapter: FeedView {
 			
 			adapter.presenter = FeedImagePresenter(
 				view: WeakRefVirtualProxy(view),
-				imageTransformer: UIImage.init)
-			
+				imageTransformer: UIImage.init
+			)
 			return view
 		})
 	}

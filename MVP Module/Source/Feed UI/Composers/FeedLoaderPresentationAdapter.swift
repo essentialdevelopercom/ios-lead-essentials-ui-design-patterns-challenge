@@ -26,3 +26,5 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 		}
 	}
 }
+
+
