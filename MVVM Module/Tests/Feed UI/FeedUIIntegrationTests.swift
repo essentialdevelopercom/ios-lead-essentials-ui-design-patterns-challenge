@@ -286,7 +286,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		
 		sut.loadViewIfNeeded()
 			
-		assert(errorView: sut.errorView, isVisible: false)
+		assert(sut.errorView, isVisible: false)
 	}
 	
 	func test_onFeedLoadSuccess_errorMessageNotShown() {
@@ -295,7 +295,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.loadViewIfNeeded()
 
 		loader.completeFeedLoading(at: 0)
-		assert(errorView: sut.errorView, isVisible: false)
+		assert(sut.errorView, isVisible: false)
 	}
 		
 	func test_onFeedLoadError_errorMessageShown() {
@@ -304,7 +304,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.loadViewIfNeeded()
 
 		loader.completeFeedLoadingWithError()
-		assert(errorView: sut.errorView, isVisible: true, withMessage: "Couldn't connect to server")
+		assert(sut.errorView, isVisible: true, withMessage: "Couldn't connect to server")
 	}
 		
 	func test_touchUpInsideErrorView_hidesErrorView() {
@@ -340,7 +340,7 @@ extension FeedUIIntegrationTests {
 		return UIImage.make(withColor: .red).pngData()!
 	}
 
-	private func assert(errorView: ErrorView?,
+	private func assert(_ errorView: ErrorView?,
 						isVisible: Bool,
 						withMessage message: String? = nil,
 						file: StaticString = #filePath,
