@@ -40,8 +40,12 @@ extension FeedViewController {
 		ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
 	}
 	
+	var errorView: ErrorView? {
+		tableView.tableHeaderView as? ErrorView
+	}
+	
 	var errorMessage: String? {
-		return nil
+		return self.errorView?.message
 	}
 	
 	var isShowingLoadingIndicator: Bool {

@@ -88,6 +88,15 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertNil(sut.errorMessage, "Error message should be nil on successful feed load")
 	}
 	
+	func test_loadFeedCompletion_renderErrorMessageOnLoadFeedError() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+
+		loader.completeFeedLoadingWithError()
+		XCTAssertNotNil(sut.errorMessage)
+	}
+	
 	func test_feedImageView_loadsImageURLWhenVisible() {
 		let image0 = makeImage(url: URL(string: "http://url-0.com")!)
 		let image1 = makeImage(url: URL(string: "http://url-1.com")!)
