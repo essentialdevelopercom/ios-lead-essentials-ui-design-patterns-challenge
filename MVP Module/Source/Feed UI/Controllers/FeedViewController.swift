@@ -81,8 +81,8 @@ extension FeedViewController: FeedLoadingView {
 // MARK: - FeedErrorView
 extension FeedViewController: FeedErrorView {
 	func display(_ viewModel: FeedErrorViewModel) {
-		if viewModel.hasError {
-			errorView?.show(message: Localized.Feed.loadError)
+		if let message = viewModel.message {
+			errorView?.show(message: message)
 		} else {
 			errorView.hideMessage()
 		}

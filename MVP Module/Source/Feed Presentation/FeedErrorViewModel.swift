@@ -6,6 +6,8 @@
 //  Copyright © 2021 Essential Developer. All rights reserved.
 //
 
+import FeedFeature
+
 struct FeedErrorViewModel {
-	let hasError: Bool
+	let message: String?
 }
