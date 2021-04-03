@@ -22,34 +22,18 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 			case let .success(feed):
 				self.presenter?.didFinishLoadingFeed(with: feed)
 				
-			case let .failure(error):
-				let errorText = self.getCustomizedErrorText(from: (error as NSError))
+			case .failure(_):
+				let errorText = "FEED_VIEW_CONNECTION_ERROR".localizedString()
 				self.presenter?.didFinishLoadingFeed(with: errorText)
 			}
 		}
 	}
-	
-	private func getCustomizedErrorText(from error: Error) -> String {
-		let errorCode = (error as NSError).code
-		return (CustomError(errorCode).rawValue).localizedString()
-	}
 }
 
-enum CustomError: String {
-	case Unauthorized = "UNAUTHORIZED_ERROR"
-	case BadRequest = "BAD_REQUEST_ERROR"
-	case ServerNotFound = "SERVER_NOT_FOUND_ERROR"
-	case ServiceUnavailable = "SERVICE_UNAVAILABLE_ERROR"
-	case Timeout = "TIMEOUT_ERROR"
-	case Other = "OTHER_ERROR"
-	
-	init(_ errorCode: Int) {
-		let errorMessages: [Int: CustomError] = [
-			401: .Unauthorized,
-			403: .BadRequest,
-			404: .ServerNotFound,
-			503: .ServiceUnavailable,
-			504: .Timeout]
-		self = errorMessages[errorCode] ?? .Other
+public extension String {
+	func localizedString() -> String {
+		let bundle = Bundle(for: FeedViewController.self)
+		let localizedString = bundle.localizedString(forKey: self, value: nil, table: "Feed")
+		return localizedString
 	}
 }

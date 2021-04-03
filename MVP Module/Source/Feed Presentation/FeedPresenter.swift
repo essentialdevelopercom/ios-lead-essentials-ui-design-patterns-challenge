@@ -29,10 +29,12 @@ final class FeedPresenter {
 	}
 	
 	func didStartLoadingFeed() {
+		errorView.display(FeedErrorModel(errorText: .none))
 		loadingView.display(FeedLoadingViewModel(isLoading: true))
 	}
 	
 	func didFinishLoadingFeed(with feed: [FeedImage]) {
+		errorView.display(FeedErrorModel(errorText: .none))
 		feedView.display(FeedViewModel(feed: feed))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}

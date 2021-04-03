@@ -54,23 +54,38 @@ final class FeedUIIntegrationTests: XCTestCase {
 		loader.completeFeedLoading(at: 0)
 		sut.simulateUserInitiatedFeedReload()
 		
-		let errors = [
-					  401: "UNAUTHORIZED_ERROR",
-					  403: "BAD_REQUEST_ERROR",
-					  404: "SERVER_NOT_FOUND_ERROR",
-					  503: "SERVICE_UNAVAILABLE_ERROR",
-					  504: "TIMEOUT_ERROR",
-					  505: "OTHER_ERROR"]
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+	}
+	
+	func test_loadFeed_errorHiddenAfterSuccess() {
+		let (sut, loader) = makeSUT()
 		
-		errors.forEach {[weak sut, loader] (key, value) in
-			let customErrorMessage = localized(value)
-			
-			let serverError = NSError(domain: "Some error", code: key, userInfo: nil)
-			loader.completeFeedLoadingWithError(error: serverError, at: 1)
-			
-			XCTAssertEqual(sut?.errorView?.message, customErrorMessage, "Expected errorLabel's text \(customErrorMessage), received \(String(describing: sut?.errorView?.message))")
-			XCTAssertEqual(sut?.errorView?.isHidden, false, "Expected errorView to be visible")
-		}
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoading(at: 0)
+		sut.simulateUserInitiatedFeedReload()
+		
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+		
+		sut.simulateUserInitiatedFeedReload()
+		let image0 = makeImage(description: "a description", location: "a location")
+		loader.completeFeedLoading(with: [image0], at: 0)
+		XCTAssertEqual(sut.errorMessage, nil)
+	}
+	
+	func test_loadFeed_errorIsHiddenOnErrorTap() {
+		let (sut, loader) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoading(at: 0)
+		sut.simulateUserInitiatedFeedReload()
+		
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+		
+		sut.simulateTapOnErrorView()
+		XCTAssertEqual(sut.errorMessage, nil)
 	}
 	
 	func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
@@ -323,5 +338,11 @@ final class FeedUIIntegrationTests: XCTestCase {
 	
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
+	}
+}
+
+extension FeedViewController {
+	var errorMessage: String? {
+		return errorView?.message ?? nil
 	}
 }
