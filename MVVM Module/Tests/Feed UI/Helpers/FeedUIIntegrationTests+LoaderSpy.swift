@@ -26,8 +26,8 @@ extension FeedUIIntegrationTests {
 			feedRequests[index](.success(feed))
 		}
 		
-		func completeFeedLoadingWithError(error: NSError? = nil, at index: Int = 0) {
-			let error = error ?? NSError(domain: "an error", code: 0)
+		func completeFeedLoadingWithError(at index: Int = 0) {
+			let error = NSError(domain: "an error", code: 0)
 			feedRequests[index](.failure(error))
 		}
 		

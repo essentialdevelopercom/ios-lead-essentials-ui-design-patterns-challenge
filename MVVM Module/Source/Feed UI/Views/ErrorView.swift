@@ -22,9 +22,8 @@ public final class ErrorView: UIView {
 		alpha = 0
 	}
 	
-	func show(message: String) {
+	func show(message: String?) {
 		button.setTitle(message, for: .normal)
-		
 		UIView.animate(withDuration: 0.25) {
 			self.alpha = 1
 		}
@@ -34,9 +33,9 @@ public final class ErrorView: UIView {
 		UIView.animate(
 			withDuration: 0.25,
 			animations: { self.alpha = 0 },
-			completion: { completed in
+			completion: {[weak self] completed in
 				if completed {
-					self.button.setTitle(nil, for: .normal)
+					self?.button.setTitle(nil, for: .normal)
 				}
 			})
 	}

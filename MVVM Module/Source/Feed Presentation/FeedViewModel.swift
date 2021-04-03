@@ -20,46 +20,30 @@ final class FeedViewModel {
 	
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
-	var onFeedLoadError: Observer<String>?
+	var onErrorStateChange: Observer<String?>?
+	
 	
 	func loadFeed() {
+		self.onErrorStateChange?(nil)
 		onLoadingStateChange?(true)
 		feedLoader.load { [weak self] result in
 			guard let self = self else { return }
 			switch result {
-			case .success(_):
-				if let feed = try? result.get() {
-					self.onFeedLoad?(feed)
-				}
-			case let .failure(error):
-				self.onFeedLoadError?(self.getCustomizedErrorText(from: error as NSError))
+			case .success(let feeds):
+				self.onFeedLoad?(feeds)
+			case .failure(_):
+				self.onErrorStateChange?("FEED_VIEW_CONNECTION_ERROR".localizedString())
 			}
 			
 			self.onLoadingStateChange?(false)
 		}
 	}
-	
-	private func getCustomizedErrorText(from error: NSError) -> String {
-		let errorCode = (error as NSError).code
-		return (CustomError(errorCode).rawValue).localizedString()
-	}
 }
 
-enum CustomError: String {
-	case Unauthorized = "UNAUTHORIZED_ERROR"
-	case BadRequest = "BAD_REQUEST_ERROR"
-	case ServerNotFound = "SERVER_NOT_FOUND_ERROR"
-	case ServiceUnavailable = "SERVICE_UNAVAILABLE_ERROR"
-	case Timeout = "TIMEOUT_ERROR"
-	case Other = "OTHER_ERROR"
-	
-	init(_ errorCode: Int) {
-		let errorMessages: [Int: CustomError] = [
-			401: .Unauthorized,
-			403: .BadRequest,
-			404: .ServerNotFound,
-			503: .ServiceUnavailable,
-			504: .Timeout]
-		self = errorMessages[errorCode] ?? .Other
+extension String {
+	func localizedString() -> String {
+		let bundle = Bundle(for: FeedViewController.self)
+		let localizedString = bundle.localizedString(forKey: self, value: nil, table: "Feed")
+		return localizedString
 	}
 }

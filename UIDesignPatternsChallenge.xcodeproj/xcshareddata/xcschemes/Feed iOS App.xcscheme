@@ -59,16 +59,6 @@
                ReferencedContainer = "container:UIDesignPatternsChallenge.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "08F3B61E232255F800510CE7"
-               BuildableName = "MVVMTests.xctest"
-               BlueprintName = "MVVMTests"
-               ReferencedContainer = "container:UIDesignPatternsChallenge.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
