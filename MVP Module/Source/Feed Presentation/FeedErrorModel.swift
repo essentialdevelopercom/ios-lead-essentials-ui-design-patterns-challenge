@@ -9,5 +9,5 @@
 import FeedFeature
 
 struct FeedErrorModel {
-	let errorText: String
+	let errorText: String?
 }
