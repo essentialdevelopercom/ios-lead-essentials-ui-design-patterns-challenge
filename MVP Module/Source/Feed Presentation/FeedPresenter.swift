@@ -34,13 +34,13 @@ final class FeedPresenter {
 	}
 	
 	func didFinishLoadingFeed(with feed: [FeedImage]) {
-		errorView.display(FeedErrorModel(errorText: .none))
 		feedView.display(FeedViewModel(feed: feed))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 	
-	func didFinishLoadingFeed(with errorMessage: String) {
-		errorView.display(FeedErrorModel(errorText: errorMessage))
+	func didFinishLoadingFeed(with error: Error) {
+		let errorText = "FEED_VIEW_CONNECTION_ERROR".localizedString()
+		errorView.display(FeedErrorModel(errorText: errorText))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 }

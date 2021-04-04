@@ -47,7 +47,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
 	}
 	
-	func test_loadFeed_BadRequestError() {
+	func test_loadFeed_updateErrorMessage() {
 		let (sut, loader) = makeSUT()
 		
 		sut.loadViewIfNeeded()
@@ -62,15 +62,15 @@ final class FeedUIIntegrationTests: XCTestCase {
 		let (sut, loader) = makeSUT()
 		
 		sut.loadViewIfNeeded()
-		loader.completeFeedLoading(at: 0)
-		sut.simulateUserInitiatedFeedReload()
+		XCTAssertEqual(sut.errorMessage, nil)
 		
 		loader.completeFeedLoadingWithError(at: 0)
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 		
 		sut.simulateUserInitiatedFeedReload()
-		let image0 = makeImage(description: "a description", location: "a location")
-		loader.completeFeedLoading(with: [image0], at: 0)
+		XCTAssertEqual(sut.errorMessage, nil)
+		
+		loader.completeFeedLoading(at: 1)
 		XCTAssertEqual(sut.errorMessage, nil)
 	}
 	
@@ -78,9 +78,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		let (sut, loader) = makeSUT()
 		
 		sut.loadViewIfNeeded()
-		loader.completeFeedLoading(at: 0)
-		sut.simulateUserInitiatedFeedReload()
-		
+
 		loader.completeFeedLoadingWithError(at: 0)
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 		

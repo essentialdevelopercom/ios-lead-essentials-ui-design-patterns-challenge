@@ -22,9 +22,8 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 			case let .success(feed):
 				self.presenter?.didFinishLoadingFeed(with: feed)
 				
-			case .failure(_):
-				let errorText = "FEED_VIEW_CONNECTION_ERROR".localizedString()
-				self.presenter?.didFinishLoadingFeed(with: errorText)
+			case let .failure(error):
+				self.presenter?.didFinishLoadingFeed(with: error)
 			}
 		}
 	}
