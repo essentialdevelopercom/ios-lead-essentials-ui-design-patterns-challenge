@@ -45,7 +45,6 @@ final class FeedPresenter {
 	}
 }
 
-
 private extension String {
 	func localizedString() -> String {
 		let bundle = Bundle(for: FeedViewController.self)

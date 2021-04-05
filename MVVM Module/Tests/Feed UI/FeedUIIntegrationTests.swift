@@ -330,6 +330,6 @@ final class FeedUIIntegrationTests: XCTestCase {
 
 extension FeedViewController {
 	var errorMessage: String? {
-		return errorView?.message ?? nil
+		return errorView?.message
 	}
 }
