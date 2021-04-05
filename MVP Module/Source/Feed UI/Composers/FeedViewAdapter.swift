@@ -5,17 +5,13 @@
 import UIKit
 import FeedFeature
 
-final class FeedViewAdapter: FeedView, FeedErrorView {
+final class FeedViewAdapter: FeedView {
 	private weak var controller: FeedViewController?
 	private let imageLoader: FeedImageDataLoader
 	
 	init(controller: FeedViewController, imageLoader: FeedImageDataLoader) {
 		self.controller = controller
 		self.imageLoader = imageLoader
-	}
-	
-	func display(_ errorModel: FeedErrorModel) {
-		controller?.errorView?.show(message: errorModel.errorText)
 	}
 	
 	func display(_ viewModel: FeedViewModel) {
