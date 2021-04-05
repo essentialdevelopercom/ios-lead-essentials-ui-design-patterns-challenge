@@ -332,8 +332,4 @@ extension FeedViewController {
 	var errorMessage: String? {
 		return errorView?.message ?? nil
 	}
-	
-	var isErrorHidden: Bool? {
-		return errorView?.button.isHidden ?? nil
-	}
 }
