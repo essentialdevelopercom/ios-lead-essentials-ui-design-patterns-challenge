@@ -3,7 +3,6 @@
 //
 
 import FeedFeature
-import Foundation
 
 final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 	private let feedLoader: FeedLoader
@@ -17,13 +16,12 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 		presenter?.didStartLoadingFeed()
 		
 		feedLoader.load { [weak self] result in
-			guard let self = self else { return }
 			switch result {
 			case let .success(feed):
-				self.presenter?.didFinishLoadingFeed(with: feed)
+				self?.presenter?.didFinishLoadingFeed(with: feed)
 				
 			case let .failure(error):
-				self.presenter?.didFinishLoadingFeed(with: error)
+				self?.presenter?.didFinishLoadingFeed(with: error)
 			}
 		}
 	}
