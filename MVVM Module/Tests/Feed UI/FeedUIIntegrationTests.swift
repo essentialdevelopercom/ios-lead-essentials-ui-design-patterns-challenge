@@ -47,7 +47,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading completes with error")
 	}
 	
-	func test_loadFeed_errorHiddenAfterSuccess() {
+	func test_loadFeed_showsErrorOnFailureUntilNextRetry() {
 		let (sut, loader) = makeSUT()
 		
 		sut.loadViewIfNeeded()
