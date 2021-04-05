@@ -28,11 +28,3 @@ final class FeedLoaderPresentationAdapter: FeedViewControllerDelegate {
 		}
 	}
 }
-
-public extension String {
-	func localizedString() -> String {
-		let bundle = Bundle(for: FeedViewController.self)
-		let localizedString = bundle.localizedString(forKey: self, value: nil, table: "Feed")
-		return localizedString
-	}
-}
