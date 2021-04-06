@@ -20,15 +20,30 @@ final class FeedViewModel {
 	
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
+	var onErrorStateChange: Observer<String?>?
 	
 	func loadFeed() {
+		onErrorStateChange?(nil)
+		
 		onLoadingStateChange?(true)
 		feedLoader.load { [weak self] result in
-			if let feed = try? result.get() {
-				self?.onFeedLoad?(feed)
+			guard let self = self else { return }
+			switch result {
+			case .success(let feeds):
+				self.onFeedLoad?(feeds)
+			case .failure:
+				self.onErrorStateChange?("FEED_VIEW_CONNECTION_ERROR".localizedString())
 			}
-			self?.onLoadingStateChange?(false)
+			
+			self.onLoadingStateChange?(false)
 		}
 	}
 }
 
+private extension String {
+	func localizedString() -> String {
+		let bundle = Bundle(for: FeedViewController.self)
+		let localizedString = bundle.localizedString(forKey: self, value: nil, table: "Feed")
+		return localizedString
+	}
+}
