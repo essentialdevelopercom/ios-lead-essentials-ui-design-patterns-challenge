@@ -12,11 +12,13 @@ public final class FeedUIComposer {
 		let feedViewModel = FeedViewModel(
 			feedLoader: MainQueueDispatchDecorator(decoratee: feedLoader))
 		
-		let feedController = FeedViewController.makeWith(
-			viewModel: feedViewModel)
+		let feedController = FeedViewController.makeWith(viewModel: feedViewModel)
+		let decoratedImageLoader = MainQueueDispatchDecorator(decoratee: imageLoader)
+		
 		feedViewModel.onFeedLoad = adaptFeedToCellControllers(
 			forwardingTo: feedController,
-			imageLoader: MainQueueDispatchDecorator(decoratee: imageLoader))
+			imageLoader: decoratedImageLoader
+		)
 		
 		return feedController
 	}

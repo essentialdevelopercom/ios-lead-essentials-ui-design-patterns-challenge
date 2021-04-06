@@ -280,9 +280,50 @@ final class FeedUIIntegrationTests: XCTestCase {
 		}
 		wait(for: [exp], timeout: 1.0)
 	}
+
+	func test_errorView_doesNotShowWhenFeedLoadsView() {
+		let (sut, _) = makeSUT()
+		
+		sut.loadViewIfNeeded()
+			
+		assert(sut.errorView, isVisible: false)
+	}
 	
-	// MARK: - Helpers
-	
+	func test_onFeedLoadSuccess_errorMessageNotShown() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+
+		loader.completeFeedLoading(at: 0)
+		assert(sut.errorView, isVisible: false)
+	}
+		
+	func test_onFeedLoadError_errorMessageShown() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+
+		loader.completeFeedLoadingWithError()
+		assert(sut.errorView, isVisible: true, withMessage: "Couldn't connect to server")
+	}
+		
+	func test_touchUpInsideErrorView_hidesErrorView() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoadingWithError()
+
+		sut.errorView?.simulateTapToHideErrorView()
+		expectation(for: .init { _, _ in
+			sut.errorView?.isVisible == false
+		}, evaluatedWith: nil, handler: nil)
+
+		waitForExpectations(timeout: 2.0, handler: nil)
+	}
+}
+
+// MARK: - Helpers
+extension FeedUIIntegrationTests {
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
 		let loader = LoaderSpy()
 		let sut = FeedUIComposer.feedComposedWith(feedLoader: loader, imageLoader: loader)
@@ -290,7 +331,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		trackForMemoryLeaks(sut, file: file, line: line)
 		return (sut, loader)
 	}
-	
+
 	private func makeImage(description: String? = nil, location: String? = nil, url: URL = URL(string: "http://any-url.com")!) -> FeedImage {
 		return FeedImage(id: UUID(), description: description, location: location, url: url)
 	}
@@ -298,4 +339,36 @@ final class FeedUIIntegrationTests: XCTestCase {
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
 	}
+
+	private func assert(_ errorView: ErrorView?,
+						isVisible: Bool,
+						withMessage message: String? = nil,
+						file: StaticString = #filePath,
+								line: UInt = #line) {
+		XCTAssertEqual(errorView?.isVisible, isVisible,
+					   "Expected error view to be \(isVisible ? "visible" : "not visible") once loading completes successfully",
+					   file: file, line: line)
+		XCTAssertEqual(errorView?.button.title(for: .normal), message,
+					   "Expected error view mesage to be \(message ?? "nil") once loading completes successfully",
+					   file: file, line: line)
+	}
 }
+
+// MARK: - FeedViewController DSL Helper Vars and Functions
+extension FeedViewController {
+	var errorView: ErrorView? {
+		view.findChildView(byAccessibilityIdentifier: "error-view") as? ErrorView
+	}
+}
+
+// MARK: - ErrorView DSL Helper Vars and Functions
+extension ErrorView {
+	var isVisible: Bool {
+		return alpha > 0
+	}
+	
+	func simulateTapToHideErrorView() {
+		button.simulateTap()
+	}
+}
+
