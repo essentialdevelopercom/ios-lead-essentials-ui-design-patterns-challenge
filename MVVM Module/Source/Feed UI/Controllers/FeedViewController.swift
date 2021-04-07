@@ -41,7 +41,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			case .none:
 				self?.errorView?.hideMessage()
 			
-			case let .error(message):
+			case let .some(message):
 				self?.errorView?.show(message: message)
 			}
 		}
