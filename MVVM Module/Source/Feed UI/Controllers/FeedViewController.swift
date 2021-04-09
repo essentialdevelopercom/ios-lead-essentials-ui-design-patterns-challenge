@@ -23,13 +23,13 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	}
 	
 	@IBAction private func refresh() {
-		errorView?.hideMessage()
 		viewModel?.loadFeed()
 	}
 	
 	func bind() {
 		title = viewModel?.title
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
+			self?.errorView?.hideMessage()
 			if isLoading {
 				self?.refreshControl?.beginRefreshing()
 			} else {
