@@ -80,7 +80,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 extension FeedViewController: FeedLoadingErrorDisplayingView {
 	
-	func display(_ errorMessage: String) {
+	func display(errorMessage: String) {
 		errorView.show(message: errorMessage)
 	}
 	
