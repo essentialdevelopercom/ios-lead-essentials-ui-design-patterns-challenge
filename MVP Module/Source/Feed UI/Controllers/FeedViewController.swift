@@ -75,3 +75,17 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		cellController(forRowAt: indexPath).cancelLoad()
 	}
 }
+
+// MARK: - FeedLoadingErrorDisplayingView -
+
+extension FeedViewController: FeedLoadingErrorDisplayingView {
+	
+	func display(_ errorMessage: String) {
+		errorView.show(message: errorMessage)
+	}
+	
+	func hideError() {
+		errorView.hideMessage()
+	}
+	
+}
