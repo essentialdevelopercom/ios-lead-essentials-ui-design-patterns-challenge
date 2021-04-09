@@ -1,7 +1,3 @@
-
-# Created by https://www.toptal.com/developers/gitignore/api/xcode,swift,macos
-# Edit at https://www.toptal.com/developers/gitignore?templates=xcode,swift,macos
-
 ### macOS ###
 # General
 .DS_Store
@@ -132,4 +128,6 @@ iOSInjectionProject/
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.toptal.com/developers/gitignore/api/xcode,swift,macos
+### BuildTools ###
+BuildTools/.build 
+BuildTools/.swiftpm

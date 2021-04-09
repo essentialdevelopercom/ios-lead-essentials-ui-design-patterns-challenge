@@ -8,15 +8,15 @@ import FeedFeature
 final class FeedImageCellController {
 	private let model: FeedImage
 	private let imageLoader: FeedImageDataLoader
-	
+
 	private var task: FeedImageDataLoaderTask?
 	private var cell: FeedImageCell?
-	
+
 	init(model: FeedImage, imageLoader: FeedImageDataLoader) {
 		self.model = model
 		self.imageLoader = imageLoader
 	}
-	
+
 	func view(in tableView: UITableView) -> UITableViewCell {
 		cell = tableView.dequeueReusableCell()
 		cell?.locationContainer.isHidden = (model.location == nil)
@@ -29,16 +29,16 @@ final class FeedImageCellController {
 		loadImage()
 		return cell!
 	}
-	
+
 	func preload() {
 		loadImage()
 	}
-	
+
 	func cancelLoad() {
 		releaseCellForReuse()
 		task?.cancel()
 	}
-	
+
 	private func loadImage() {
 		task = imageLoader.loadImageData(from: model.url) { [weak self] result in
 			let data = try? result.get()
@@ -48,7 +48,7 @@ final class FeedImageCellController {
 			self?.cell?.feedImageContainer.isShimmering = false
 		}
 	}
-	
+
 	private func releaseCellForReuse() {
 		cell = nil
 	}

@@ -13,12 +13,13 @@ final class Localized {
 extension Localized {
 	enum Feed {
 		static var table: String { "Feed" }
-		
+
 		static var title: String {
-			NSLocalizedString("FEED_VIEW_TITLE",
-							  tableName: table,
-							  bundle: bundle,
-							  comment: "Title for the feed view")
+			NSLocalizedString(
+				"FEED_VIEW_TITLE",
+				tableName: table,
+				bundle: bundle,
+				comment: "Title for the feed view")
 		}
 		
 		static var loadError: String {

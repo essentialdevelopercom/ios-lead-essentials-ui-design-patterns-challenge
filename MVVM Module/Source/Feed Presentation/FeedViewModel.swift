@@ -7,13 +7,13 @@ import FeedFeature
 
 final class FeedViewModel {
 	typealias Observer<T> = (T) -> Void
-	
+
 	private let feedLoader: FeedLoader
-	
+
 	init(feedLoader: FeedLoader) {
 		self.feedLoader = feedLoader
 	}
-	
+
 	var title: String {
 		Localized.Feed.title
 	}
@@ -39,4 +39,3 @@ final class FeedViewModel {
 		}
 	}
 }
-

@@ -10,20 +10,20 @@ import MVC
 @UIApplicationMain
 public final class AppDelegate: UIResponder, UIApplicationDelegate {
 	public var window: UIWindow?
-	
+
 	public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		window = UIWindow()
 		window?.rootViewController = makeRootViewController()
 		window?.makeKeyAndVisible()
 		return true
 	}
-	
+
 	private func makeRootViewController() -> UIViewController {
 		let tabBar = UITabBarController()
 		tabBar.viewControllers = [mvc(), mvvm(), mvp()]
 		return tabBar
 	}
-	
+
 	private func mvc() -> UIViewController {
 		let view = UINavigationController(
 			rootViewController: MVC.FeedUIComposer.feedComposedWith(
@@ -32,7 +32,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 		view.tabBarItem.title = "MVC"
 		return view
 	}
-	
+
 	private func mvvm() -> UIViewController {
 		let view = UINavigationController(
 			rootViewController: MVVM.FeedUIComposer.feedComposedWith(
@@ -41,7 +41,7 @@ public final class AppDelegate: UIResponder, UIApplicationDelegate {
 		view.tabBarItem.title = "MVVM"
 		return view
 	}
-	
+
 	private func mvp() -> UIViewController {
 		let view = UINavigationController(
 			rootViewController: MVP.FeedUIComposer.feedComposedWith(

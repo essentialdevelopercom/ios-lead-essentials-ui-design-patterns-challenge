@@ -8,7 +8,7 @@ struct FeedImageViewModel<Image> {
 	let image: Image?
 	let isLoading: Bool
 	let shouldRetry: Bool
-	
+
 	var hasLocation: Bool {
 		return location != nil
 	}
