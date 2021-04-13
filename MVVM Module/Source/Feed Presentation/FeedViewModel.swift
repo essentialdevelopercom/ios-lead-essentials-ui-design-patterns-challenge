@@ -10,6 +10,10 @@ final class FeedViewModel {
 	
 	private let feedLoader: FeedLoader
 	
+	struct LoadFeedErrorViewModel {
+		let errorMessage: String
+	}
+	
 	init(feedLoader: FeedLoader) {
 		self.feedLoader = feedLoader
 	}
@@ -20,13 +24,17 @@ final class FeedViewModel {
 	
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
+	var onFeedLoadError: Observer<LoadFeedErrorViewModel>?
 	
 	func loadFeed() {
 		onLoadingStateChange?(true)
 		feedLoader.load { [weak self] result in
 			if let feed = try? result.get() {
 				self?.onFeedLoad?(feed)
+			} else {
+				self?.onFeedLoadError?(LoadFeedErrorViewModel(errorMessage: Localized.Feed.loadError))
 			}
+			
 			self?.onLoadingStateChange?(false)
 		}
 	}
