@@ -75,6 +75,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 }
 
 extension FeedViewController: FeedLoadErrorView {
+	func dismissErrorView() {
+		(tableView.tableHeaderView as? ErrorView)?.hideMessage()
+	}
+	
 	func display(_ viewModel: FeedLoadErrorViewModel) {
 		(tableView.tableHeaderView as? ErrorView)?.show(message: viewModel.errorMessage)
 	}
