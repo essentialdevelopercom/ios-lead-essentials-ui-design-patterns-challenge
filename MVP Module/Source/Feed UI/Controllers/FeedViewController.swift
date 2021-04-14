@@ -73,3 +73,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		cellController(forRowAt: indexPath).cancelLoad()
 	}
 }
+
+extension FeedViewController: FeedLoadErrorView {
+	func display(_ viewModel: FeedLoadErrorViewModel) {
+		(tableView.tableHeaderView as? ErrorView)?.show(message: viewModel.errorMessage)
+	}
+}
