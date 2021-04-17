@@ -361,6 +361,10 @@
 		27A9A4ED24C760E4009EBB8F /* FeedUISnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUISnapshotTests.swift; sourceTree = "<group>"; };
 		27A9A4EF24C76119009EBB8F /* XCTestCase+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Snapshot.swift"; sourceTree = "<group>"; };
 		27A9A4F224C76163009EBB8F /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
+		8B326487262B4E2700BB7B12 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8B326488262B4E2D00BB7B12 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8B326489262B4E3000BB7B12 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		8B32648A262B4E3400BB7B12 /* es-AR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-AR"; path = "es-AR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		8B6D2D5E2625ED20002D410E /* es-AR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-AR"; path = "es-AR.lproj/Feed.strings"; sourceTree = "<group>"; };
 		8B6D2D5F2625ED20002D410E /* es-AR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-AR"; path = "es-AR.lproj/Feed.strings"; sourceTree = "<group>"; };
 		8B6D2D602625ED20002D410E /* es-AR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-AR"; path = "es-AR.lproj/Feed.strings"; sourceTree = "<group>"; };
@@ -1551,6 +1555,10 @@
 			isa = PBXVariantGroup;
 			children = (
 				08B6150D23225CE200908DB2 /* Base */,
+				8B326487262B4E2700BB7B12 /* en */,
+				8B326488262B4E2D00BB7B12 /* el */,
+				8B326489262B4E3000BB7B12 /* pt-BR */,
+				8B32648A262B4E3400BB7B12 /* es-AR */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
