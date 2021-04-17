@@ -23,20 +23,23 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		viewModel?.loadFeed()
 	}
 	
+	@IBOutlet weak var errorView: ErrorView!
+	
 	func bind() {
 		title = viewModel?.title
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
 			if isLoading {
 				self?.refreshControl?.beginRefreshing()
-				(self?.tableView.tableHeaderView as? ErrorView)?
-					.hideMessage()
 			} else {
 				self?.refreshControl?.endRefreshing()
 			}
 		}
-		viewModel?.onFeedLoadError = {[weak self] errorViewModel in
-			(self?.tableView.tableHeaderView as? ErrorView)?
-				.show(message: errorViewModel.errorMessage)
+		viewModel?.onErrorStateChange = { [weak self] error in
+			guard let errorMsg = error else {
+				self?.errorView.hideMessage()
+				return
+			}
+			self?.errorView.show(message: errorMsg)
 		}
 	}
 	
