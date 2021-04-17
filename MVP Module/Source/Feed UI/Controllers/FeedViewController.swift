@@ -25,6 +25,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		delegate?.didRequestFeedRefresh()
 	}
 	
+	@IBOutlet weak var errorView: ErrorView!
+	
 	func display(_ viewModel: FeedLoadingViewModel) {
 		if viewModel.isLoading {
 			refreshControl?.beginRefreshing()
@@ -76,10 +78,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 extension FeedViewController: FeedLoadErrorView {
 	func dismissErrorView() {
-		(tableView.tableHeaderView as? ErrorView)?.hideMessage()
+		errorView.hideMessage()
 	}
 	
 	func display(_ viewModel: FeedLoadErrorViewModel) {
-		(tableView.tableHeaderView as? ErrorView)?.show(message: viewModel.errorMessage)
+		errorView.show(message: viewModel.errorMessage)
 	}
 }
