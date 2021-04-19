@@ -35,11 +35,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			}
 		}
 		viewModel?.onErrorStateChange = { [weak self] error in
-			guard let errorMsg = error else {
+			if let errorMsg = error {
+				self?.errorView.show(message: errorMsg)
+			} else {
 				self?.errorView.hideMessage()
-				return
 			}
-			self?.errorView.show(message: errorMsg)
 		}
 	}
 	
