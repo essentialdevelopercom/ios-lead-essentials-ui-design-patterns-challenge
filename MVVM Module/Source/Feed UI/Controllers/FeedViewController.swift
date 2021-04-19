@@ -23,6 +23,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		viewModel?.loadFeed()
 	}
 	
+	@IBOutlet weak var errorView: ErrorView!
+	
 	func bind() {
 		title = viewModel?.title
 		viewModel?.onLoadingStateChange = { [weak self] isLoading in
@@ -30,6 +32,13 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.beginRefreshing()
 			} else {
 				self?.refreshControl?.endRefreshing()
+			}
+		}
+		viewModel?.onErrorStateChange = { [weak self] error in
+			if let errorMsg = error {
+				self?.errorView.show(message: errorMsg)
+			} else {
+				self?.errorView.hideMessage()
 			}
 		}
 	}

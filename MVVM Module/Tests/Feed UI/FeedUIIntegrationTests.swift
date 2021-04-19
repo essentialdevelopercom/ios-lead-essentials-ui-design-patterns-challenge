@@ -281,6 +281,46 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 	
+	func test_loadFeedError_displaysErrorViewWithErrorMessage() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertNil(sut.errorMessage)
+
+		loader.completeFeedLoadingWithError()
+		
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+	}
+	
+	func test_errorView_hidesErrorMessageOnTap() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertNil(sut.errorMessage)
+
+		loader.completeFeedLoadingWithError()
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+
+		sut.simulateTapOnErrorMessage()
+		XCTAssertNil(sut.errorMessage)
+	}
+	
+	func test_errorView_dismissesErrorMessageOnFeedReload() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertNil(sut.errorMessage)
+
+		loader.completeFeedLoadingWithError()
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+
+		sut.simulateUserInitiatedFeedReload()
+		XCTAssertNil(sut.errorMessage)
+
+		loader.completeFeedLoadingWithError()
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+	}
+		
 	// MARK: - Helpers
 	
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
