@@ -21,5 +21,14 @@ extension Localized {
 				bundle: bundle,
 				comment: "Title for the feed view")
 		}
+
+		static var error: String {
+			NSLocalizedString(
+				"FEED_VIEW_CONNECTION_ERROR",
+				tableName: table,
+				bundle: bundle,
+				comment: "Error message displayed when is retrieved an error from the server."
+			)
+		}
 	}
 }
