@@ -65,7 +65,6 @@ private class FeedLoaderStub: FeedLoader {
 
 private extension FeedViewController {
 	func display(errorMessage: String) {
-		let errorView = tableView.tableHeaderView as? ErrorView
 		errorView?.show(message: errorMessage)
 	}
 
