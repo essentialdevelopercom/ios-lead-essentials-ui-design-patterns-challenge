@@ -9,6 +9,8 @@ protocol FeedViewControllerDelegate {
 }
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
+	@IBOutlet private(set) var errorView: ErrorView?
+
 	var delegate: FeedViewControllerDelegate?
 
 	private var tableModel = [FeedImageCellController]() {
