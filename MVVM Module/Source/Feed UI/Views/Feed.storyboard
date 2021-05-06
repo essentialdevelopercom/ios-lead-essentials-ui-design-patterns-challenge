@@ -30,7 +30,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="0.45993506909999998" blue="0.45993506909999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+														<color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="7YV-z1-u8t" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="2GP-ez-qwi"/>
                                 <constraint firstItem="7YV-z1-u8t" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" id="ED6-nU-cxW"/>
@@ -166,6 +166,9 @@ Location</string>
                             <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="OPy-Q1-D7T"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="errorView" destination="clu-9B-M8g" id="0ET-g4-5bC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
