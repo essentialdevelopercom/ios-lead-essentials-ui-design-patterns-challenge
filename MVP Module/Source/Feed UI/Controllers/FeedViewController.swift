@@ -33,9 +33,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		} else {
 			refreshControl?.endRefreshing()
 		}
-		
+
 		if let errorMessage = viewModel.errorMessage {
 			errorView?.show(message: errorMessage)
+		} else {
+			errorView?.hideMessage()
 		}
 	}
 
