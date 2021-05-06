@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import MVP
+@testable import MVP
 
 extension FeedViewController {
 	func simulateUserInitiatedFeedReload() {
@@ -39,7 +39,11 @@ extension FeedViewController {
 		let index = IndexPath(row: row, section: feedImagesSection)
 		ds?.tableView?(tableView, cancelPrefetchingForRowsAt: [index])
 	}
-	
+
+	var errorMessage: String? {
+		return errorView.message
+	}
+
 	var isShowingLoadingIndicator: Bool {
 		return refreshControl?.isRefreshing == true
 	}
