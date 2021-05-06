@@ -3,7 +3,7 @@
 //
 
 import UIKit
-import MVVM
+@testable import MVVM
 
 extension FeedViewController {
 	func simulateUserInitiatedFeedReload() {
@@ -32,6 +32,10 @@ extension FeedViewController {
 		ds?.tableView(tableView, prefetchRowsAt: [index])
 	}
 	
+	var errorMessage: String? {
+		return errorView.message
+	}
+
 	func simulateFeedImageViewNotNearVisible(at row: Int) {
 		simulateFeedImageViewNearVisible(at: row)
 		
