@@ -37,14 +37,6 @@
 		08B6153A232268C400908DB2 /* FeedFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B615312322674A00908DB2 /* FeedFeature.framework */; };
 		08B6153B232268C900908DB2 /* FeedFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B615312322674A00908DB2 /* FeedFeature.framework */; };
 		08B6153C232268CD00908DB2 /* FeedFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B615312322674A00908DB2 /* FeedFeature.framework */; };
-		08B6153D232268EA00908DB2 /* MVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F3B5B42322526C00510CE7 /* MVC.framework */; };
-		08B6153E232268EA00908DB2 /* MVC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08F3B5B42322526C00510CE7 /* MVC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		08B61541232268EA00908DB2 /* MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F3B617232255F700510CE7 /* MVVM.framework */; };
-		08B61542232268EA00908DB2 /* MVVM.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08F3B617232255F700510CE7 /* MVVM.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		08B61545232268EA00908DB2 /* MVP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F3B67A232257E100510CE7 /* MVP.framework */; };
-		08B61546232268EA00908DB2 /* MVP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08F3B67A232257E100510CE7 /* MVP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		08B61549232268EA00908DB2 /* FeedFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B615312322674A00908DB2 /* FeedFeature.framework */; };
-		08B6154A232268EA00908DB2 /* FeedFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08B615312322674A00908DB2 /* FeedFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		08D6262924C9CBBC00EF6D46 /* FeedUISnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6262824C9CBBC00EF6D46 /* FeedUISnapshotTests.swift */; };
 		08D6262C24C9CC4F00EF6D46 /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6262A24C9CC4F00EF6D46 /* XCTestCase+Snapshot.swift */; };
 		08D6262D24C9CC4F00EF6D46 /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6262B24C9CC4F00EF6D46 /* UIViewController+Snapshot.swift */; };
@@ -142,6 +134,10 @@
 		27A9A4EE24C760E4009EBB8F /* FeedUISnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4ED24C760E4009EBB8F /* FeedUISnapshotTests.swift */; };
 		27A9A4F124C76120009EBB8F /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4EF24C76119009EBB8F /* XCTestCase+Snapshot.swift */; };
 		27A9A4F324C76163009EBB8F /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4F224C76163009EBB8F /* UIViewController+Snapshot.swift */; };
+		630ADF9D2646F0E5006C562A /* FeedFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08B615312322674A00908DB2 /* FeedFeature.framework */; };
+		630ADFA02646F0E7006C562A /* MVC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F3B5B42322526C00510CE7 /* MVC.framework */; };
+		630ADFA22646F0E9006C562A /* MVP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F3B67A232257E100510CE7 /* MVP.framework */; };
+		630ADFA42646F0EA006C562A /* MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F3B617232255F700510CE7 /* MVVM.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,23 +198,6 @@
 			remoteInfo = MVP;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		08B6154D232268EB00908DB2 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				08B61546232268EA00908DB2 /* MVP.framework in Embed Frameworks */,
-				08B6154A232268EA00908DB2 /* FeedFeature.framework in Embed Frameworks */,
-				08B61542232268EA00908DB2 /* MVVM.framework in Embed Frameworks */,
-				08B6153E232268EA00908DB2 /* MVC.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0813C4A125716B1600ACB519 /* FEED_WITH_ERROR_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FEED_WITH_ERROR_dark.png; sourceTree = "<group>"; };
@@ -372,10 +351,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08B61545232268EA00908DB2 /* MVP.framework in Frameworks */,
-				08B61549232268EA00908DB2 /* FeedFeature.framework in Frameworks */,
-				08B61541232268EA00908DB2 /* MVVM.framework in Frameworks */,
-				08B6153D232268EA00908DB2 /* MVC.framework in Frameworks */,
+				630ADFA42646F0EA006C562A /* MVVM.framework in Frameworks */,
+				630ADFA22646F0E9006C562A /* MVP.framework in Frameworks */,
+				630ADF9D2646F0E5006C562A /* FeedFeature.framework in Frameworks */,
+				630ADFA02646F0E7006C562A /* MVC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,7 +998,6 @@
 				08B614FB23225CE000908DB2 /* Sources */,
 				08B614FC23225CE000908DB2 /* Frameworks */,
 				08B614FD23225CE000908DB2 /* Resources */,
-				08B6154D232268EB00908DB2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1593,7 +1571,6 @@
 		08B6151B23225CE200908DB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1615,7 +1592,6 @@
 		08B6151C23225CE200908DB2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
