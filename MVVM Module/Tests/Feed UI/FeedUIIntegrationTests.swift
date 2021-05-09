@@ -16,6 +16,13 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertEqual(sut.title, localized("FEED_VIEW_TITLE"))
 	}
 
+	func test_feedView_doesNotRendersErrorMessageOnViewLoad() {
+		let (sut, _) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertNil(sut.errorMessage)
+	}
+
 	func test_loadFeedActions_requestFeedFromLoader() {
 		let (sut, loader) = makeSUT()
 		XCTAssertEqual(loader.loadFeedCallCount, 0, "Expected no loading requests before view is loaded")
