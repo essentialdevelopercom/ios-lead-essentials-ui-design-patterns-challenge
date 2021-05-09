@@ -25,7 +25,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	}
 	
 	@IBAction private func refresh() {
-		errorView?.hideMessage()
 		delegate?.didRequestFeedRefresh()
 	}
 	
@@ -81,6 +80,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 extension FeedViewController: FeedErrorView {
 	
 	func display(_ viewModel: FeedErrorViewModel) {
-		errorView?.show(message: Localized.Feed.loadError)
+		if let message = viewModel.error {
+			errorView?.show(message: message)
+		} else {
+			errorView?.hideMessage()
+		}
 	}
 }
