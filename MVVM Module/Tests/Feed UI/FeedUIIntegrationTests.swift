@@ -289,7 +289,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		loader.completeFeedLoadingWithError()
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 
-		sut.simulateUserInitiatedReload()
+		sut.simulateUserInitiatedFeedReload()
 		XCTAssertEqual(sut.errorMessage, nil)
 	}
 
@@ -309,23 +309,5 @@ final class FeedUIIntegrationTests: XCTestCase {
 
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
-	}
-}
-
-private extension FeedViewController {
-	var headerView: ErrorView? {
-		tableView.tableHeaderView as? ErrorView
-	}
-
-	var errorMessage: String? {
-		headerView?.message
-	}
-
-	func simulateUserInitiatedReload() {
-		tableView.refreshControl?.allTargets.forEach({ (target) in
-			tableView.refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
-				(target as NSObject).perform(Selector($0))
-			}
-		})
 	}
 }
