@@ -29,7 +29,7 @@ final class FeedViewModel {
 			case .success(let feed):
 				self?.onFeedLoad?(feed)
 			case .failure:
-				self?.onFeedLoadWithError?(Localized.Feed.loadError)
+				self?.onFeedLoadWithErrorMessage?(Localized.Feed.loadError)
 			}
 			self?.onLoadingStateChange?(false)
 		}

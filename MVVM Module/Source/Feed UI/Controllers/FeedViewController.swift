@@ -35,7 +35,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.endRefreshing()
 			}
 		}
-		viewModel?.onFeedLoadWithError = { [weak self] errorMessage in
+		viewModel?.onFeedLoadWithErrorMessage = { [weak self] errorMessage in
 			self?.errorView.show(message: errorMessage)
 		}
 	}
