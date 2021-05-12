@@ -280,14 +280,17 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 
-	func test_loadFeedFailureCompletion_displaysErrorMessage() {
+	func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
+		XCTAssertEqual(sut.errorMessage, nil)
 
 		loader.completeFeedLoadingWithError()
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 
-		XCTAssertEqual((sut.tableView.tableHeaderView as? ErrorView)?.message, localized("FEED_VIEW_CONNECTION_ERROR"))
+		sut.simulateUserInitiatedReload()
+		XCTAssertEqual(sut.errorMessage, nil)
 	}
 
 	// MARK: - Helpers
@@ -306,5 +309,23 @@ final class FeedUIIntegrationTests: XCTestCase {
 
 	private func anyImageData() -> Data {
 		return UIImage.make(withColor: .red).pngData()!
+	}
+}
+
+private extension FeedViewController {
+	var headerView: ErrorView? {
+		tableView.tableHeaderView as? ErrorView
+	}
+
+	var errorMessage: String? {
+		headerView?.message
+	}
+
+	func simulateUserInitiatedReload() {
+		tableView.refreshControl?.allTargets.forEach({ (target) in
+			tableView.refreshControl?.actions(forTarget: target, forControlEvent: .valueChanged)?.forEach {
+				(target as NSObject).perform(Selector($0))
+			}
+		})
 	}
 }
