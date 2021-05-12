@@ -26,12 +26,12 @@ extension FeedViewController {
 		return view
 	}
 
-	var headerView: ErrorView? {
+	var errorView: ErrorView? {
 		tableView.tableHeaderView as? ErrorView
 	}
 
 	var errorMessage: String? {
-		headerView?.message
+		errorView?.message
 	}
 
 	func simulateFeedImageViewNearVisible(at row: Int) {
