@@ -253,6 +253,17 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertNil(view?.renderedImage, "Expected no rendered image when an image load finishes after the view is not visible anymore")
 	}
 
+	func test_loadFeedCompletion_showsErrorOnLoadFail() {
+		let (sut, loader) = makeSUT()
+		sut.loadViewIfNeeded()
+
+		XCTAssertEqual(sut.errorMessage, nil, "Error message is not expected")
+
+		loader.completeFeedLoadingWithError()
+
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Expect error message when load fails")
+	}
+
 	func test_loadFeedCompletion_dispatchesFromBackgroundToMainThread() {
 		let (sut, loader) = makeSUT()
 		sut.loadViewIfNeeded()
