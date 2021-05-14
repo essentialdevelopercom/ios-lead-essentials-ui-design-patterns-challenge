@@ -52,6 +52,10 @@ extension FeedViewController {
 		return tableView.numberOfRows(inSection: feedImagesSection)
 	}
 
+	func simulateTapOnErrorMessage() {
+		errorView.button.simulateTap()
+	}
+
 	func feedImageView(at row: Int) -> UITableViewCell? {
 		let ds = tableView.dataSource
 		let index = IndexPath(row: row, section: feedImagesSection)
