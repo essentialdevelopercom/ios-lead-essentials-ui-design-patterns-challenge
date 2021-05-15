@@ -40,6 +40,10 @@ extension FeedViewController {
 		ds?.tableView(tableView, prefetchRowsAt: [index])
 	}
 
+	func simulateTapOnError() {
+		errorView?.button.simulate(event: .touchUpInside)
+	}
+
 	func simulateFeedImageViewNotNearVisible(at row: Int) {
 		simulateFeedImageViewNearVisible(at: row)
 
