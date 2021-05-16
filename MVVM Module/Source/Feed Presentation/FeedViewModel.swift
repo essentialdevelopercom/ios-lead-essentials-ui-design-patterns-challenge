@@ -24,6 +24,7 @@ final class FeedViewModel {
 
 	func loadFeed() {
 		onLoadingStateChange?(true)
+		onErrorMessageChange?(nil)
 		feedLoader.load { [weak self] result in
 			if let feed = try? result.get() {
 				self?.onFeedLoad?(feed)
