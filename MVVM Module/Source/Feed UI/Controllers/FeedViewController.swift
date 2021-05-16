@@ -34,6 +34,14 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.endRefreshing()
 			}
 		}
+		viewModel?.onErrorMessageChange = { [weak self] message in
+			guard let message = message else {
+				self?.errorView.hideMessage()
+				return
+			}
+
+			self?.errorView.show(message: message)
+		}
 	}
 
 	public override func viewDidLayoutSubviews() {
