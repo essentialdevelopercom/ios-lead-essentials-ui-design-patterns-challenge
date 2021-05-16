@@ -8,4 +8,16 @@
 
 struct FeedErrorViewModel {
 	let message: String?
+
+	private init(message: String?) {
+		self.message = message
+	}
+
+	static var noError: FeedErrorViewModel {
+		FeedErrorViewModel(message: nil)
+	}
+
+	static func message(_ message: String) -> FeedErrorViewModel {
+		FeedErrorViewModel(message: message)
+	}
 }
