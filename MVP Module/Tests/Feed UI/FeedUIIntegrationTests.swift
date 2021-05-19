@@ -289,6 +289,30 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertNotNil(sut.errorMessage)
 	}
 
+	func test_loadFeedError_hidesErrorMeessageAfterSuccessfullReload() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoadingWithError()
+		XCTAssertNotNil(sut.errorMessage, "Expected to show error messagge after failed load")
+
+		sut.simulateUserInitiatedFeedReload()
+		loader.completeFeedLoading(with: [], at: 1)
+		XCTAssertNil(sut.errorMessage, "Expected no error message after successfull reload")
+	}
+
+	func test_loadFeedError_showsErrorMessageAfterErrorOnReload() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoadingWithError()
+		XCTAssertNotNil(sut.errorMessage, "Expected to show error messagge after failed load")
+
+		sut.simulateUserInitiatedFeedReload()
+		loader.completeFeedLoadingWithError()
+		XCTAssertNotNil(sut.errorMessage, "Expected to show error messagge after failed reload")
+	}
+
 	// MARK: - Helpers
 
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
