@@ -28,7 +28,7 @@ final class FeedViewModel {
 		feedLoader.load { [weak self] result in
 			switch result {
 			case .success(let feed): self?.onFeedLoad?(feed)
-			case .failure: self?.onLoadError?("Couldn't connect to server")
+			case .failure: self?.onLoadError?(Localized.Feed.loadError)
 			}
 
 			self?.onLoadingStateChange?(false)

@@ -280,12 +280,14 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 
-	func test_loadFeedError_displaysErrorViewAfterFailedLoad() {
+	func test_loadFeedError_displaysCorrectErrorViewAfterFailedFeedLoad() {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
 		loader.completeFeedLoadingWithError()
-		XCTAssertNotNil(sut.errorMessage, "Expected to show error messagge after failed load")
+
+		let localizedError = localized("FEED_VIEW_CONNECTION_ERROR")
+		XCTAssertEqual(sut.errorMessage, localizedError, "Expected to show \(localizedError) error messagge after failed load, got \(String(describing: sut.errorMessage))")
 	}
 
 	func test_loadFeedError_hidesErrorAfterSuccessfullReload() {
@@ -294,7 +296,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.loadViewIfNeeded()
 		loader.completeFeedLoadingWithError()
 		XCTAssertNotNil(sut.errorMessage, "Expected to show error messagge after failed load")
-		
+
 		sut.simulateUserInitiatedFeedReload()
 		loader.completeFeedLoading(with: [], at: 1)
 		XCTAssertNil(sut.errorMessage, "Expected no error message after successfull reload")
