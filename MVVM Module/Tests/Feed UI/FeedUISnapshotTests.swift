@@ -65,7 +65,7 @@ private class FeedLoaderStub: FeedLoader {
 
 private extension FeedViewController {
 	func display(errorMessage: String) {
-		viewModel?.onLoadError?(errorMessage)
+		errorView?.show(message: errorMessage)
 	}
 
 	func display(_ feed: [FeedImageCellController]) {
