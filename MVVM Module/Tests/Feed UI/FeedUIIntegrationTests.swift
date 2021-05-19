@@ -280,49 +280,30 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 
-	func test_loadFeedError_displaysCorrectErrorMessageAfterFailedFeedLoad() {
+	func test_loadFeedCompletionWithError_showsErrorMessageUntilNextReload() {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
+		XCTAssertEqual(sut.errorMessage, nil)
+
 		loader.completeFeedLoadingWithError()
-
-		let localizedError = localized("FEED_VIEW_CONNECTION_ERROR")
-		XCTAssertEqual(sut.errorMessage, localizedError, "Expected to show \(localizedError) error messagge after failed load, got \(String(describing: sut.errorMessage))")
-	}
-
-	func test_loadFeedError_hidesErrorMeessageAfterSuccessfullReload() {
-		let (sut, loader) = makeSUT()
-
-		sut.loadViewIfNeeded()
-		loader.completeFeedLoadingWithError()
-		XCTAssertNotNil(sut.errorMessage, "Expected to show error messagge after failed load")
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 
 		sut.simulateUserInitiatedFeedReload()
-		loader.completeFeedLoading(with: [], at: 1)
-		XCTAssertNil(sut.errorMessage, "Expected no error message after successfull reload")
+		XCTAssertEqual(sut.errorMessage, nil)
 	}
 
-	func test_loadFeedError_showsErrorMessageAfterErrorOnReload() {
+	func test_errorView_hidesErrorMessageOnTap() {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
-		loader.completeFeedLoadingWithError()
-		XCTAssertNotNil(sut.errorMessage, "Expected to show error messagge after failed load")
+		XCTAssertEqual(sut.errorMessage, nil)
 
-		sut.simulateUserInitiatedFeedReload()
 		loader.completeFeedLoadingWithError()
-		XCTAssertNotNil(sut.errorMessage, "Expected to show error messagge after failed reload")
-	}
-
-	func test_loadFeedError_hidesErrorMessageOnUserTap() {
-		let (sut, loader) = makeSUT()
-
-		sut.loadViewIfNeeded()
-		loader.completeFeedLoadingWithError()
-		XCTAssertNotNil(sut.errorMessage, "Expected to show error messagge after failed load")
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 
 		sut.simulateTapOnErrorMessage()
-		XCTAssertNil(sut.errorMessage, "Expected to hide error messagge after user tap action")
+		XCTAssertEqual(sut.errorMessage, nil)
 	}
 
 	// MARK: - Helpers
