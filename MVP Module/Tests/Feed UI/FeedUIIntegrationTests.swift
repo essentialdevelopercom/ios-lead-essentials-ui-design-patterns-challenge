@@ -253,28 +253,17 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertNil(view?.renderedImage, "Expected no rendered image when an image load finishes after the view is not visible anymore")
 	}
 
-	func test_loadFeedCompletion_showsErrorOnLoadFail() {
+	func test_loadFeedCompletionWithError_showsErrorMessageUntilNextReload() {
 		let (sut, loader) = makeSUT()
-		sut.loadViewIfNeeded()
 
-		XCTAssertEqual(sut.errorMessage, nil, "Error message is not expected")
+		sut.loadViewIfNeeded()
+		XCTAssertEqual(sut.errorMessage, nil)
 
 		loader.completeFeedLoadingWithError()
-
-		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Expect error message when load fails")
-	}
-
-	func test_loadFeedCompletion_hideErrorMessageOnReload() {
-		let (sut, loader) = makeSUT()
-		sut.loadViewIfNeeded()
-
-		loader.completeFeedLoadingWithError()
-
-		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Expect error message when load fails")
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 
 		sut.simulateUserInitiatedFeedReload()
-
-		XCTAssertEqual(sut.errorMessage, nil, "No error message is expected when reaload starts")
+		XCTAssertEqual(sut.errorMessage, nil)
 	}
 
 	func test_ErrorView_dismissedErrorMessageOnTap() {
