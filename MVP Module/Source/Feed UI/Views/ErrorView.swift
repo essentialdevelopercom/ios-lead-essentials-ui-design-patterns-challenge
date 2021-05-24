@@ -22,7 +22,7 @@ public final class ErrorView: UIView {
 		alpha = 0
 	}
 	
-	func show(message: String?) {
+	func show(message: String) {
 		button.setTitle(message, for: .normal)
 		
 		UIView.animate(withDuration: 0.25) {
