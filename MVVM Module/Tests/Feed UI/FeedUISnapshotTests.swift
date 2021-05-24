@@ -58,7 +58,7 @@ private class FeedLoaderStub: FeedLoader {
 
 private extension FeedViewController {
 	func display(errorMessage: String) {
-		fatalError("Must be implemented - follow the MVC solution as a guide")
+		viewModel?.onErrorStateChange?(errorMessage)
 	}
 
 	func display(_ feed: [FeedImageCellController]) {
