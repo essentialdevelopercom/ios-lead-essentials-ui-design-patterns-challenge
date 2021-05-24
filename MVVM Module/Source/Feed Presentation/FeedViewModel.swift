@@ -5,6 +5,11 @@
 import Foundation
 import FeedFeature
 
+enum FeedErrorViewModel {
+	case show(message: String)
+	case hide
+}
+
 final class FeedViewModel {
 	typealias Observer<T> = (T) -> Void
 	
@@ -20,10 +25,11 @@ final class FeedViewModel {
 	
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
-	var onFeedLoadFailure: Observer<String>?
+	var onFeedLoadFailure: Observer<FeedErrorViewModel>?
 	
 	func loadFeed() {
 		onLoadingStateChange?(true)
+		onFeedLoadFailure?(.hide)
 		feedLoader.load { [weak self] result in
 			self?.handle(result)
 		}
@@ -34,10 +40,9 @@ final class FeedViewModel {
 		case let .success(feed):
 			onFeedLoad?(feed)
 		case .failure:
-			onFeedLoadFailure?(Localized.Feed.loadError)
+			onFeedLoadFailure?(.show(message: Localized.Feed.loadError))
 		}
 		
 		onLoadingStateChange?(false)
 	}
 }
-
