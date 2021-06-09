@@ -291,6 +291,19 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertTrue(sut.errorView!.isVisible)
 	}
 
+	func test_errorView_isInVisibleWhenLoadFeedCompleteSuccessfully() {
+		let image0 = makeImage(url: URL(string: "http://url-0.com")!)
+		let image1 = makeImage(url: URL(string: "http://url-1.com")!)
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertFalse(sut.errorView!.isVisible)
+		loader.completeFeedLoading(with: [image0, image1])
+		sut.simulateUserInitiatedFeedReload()
+		loader.completeFeedLoading(with: [image0, image1], at: 0)
+		XCTAssertFalse(sut.errorView!.isVisible)
+	}
+
 	// MARK: - Helpers
 
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
