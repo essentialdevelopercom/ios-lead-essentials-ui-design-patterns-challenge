@@ -4,7 +4,7 @@
 
 import XCTest
 import UIKit
-import MVVM
+@testable import MVVM
 import FeedFeature
 
 final class FeedUIIntegrationTests: XCTestCase {
@@ -278,6 +278,17 @@ final class FeedUIIntegrationTests: XCTestCase {
 			exp.fulfill()
 		}
 		wait(for: [exp], timeout: 1.0)
+	}
+
+	func test_errorView_isVisibleWhenLoadFeedCompleteWithError() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+
+		XCTAssertFalse(sut.errorView!.isVisible)
+		sut.simulateUserInitiatedFeedReload()
+		loader.completeFeedLoadingWithError(at: 1)
+		XCTAssertTrue(sut.errorView!.isVisible)
 	}
 
 	// MARK: - Helpers
