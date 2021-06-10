@@ -36,7 +36,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		}
 		viewModel?.onError = { [weak self] isError in
 			if isError {
-				self?.errorView?.show(message: Localized.Feed.loadError)
+				self?.errorView?.show(message: self?.viewModel?.loadError ?? "")
 			} else {
 				self?.errorView?.hideMessage()
 			}
