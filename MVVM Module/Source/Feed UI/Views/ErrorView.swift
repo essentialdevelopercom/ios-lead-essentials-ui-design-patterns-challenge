@@ -11,7 +11,7 @@ public final class ErrorView: UIView {
 		get { return isVisible ? button.title(for: .normal) : nil }
 	}
 
-	public var isVisible: Bool {
+	private var isVisible: Bool {
 		return alpha > 0
 	}
 

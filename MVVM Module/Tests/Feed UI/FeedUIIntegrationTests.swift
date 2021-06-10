@@ -4,7 +4,7 @@
 
 import XCTest
 import UIKit
-@testable import MVVM
+import MVVM
 import FeedFeature
 
 final class FeedUIIntegrationTests: XCTestCase {
@@ -285,10 +285,9 @@ final class FeedUIIntegrationTests: XCTestCase {
 
 		sut.loadViewIfNeeded()
 
-		XCTAssertFalse(sut.errorView!.isVisible)
+		XCTAssertNil(sut.errorMessage)
 		sut.simulateUserInitiatedFeedReload()
 		loader.completeFeedLoadingWithError(at: 1)
-		XCTAssertTrue(sut.errorView!.isVisible)
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 	}
 
@@ -298,37 +297,35 @@ final class FeedUIIntegrationTests: XCTestCase {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
-		XCTAssertFalse(sut.errorView!.isVisible)
+		XCTAssertNil(sut.errorMessage)
 		loader.completeFeedLoading(with: [image0, image1])
-		sut.simulateUserInitiatedFeedReload()
-		loader.completeFeedLoading(with: [image0, image1], at: 0)
-		XCTAssertFalse(sut.errorView!.isVisible)
+		XCTAssertNil(sut.errorMessage)
 	}
 
 	func test_errorView_dismissesErrorMessageOnTap() {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
-		XCTAssertFalse(sut.errorView!.isVisible)
+		XCTAssertNil(sut.errorMessage)
 
 		loader.completeFeedLoadingWithError(at: 0)
-		XCTAssertTrue(sut.errorView!.isVisible)
+		XCTAssertNotNil(sut.errorMessage)
 
 		sut.simulateTapOnErrorMessage()
-		XCTAssertFalse(sut.errorView!.isVisible)
+		XCTAssertNil(sut.errorMessage)
 	}
 
 	func test_errorView_dismissesErrorMessageWhenUserInitateReload() {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
-		XCTAssertFalse(sut.errorView!.isVisible)
+		XCTAssertNil(sut.errorMessage)
 
 		loader.completeFeedLoadingWithError(at: 0)
-		XCTAssertTrue(sut.errorView!.isVisible)
+		XCTAssertNotNil(sut.errorMessage)
 
 		sut.simulateUserInitiatedFeedReload()
-		XCTAssertFalse(sut.errorView!.isVisible)
+		XCTAssertNil(sut.errorMessage)
 	}
 
 	// MARK: - Helpers
