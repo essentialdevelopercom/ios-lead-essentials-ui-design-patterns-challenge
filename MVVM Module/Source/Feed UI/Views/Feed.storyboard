@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="clu-9B-M8g">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="clu-9B-M8g" customClass="ErrorView" customModule="MVVM" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -36,6 +36,9 @@
                                 <constraint firstItem="b04-At-Zc2" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="aLw-4w-UdQ"/>
                                 <constraint firstAttribute="bottom" secondItem="b04-At-Zc2" secondAttribute="bottom" id="jPa-7c-fFD"/>
                             </constraints>
+                            <connections>
+                                <outlet property="button" destination="b04-At-Zc2" id="nIJ-kN-dNS"/>
+                            </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
                             <rect key="frame" x="0.0" y="670" width="414" height="16"/>
@@ -163,7 +166,7 @@ Location</string>
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="errorView" destination="clu-9B-M8g" id="k9T-nn-8cB"/>
+                        <outlet property="errorView" destination="clu-9B-M8g" id="jle-uT-xiT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
