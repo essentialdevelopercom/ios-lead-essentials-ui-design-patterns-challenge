@@ -289,6 +289,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.simulateUserInitiatedFeedReload()
 		loader.completeFeedLoadingWithError(at: 1)
 		XCTAssertTrue(sut.errorView!.isVisible)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 	}
 
 	func test_errorView_isInVisibleWhenLoadFeedCompleteSuccessfully() {
