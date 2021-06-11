@@ -12,7 +12,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	@IBOutlet public weak var errorView: UIButton!
 
 	@IBAction func onErrorViewClicked() {
-		
+		viewModel?.loadFeed()
 	}
 
 	var tableModel = [FeedImageCellController]() {

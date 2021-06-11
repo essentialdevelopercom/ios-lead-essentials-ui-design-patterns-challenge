@@ -48,6 +48,10 @@ extension FeedViewController {
 		return errorView.map { !$0.isHidden }
 	}
 
+	func simulateOnErrorViewClicked() {
+		errorView?.simulateTap()
+	}
+
 	func numberOfRenderedFeedImageViews() -> Int {
 		return tableView.numberOfRows(inSection: feedImagesSection)
 	}
