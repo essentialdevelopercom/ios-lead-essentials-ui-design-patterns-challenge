@@ -77,17 +77,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		assertThat(sut, isRendering: [image0])
 	}
 
-	func test_loadFeedCompletion_errorViewVisibleOnError() {
-		let (sut, loader) = makeSUT()
-
-		sut.loadViewIfNeeded()
-		XCTAssertEqual(sut.isShowingErrorView, false)
-		loader.completeFeedLoadingWithError(at: 0)
-
-		XCTAssertEqual(sut.isShowingErrorView, true)
-	}
-
-	func test_errorView_isHiddenOnDismiss() {
+	func test_errorView_visibleOnLoadingError() {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
