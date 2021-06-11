@@ -9,6 +9,12 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { bind() }
 	}
 
+	@IBOutlet public weak var errorView: UIButton!
+
+	@IBAction func onErrorViewClicked() {
+		
+	}
+
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
@@ -30,6 +36,13 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.beginRefreshing()
 			} else {
 				self?.refreshControl?.endRefreshing()
+			}
+		}
+		viewModel?.onFeedError = { [weak self] haveError in
+			if haveError {
+				self?.errorView?.isHidden = false
+			} else {
+				self?.errorView?.isHidden = true
 			}
 		}
 	}
