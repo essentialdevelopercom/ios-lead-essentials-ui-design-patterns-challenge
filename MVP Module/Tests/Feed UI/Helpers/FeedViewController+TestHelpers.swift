@@ -26,10 +26,22 @@ extension FeedViewController {
 		return view
 	}
 
+	var errorView: ErrorView? {
+		tableView.tableHeaderView as? ErrorView
+	}
+
+	var errorMessage: String? {
+		errorView?.message
+	}
+
 	func simulateFeedImageViewNearVisible(at row: Int) {
 		let ds = tableView.prefetchDataSource
 		let index = IndexPath(row: row, section: feedImagesSection)
 		ds?.tableView(tableView, prefetchRowsAt: [index])
+	}
+
+	func simulateTapOnError() {
+		errorView?.button.simulate(event: .touchUpInside)
 	}
 
 	func simulateFeedImageViewNotNearVisible(at row: Int) {
