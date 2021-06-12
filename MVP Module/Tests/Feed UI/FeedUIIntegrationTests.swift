@@ -302,6 +302,19 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 	}
 
+	func test_errorView_dismissesErrorMessageOnTap() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertNil(sut.errorMessage)
+
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertNotNil(sut.errorMessage)
+
+		sut.simulateTapOnErrorMessage()
+		XCTAssertNil(sut.errorMessage)
+	}
+
 	// MARK: - Helpers
 
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
