@@ -8,9 +8,8 @@
 
 struct FeedErrorViewModel {
 	let isError: Bool
-	
+
 	var loadError: String {
 		Localized.Feed.loadError
 	}
 }
-
