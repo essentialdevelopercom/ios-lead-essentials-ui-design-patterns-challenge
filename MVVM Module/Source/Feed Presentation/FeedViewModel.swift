@@ -18,8 +18,8 @@ final class FeedViewModel {
 		Localized.Feed.title
 	}
 
-	var onLoadingStateChange: Observer<Bool>?
 	var onFeedLoad: Observer<[FeedImage]>?
+	var onLoadingStateChange: Observer<Bool>?
 	var onFeedError: Observer<Bool>?
 
 	func loadFeed() {
