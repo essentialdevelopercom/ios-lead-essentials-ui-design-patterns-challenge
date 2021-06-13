@@ -280,52 +280,43 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 
-	func test_errorView_isVisibleWhenLoadFeedCompleteWithError() {
+	func test_loadFeedCompletion_doesNotAlterCurrentRenderingStateOnError() {
+		let image0 = makeImage()
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
+		loader.completeFeedLoading(with: [image0], at: 0)
+		assertThat(sut, isRendering: [image0])
 
-		XCTAssertNil(sut.errorMessage)
 		sut.simulateUserInitiatedFeedReload()
 		loader.completeFeedLoadingWithError(at: 1)
-		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+		assertThat(sut, isRendering: [image0])
 	}
 
-	func test_errorView_isInVisibleWhenLoadFeedCompleteSuccessfully() {
-		let image0 = makeImage(url: URL(string: "http://url-0.com")!)
-		let image1 = makeImage(url: URL(string: "http://url-1.com")!)
+	func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
-		XCTAssertNil(sut.errorMessage)
-		loader.completeFeedLoading(with: [image0, image1])
-		XCTAssertNil(sut.errorMessage)
+		XCTAssertEqual(sut.errorMessage, nil)
+
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+
+		sut.simulateUserInitiatedFeedReload()
+		XCTAssertEqual(sut.errorMessage, nil)
 	}
 
 	func test_errorView_dismissesErrorMessageOnTap() {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
-		XCTAssertNil(sut.errorMessage)
+		XCTAssertEqual(sut.errorMessage, nil)
 
 		loader.completeFeedLoadingWithError(at: 0)
-		XCTAssertNotNil(sut.errorMessage)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 
 		sut.simulateTapOnErrorMessage()
-		XCTAssertNil(sut.errorMessage)
-	}
-
-	func test_errorView_dismissesErrorMessageWhenUserInitateReload() {
-		let (sut, loader) = makeSUT()
-
-		sut.loadViewIfNeeded()
-		XCTAssertNil(sut.errorMessage)
-
-		loader.completeFeedLoadingWithError(at: 0)
-		XCTAssertNotNil(sut.errorMessage)
-
-		sut.simulateUserInitiatedFeedReload()
-		XCTAssertNil(sut.errorMessage)
+		XCTAssertEqual(sut.errorMessage, nil)
 	}
 
 	// MARK: - Helpers
