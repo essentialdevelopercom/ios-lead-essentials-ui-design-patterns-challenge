@@ -370,6 +370,7 @@
 		C7BAC7DB2671C29500D3FBBC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Feed.strings"; sourceTree = "<group>"; };
 		C7BAC7DC2671C29500D3FBBC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Feed.strings"; sourceTree = "<group>"; };
 		C7BAC7DF2674B3D500D3FBBC /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
+		C7BAC7E226773DF500D3FBBC /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1659,6 +1660,7 @@
 				08F9A7B82534632300B1568F /* en */,
 				08F9A7BA2534635300B1568F /* el */,
 				08F9A7BC2534635700B1568F /* pt-BR */,
+				C7BAC7E226773DF500D3FBBC /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
