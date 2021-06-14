@@ -18,6 +18,10 @@ final class FeedViewModel {
 		Localized.Feed.title
 	}
 
+	var loadError: String {
+		Localized.Feed.loadError
+	}
+
 	var onFeedLoad: Observer<[FeedImage]>?
 	var onLoadingStateChange: Observer<Bool>?
 	var onFeedError: Observer<Bool>?

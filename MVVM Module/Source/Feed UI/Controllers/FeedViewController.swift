@@ -41,9 +41,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		viewModel?.onFeedError = { [weak self] haveError in
 			if haveError {
 				self?.errorView?.isHidden = false
-				let bundle = Bundle(for: FeedViewController.self)
-				let title = bundle.localizedString(forKey: "FEED_VIEW_CONNECTION_ERROR", value: nil, table: "Feed")
-				self?.errorView?.setTitle(title, for: .normal)
+				self?.errorView?.setTitle(self?.viewModel?.loadError, for: .normal)
 			} else {
 				self?.errorView?.isHidden = true
 				self?.errorView?.setTitle(nil, for: .normal)
