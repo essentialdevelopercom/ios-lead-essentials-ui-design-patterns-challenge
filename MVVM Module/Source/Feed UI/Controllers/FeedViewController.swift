@@ -38,14 +38,9 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.endRefreshing()
 			}
 		}
-		viewModel?.onFeedError = { [weak self] haveError in
-			if haveError {
-				self?.errorView?.isHidden = false
-				self?.errorView?.setTitle(self?.viewModel?.loadError, for: .normal)
-			} else {
-				self?.errorView?.isHidden = true
-				self?.errorView?.setTitle(nil, for: .normal)
-			}
+		viewModel?.onFeedError = { [weak self] errorMessage in
+			self?.errorView?.isHidden = errorMessage == nil
+			self?.errorView?.setTitle(errorMessage, for: .normal)
 		}
 	}
 
