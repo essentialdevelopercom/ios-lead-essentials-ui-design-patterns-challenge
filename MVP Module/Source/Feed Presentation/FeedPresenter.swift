@@ -20,27 +20,26 @@ protocol FeedErrorView {
 final class FeedPresenter {
 	private let feedView: FeedView
 	private let loadingView: FeedLoadingView
-	private let feedErrorView: FeedErrorView
+	private let errorView: FeedErrorView
 
-	init(feedView: FeedView, loadingView: FeedLoadingView, feedErrorView: FeedErrorView) {
+	init(feedView: FeedView, loadingView: FeedLoadingView, errorView: FeedErrorView) {
 		self.feedView = feedView
 		self.loadingView = loadingView
-		self.feedErrorView = feedErrorView
+		self.errorView = errorView
 	}
 
 	func didStartLoadingFeed() {
-		feedErrorView.display(FeedErrorViewModel(isError: false))
+		errorView.display(FeedErrorViewModel(message: .none))
 		loadingView.display(FeedLoadingViewModel(isLoading: true))
 	}
 
 	func didFinishLoadingFeed(with feed: [FeedImage]) {
-		feedErrorView.display(FeedErrorViewModel(isError: false))
 		feedView.display(FeedViewModel(feed: feed))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 
 	func didFinishLoadingFeed(with error: Error) {
-		feedErrorView.display(FeedErrorViewModel(isError: true))
+		errorView.display(FeedErrorViewModel(message: .some(Localized.Feed.loadError)))
 		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 }
