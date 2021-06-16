@@ -5,6 +5,8 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+	@IBOutlet private(set) var refreshController: FeedRefreshViewController?
+	
 	var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}

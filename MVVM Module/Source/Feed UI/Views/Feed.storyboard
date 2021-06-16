@@ -167,6 +167,9 @@ Location</string>
                             <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="OPy-Q1-D7T"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <outlet property="refreshController" destination="xVM-SW-Atf" id="wXj-hj-bVt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="xVM-SW-Atf" customClass="FeedRefreshViewController" customModule="MVVM" customModuleProvider="target">
