@@ -27,6 +27,9 @@
                                     <state key="normal" title="Error label">
                                         <color key="titleColor" red="0.89019607840000003" green="0.89019607840000003" blue="0.89019607840000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="vdo-6h-sg5"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemPinkColor"/>
