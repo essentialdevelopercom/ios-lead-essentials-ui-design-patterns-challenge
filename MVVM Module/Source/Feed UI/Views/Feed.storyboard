@@ -163,11 +163,18 @@ Location</string>
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
+                            <action selector="refresh" destination="xVM-SW-Atf" eventType="valueChanged" id="DXo-3h-KbI"/>
                             <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="OPy-Q1-D7T"/>
                         </connections>
                     </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="xVM-SW-Atf" customClass="FeedRefreshViewController" customModule="MVVM" customModuleProvider="target">
+                    <connections>
+                        <outlet property="errorView" destination="LaH-Kt-KgW" id="P67-xe-v3M"/>
+                        <outlet property="view" destination="yrT-VT-7jR" id="Ot6-jN-XbY"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="1105.7971014492755" y="-11.383928571428571"/>
         </scene>
