@@ -79,6 +79,8 @@ extension FeedViewController: FeedErrorView {
 	func display(_ viewModel: FeedErrorViewModel) {
 		if let errorMessage = viewModel.errorMessage {
 			errorView.show(message: errorMessage)
+		} else {
+			errorView.hideMessage()
 		}
 	}
 }
