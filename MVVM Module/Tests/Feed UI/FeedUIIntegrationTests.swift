@@ -280,7 +280,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 
-	func test_loadFeedCompletion_doesNotShowErrorMessageOnSuccess() {
+	func test_loadFeedCompletion_doesShowErrorMessageAfterLoadFailure() {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
@@ -288,18 +288,11 @@ final class FeedUIIntegrationTests: XCTestCase {
 
 		loader.completeFeedLoading()
 		XCTAssertNil(sut.errorView?.message)
-	}
-
-	func test_loadFeedCompletion_showsErrorMessageOnFailure() {
-		let (sut, loader) = makeSUT()
-
-		sut.loadViewIfNeeded()
-		XCTAssertNil(sut.errorView?.message)
 
 		loader.completeFeedLoadingWithError()
 		XCTAssertEqual(sut.errorView?.message, localized("FEED_VIEW_CONNECTION_ERROR"))
 	}
-
+	
 	// MARK: - Helpers
 
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
