@@ -28,7 +28,7 @@ final class FeedViewModel {
 			if let feed = try? result.get() {
 				self?.onFeedLoad?(feed)
 			} else {
-				self?.onFeedLoadFailure?("Couldn't connect to server")
+				self?.onFeedLoadFailure?(Localized.Feed.loadError)
 			}
 			self?.onLoadingStateChange?(false)
 		}

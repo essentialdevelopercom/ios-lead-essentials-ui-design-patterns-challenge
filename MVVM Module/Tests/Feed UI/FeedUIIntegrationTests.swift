@@ -297,7 +297,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertNil(sut.errorView?.message)
 
 		loader.completeFeedLoadingWithError()
-		XCTAssertEqual(sut.errorView?.message, "Couldn't connect to server")
+		XCTAssertEqual(sut.errorView?.message, localized("FEED_VIEW_CONNECTION_ERROR"))
 	}
 
 	// MARK: - Helpers
