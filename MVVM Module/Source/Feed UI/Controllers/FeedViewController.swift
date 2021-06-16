@@ -6,7 +6,7 @@ import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
 	@IBOutlet private(set) var refreshController: FeedRefreshViewController?
-	
+
 	var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}
@@ -18,22 +18,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 
-		refresh()
-	}
-
-	@IBAction private func refresh() {
-		viewModel?.loadFeed()
+		refreshController?.refresh()
 	}
 
 	func bind() {
 		title = viewModel?.title
-		viewModel?.onLoadingStateChange = { [weak self] isLoading in
-			if isLoading {
-				self?.refreshControl?.beginRefreshing()
-			} else {
-				self?.refreshControl?.endRefreshing()
-			}
-		}
 	}
 
 	public override func viewDidLayoutSubviews() {

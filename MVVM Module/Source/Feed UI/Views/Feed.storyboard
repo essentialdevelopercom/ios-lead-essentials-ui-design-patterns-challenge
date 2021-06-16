@@ -164,7 +164,6 @@ Location</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="refresh" destination="xVM-SW-Atf" eventType="valueChanged" id="DXo-3h-KbI"/>
-                            <action selector="refresh" destination="1hh-nG-9OR" eventType="valueChanged" id="OPy-Q1-D7T"/>
                         </connections>
                     </refreshControl>
                     <connections>
