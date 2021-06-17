@@ -14,27 +14,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="clu-9B-M8g" customClass="ErrorView" customModule="MVVM" customModuleProvider="target">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="GQ0-CT-NZN" customClass="ErrorView" customModule="MVC" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdR-KZ-t0w">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vB9-dD-Adn">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
-                                    <state key="normal" title="Button"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
+                                    <state key="normal" title="Error label">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
                                     <connections>
-                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="zDa-eL-d5A"/>
+                                        <action selector="hideMessage" destination="GQ0-CT-NZN" eventType="touchUpInside" id="WJ7-Oc-MpQ"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <gestureRecognizers/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="UdR-KZ-t0w" secondAttribute="trailing" id="bMa-qN-WMx"/>
-                                <constraint firstAttribute="bottom" secondItem="UdR-KZ-t0w" secondAttribute="bottom" id="khu-i2-429"/>
-                                <constraint firstItem="UdR-KZ-t0w" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" id="qUX-Yu-Gm3"/>
-                                <constraint firstItem="UdR-KZ-t0w" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="xFB-SA-JjX"/>
+                                <constraint firstItem="vB9-dD-Adn" firstAttribute="top" secondItem="GQ0-CT-NZN" secondAttribute="top" id="MHP-O4-tfZ"/>
+                                <constraint firstAttribute="trailing" secondItem="vB9-dD-Adn" secondAttribute="trailing" id="Yxv-2E-h0y"/>
+                                <constraint firstItem="vB9-dD-Adn" firstAttribute="leading" secondItem="GQ0-CT-NZN" secondAttribute="leading" id="dIr-Mh-ssv"/>
+                                <constraint firstAttribute="bottom" secondItem="vB9-dD-Adn" secondAttribute="bottom" id="qOL-TS-Pso"/>
                             </constraints>
                             <connections>
-                                <outlet property="button" destination="UdR-KZ-t0w" id="Sj1-Af-Uzb"/>
+                                <outlet property="button" destination="vB9-dD-Adn" id="3zg-HA-YRq"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
@@ -162,7 +167,7 @@ Location</string>
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="errorView" destination="clu-9B-M8g" id="5tr-2D-DKd"/>
+                        <outlet property="errorView" destination="GQ0-CT-NZN" id="yFz-gk-mg6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
