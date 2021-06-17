@@ -9,6 +9,7 @@ protocol FeedViewControllerDelegate {
 }
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
+	@IBOutlet private var errorView: ErrorView?
 	var delegate: FeedViewControllerDelegate?
 
 	private var tableModel = [FeedImageCellController]() {
@@ -22,6 +23,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	}
 
 	@IBAction private func refresh() {
+		errorView?.hideMessage()
 		delegate?.didRequestFeedRefresh()
 	}
 
@@ -31,11 +33,19 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		} else {
 			refreshControl?.endRefreshing()
 		}
+
+		if let errorMessage = viewModel.errorMessage {
+			errorView?.show(message: errorMessage)
+		}
 	}
 
 	func display(_ cellControllers: [FeedImageCellController]) {
 		tableModel = cellControllers
 	}
+
+//	func display(_ errorMessage: String) {
+//		errorView?.show(message: errorMessage)
+//	}
 
 	public override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()

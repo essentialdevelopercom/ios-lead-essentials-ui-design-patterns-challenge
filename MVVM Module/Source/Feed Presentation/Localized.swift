@@ -23,10 +23,11 @@ extension Localized {
 		}
 
 		static var loadError: String {
-			NSLocalizedString("FEED_VIEW_CONNECTION_ERROR",
-			                  tableName: table,
-			                  bundle: bundle,
-			                  comment: "Error message for load error")
+			NSLocalizedString(
+				"FEED_VIEW_CONNECTION_ERROR",
+				tableName: table,
+				bundle: bundle,
+				comment: "Error message displayed when we can't load the image feed from the server")
 		}
 	}
 }
