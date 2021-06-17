@@ -5,7 +5,7 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-	@IBOutlet private(set) var refreshController: FeedRefreshViewController?
+	@IBOutlet private(set) var errorView: ErrorView?
 
 	var viewModel: FeedViewModel? {
 		didSet { bind() }
@@ -18,7 +18,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 	public override func viewDidLoad() {
 		super.viewDidLoad()
 
-		refreshController?.refresh()
+		refresh()
+	}
+
+	@IBAction func refresh() {
+		viewModel?.loadFeed()
 	}
 
 	func bind() {

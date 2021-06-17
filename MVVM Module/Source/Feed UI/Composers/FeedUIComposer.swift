@@ -14,7 +14,6 @@ public final class FeedUIComposer {
 
 		let feedController = FeedViewController.makeWith(
 			viewModel: feedViewModel)
-		feedController.refreshController?.viewModel = feedViewModel
 
 		feedViewModel.onFeedLoad = adaptFeedToCellControllers(
 			forwardingTo: feedController,
