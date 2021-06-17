@@ -83,18 +83,33 @@ final class FeedUIIntegrationTests: XCTestCase {
 		sut.loadViewIfNeeded()
 		loader.completeFeedLoading()
 
-		XCTAssertFalse(sut.isShowingLoadingError)
+		XCTAssertEqual(sut.errorMessage, nil)
 	}
 
-	func test_loadFeedError_tapToDismissLoadingError() {
+	func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
 		let (sut, loader) = makeSUT()
 
 		sut.loadViewIfNeeded()
-		loader.completeFeedLoadingWithError()
-		XCTAssertTrue(sut.isShowingLoadingError)
+		XCTAssertEqual(sut.errorMessage, nil)
+
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+
+		sut.simulateUserInitiatedFeedReload()
+		XCTAssertEqual(sut.errorMessage, nil)
+	}
+
+	func test_loadFeedCompletion_dismissesErrorMessageOnTap() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertEqual(sut.errorMessage, nil)
+
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 
 		sut.simulateLoadingErrorTap()
-		XCTAssertFalse(sut.isShowingLoadingError)
+		XCTAssertEqual(sut.errorMessage, nil)
 	}
 
 	func test_feedImageView_loadsImageURLWhenVisible() {

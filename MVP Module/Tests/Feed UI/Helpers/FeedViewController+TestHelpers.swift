@@ -58,8 +58,8 @@ extension FeedViewController {
 		return 0
 	}
 
-	var isShowingLoadingError: Bool {
-		return errorView?.message != nil
+	var errorMessage: String? {
+		return errorView?.message
 	}
 
 	func simulateLoadingErrorTap() {
