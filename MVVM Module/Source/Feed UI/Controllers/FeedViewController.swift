@@ -21,7 +21,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		refresh()
 	}
 
-	@IBAction func refresh() {
+	@IBAction private func refresh() {
 		viewModel?.loadFeed()
 	}
 
