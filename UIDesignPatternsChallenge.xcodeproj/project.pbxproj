@@ -142,6 +142,7 @@
 		27A9A4EE24C760E4009EBB8F /* FeedUISnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4ED24C760E4009EBB8F /* FeedUISnapshotTests.swift */; };
 		27A9A4F124C76120009EBB8F /* XCTestCase+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4EF24C76119009EBB8F /* XCTestCase+Snapshot.swift */; };
 		27A9A4F324C76163009EBB8F /* UIViewController+Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A9A4F224C76163009EBB8F /* UIViewController+Snapshot.swift */; };
+		CF44A11F267E00EE00CDEB61 /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08F3B5DC232252F300510CE7 /* Feed.strings */; };
 		CF51685B267A9C11006C318A /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51685A267A9C11006C318A /* FeedErrorViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -366,6 +367,7 @@
 		27A9A4ED24C760E4009EBB8F /* FeedUISnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUISnapshotTests.swift; sourceTree = "<group>"; };
 		27A9A4EF24C76119009EBB8F /* XCTestCase+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Snapshot.swift"; sourceTree = "<group>"; };
 		27A9A4F224C76163009EBB8F /* UIViewController+Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Snapshot.swift"; sourceTree = "<group>"; };
+		CF44A116267E00AE00CDEB61 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Feed.strings; sourceTree = "<group>"; };
 		CF516851267A9A77006C318A /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Feed.strings; sourceTree = "<group>"; };
 		CF51685A267A9C11006C318A /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
 		CFAA4EF02672C12F004E3061 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Feed.strings; sourceTree = "<group>"; };
@@ -1267,6 +1269,7 @@
 			files = (
 				08B6150E23225CE200908DB2 /* LaunchScreen.storyboard in Resources */,
 				08B6150B23225CE200908DB2 /* Assets.xcassets in Resources */,
+				CF44A11F267E00EE00CDEB61 /* Feed.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1668,6 +1671,7 @@
 				08F3B5DD232252F300510CE7 /* el */,
 				08F3B5DE232252F300510CE7 /* en */,
 				08F3B5E0232252F300510CE7 /* pt-BR */,
+				CF44A116267E00AE00CDEB61 /* ar */,
 			);
 			name = Feed.strings;
 			sourceTree = "<group>";
