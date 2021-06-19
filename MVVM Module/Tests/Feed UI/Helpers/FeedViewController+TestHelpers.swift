@@ -49,11 +49,11 @@ extension FeedViewController {
 	}
 
 	var errorMessage: String? {
-		return isShowingErrorView == true ? errorView.title(for: .normal) : nil
+		return errorView?.message
 	}
 
 	func simulateOnErrorViewClicked() {
-		errorView?.simulateTap()
+		errorView?.button?.simulateTap()
 	}
 
 	func numberOfRenderedFeedImageViews() -> Int {

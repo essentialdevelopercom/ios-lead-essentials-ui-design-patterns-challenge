@@ -9,7 +9,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { bind() }
 	}
 
-	@IBOutlet public weak var errorView: UIButton!
+	@IBOutlet public weak var errorView: ErrorView!
 
 	@IBAction func onErrorViewClicked() {
 		viewModel?.loadFeed()
@@ -39,8 +39,11 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 			}
 		}
 		viewModel?.onFeedError = { [weak self] errorMessage in
-			self?.errorView?.isHidden = errorMessage == nil
-			self?.errorView?.setTitle(errorMessage, for: .normal)
+			if let message = errorMessage {
+				self?.errorView?.show(message: message)
+			} else {
+				self?.errorView?.hideMessage()
+			}
 		}
 	}
 
