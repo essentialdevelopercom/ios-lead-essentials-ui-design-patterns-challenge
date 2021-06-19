@@ -23,9 +23,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		viewModel?.loadFeed()
 	}
 
-	private var errorView: ErrorView? {
-		tableView.tableHeaderView as? ErrorView
-	}
+	@IBOutlet private(set) var errorView: ErrorView?
 
 	func bind() {
 		title = viewModel?.title
