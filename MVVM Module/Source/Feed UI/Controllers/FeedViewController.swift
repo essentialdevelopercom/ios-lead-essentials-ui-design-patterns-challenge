@@ -5,6 +5,8 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
+	@IBOutlet private(set) weak var errorView: ErrorView!
+
 	var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}
@@ -21,10 +23,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 	@IBAction private func refresh() {
 		viewModel?.loadFeed()
-	}
-
-	private var errorView: ErrorView? {
-		tableView.tableHeaderView as? ErrorView
 	}
 
 	func bind() {
