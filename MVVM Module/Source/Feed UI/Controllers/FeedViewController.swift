@@ -5,7 +5,7 @@
 import UIKit
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
-	@IBOutlet public weak var errorView: ErrorView!
+	@IBOutlet private(set) public var errorView: ErrorView!
 	var viewModel: FeedViewModel? {
 		didSet { bind() }
 	}
