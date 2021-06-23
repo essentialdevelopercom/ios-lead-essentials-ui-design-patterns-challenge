@@ -10,6 +10,7 @@ protocol FeedViewControllerDelegate {
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching, FeedLoadingView {
 	var delegate: FeedViewControllerDelegate?
+	@IBOutlet private(set) public var errorView: ErrorView!
 
 	private var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
@@ -71,5 +72,15 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 	private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
 		cellController(forRowAt: indexPath).cancelLoad()
+	}
+}
+
+extension FeedViewController: FeedErrorView {
+	func display(_ viewModel: FeedErrorViewModel) {
+		if let errorMessage = viewModel.errorMessage {
+			errorView.show(message: errorMessage)
+		} else {
+			errorView.hideMessage()
+		}
 	}
 }
