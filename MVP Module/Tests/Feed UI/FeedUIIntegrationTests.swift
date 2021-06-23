@@ -303,7 +303,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 
 		sut.simulateTapOnErrorMessage()
 
-		XCTAssertEqual(sut.errorMessage, nil, "No error message is expected when reaload starts")
+		XCTAssertEqual(sut.errorMessage, nil, "No error message is expected after tapping the error message")
 	}
 
 	// MARK: - Helpers

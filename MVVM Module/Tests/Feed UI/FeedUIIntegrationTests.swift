@@ -303,7 +303,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"), "Expect error message on fails")
 
 		sut.simulateTapOnErrorMessage()
-		XCTAssertEqual(sut.errorMessage, nil)
+		XCTAssertEqual(sut.errorMessage, nil, "No error message is expected after tapping the error message")
 	}
 
 	// MARK: - Helpers
