@@ -14,7 +14,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="g65-Qi-PSN" customClass="ErrorView" customModule="MVC" customModuleProvider="target">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="g65-Qi-PSN" customClass="ErrorView" customModule="MVVM" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -26,7 +26,7 @@
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="hideMessage" destination="g65-Qi-PSN" eventType="touchUpInside" id="ZiG-ty-lnE"/>
+                                        <action selector="hideMessage" destination="g65-Qi-PSN" eventType="touchUpInside" id="jSQ-i9-qNl"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -39,7 +39,7 @@
                                 <constraint firstItem="odI-kW-c4f" firstAttribute="leading" secondItem="g65-Qi-PSN" secondAttribute="leading" id="l6I-Kv-tKB"/>
                             </constraints>
                             <connections>
-                                <outlet property="button" destination="odI-kW-c4f" id="3C7-y1-tU5"/>
+                                <outlet property="button" destination="odI-kW-c4f" id="NgJ-nR-ArJ"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
@@ -167,7 +167,7 @@ Location</string>
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="errorView" destination="g65-Qi-PSN" id="TSM-cD-Phi"/>
+                        <outlet property="errorView" destination="g65-Qi-PSN" id="4MT-A7-yub"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
