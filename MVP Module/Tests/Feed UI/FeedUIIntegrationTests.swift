@@ -299,6 +299,16 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertNil(sut.errorMessage)
 	}
 
+	func test_loadFeedCompletion_dismissErrorMessageOnTap() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		loader.completeFeedLoadingWithError()
+		sut.errorView.button.simulateTap()
+
+		XCTAssertNil(sut.errorMessage)
+	}
+
 	// MARK: - Helpers
 
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
