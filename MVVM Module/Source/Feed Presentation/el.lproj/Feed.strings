@@ -1,2 +1,3 @@
 
 "FEED_VIEW_TITLE" = "Το Feed μου";
+"FEED_VIEW_CONNECTION_ERROR" = "Couldn't connect to server";
