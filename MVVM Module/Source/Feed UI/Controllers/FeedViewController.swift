@@ -11,10 +11,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 	@IBOutlet public weak var errorView: ErrorView!
 
-	@IBAction func onErrorViewClicked() {
-		viewModel?.loadFeed()
-	}
-
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}
