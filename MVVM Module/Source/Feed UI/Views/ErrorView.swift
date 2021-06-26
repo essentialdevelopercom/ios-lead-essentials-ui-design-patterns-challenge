@@ -7,9 +7,10 @@ import UIKit
 public final class ErrorView: UIView {
 	@IBOutlet private(set) public var button: UIButton!
 
-	public var message: String? {
-		get { return isVisible ? button.title(for: .normal) : nil }
-	}
+	public var message: String?
+//	{
+//		get { return isVisible ? button.title(for: .normal) : nil }
+//	}
 
 	private var isVisible: Bool {
 		return alpha > 0

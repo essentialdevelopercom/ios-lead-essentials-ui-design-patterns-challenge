@@ -44,6 +44,10 @@ extension FeedViewController {
 		return refreshControl?.isRefreshing == true
 	}
 
+	var errorMessage: String? {
+		errorView.message
+	}
+
 	func numberOfRenderedFeedImageViews() -> Int {
 		return tableView.numberOfRows(inSection: feedImagesSection)
 	}
