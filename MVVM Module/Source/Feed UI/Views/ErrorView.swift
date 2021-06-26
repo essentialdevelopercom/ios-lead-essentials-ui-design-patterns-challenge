@@ -7,10 +7,10 @@ import UIKit
 public final class ErrorView: UIView {
 	@IBOutlet private(set) public var button: UIButton!
 
-	public var message: String?
-//	{
-//		get { return isVisible ? button.title(for: .normal) : nil }
-//	}
+	public var message: String? {
+		get { return isVisible ? button.title(for: .normal) : nil }
+		set { setMessageAnimated(newValue) }
+	}
 
 	private var isVisible: Bool {
 		return alpha > 0
@@ -23,7 +23,15 @@ public final class ErrorView: UIView {
 		alpha = 0
 	}
 
-	func show(message: String) {
+	private func setMessageAnimated(_ message: String?) {
+		if let message = message {
+			show(message: message)
+		} else {
+			hideMessage()
+		}
+	}
+
+	private func show(message: String) {
 		button.setTitle(message, for: .normal)
 
 		UIView.animate(withDuration: 0.25) {
@@ -31,7 +39,7 @@ public final class ErrorView: UIView {
 		}
 	}
 
-	@IBAction func hideMessage() {
+	@IBAction private func hideMessage() {
 		UIView.animate(
 			withDuration: 0.25,
 			animations: { self.alpha = 0 },
