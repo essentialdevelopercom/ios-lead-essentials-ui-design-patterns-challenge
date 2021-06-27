@@ -58,15 +58,11 @@ extension FeedViewController {
 		return 0
 	}
 
-	var isErrorMessageVisible: Bool? {
-		return errorView.map { !$0.isHidden }
-	}
-
 	var errorMessageText: String? {
-		return isErrorMessageVisible == true ? errorView?.title(for: .normal) : nil
+		return errorView?.message
 	}
 
 	func simulateTapOnErrorMessage() {
-		errorView?.simulateTap()
+		errorView?.button?.simulateTap()
 	}
 }
