@@ -22,16 +22,20 @@ final class FeedPresenter {
 		self.loadingView = loadingView
 	}
 
+	var errorMessage: String {
+		return Localized.Feed.loadError
+	}
+
 	func didStartLoadingFeed() {
-		loadingView.display(FeedLoadingViewModel(isLoading: true, hasError: false))
+		loadingView.display(FeedLoadingViewModel(isLoading: true))
 	}
 
 	func didFinishLoadingFeed(with feed: [FeedImage]) {
 		feedView.display(FeedViewModel(feed: feed))
-		loadingView.display(FeedLoadingViewModel(isLoading: false, hasError: false))
+		loadingView.display(FeedLoadingViewModel(isLoading: false))
 	}
 
 	func didFinishLoadingFeed(with error: Error) {
-		loadingView.display(FeedLoadingViewModel(isLoading: false, hasError: true))
+		loadingView.display(FeedLoadingViewModel(isLoading: false, error: errorMessage))
 	}
 }

@@ -61,4 +61,8 @@ extension FeedViewController {
 	var isErrorMessageVisible: Bool? {
 		return errorView.map { !$0.isHidden }
 	}
+
+	var errorMessageText: String? {
+		return isErrorMessageVisible == true ? errorView?.title(for: .normal) : nil
+	}
 }

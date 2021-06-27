@@ -33,11 +33,8 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		} else {
 			refreshControl?.endRefreshing()
 		}
-		if viewModel.hasError {
-			errorView?.isHidden = false
-		} else {
-			errorView?.isHidden = true
-		}
+		errorView?.isHidden = viewModel.error == nil
+		errorView?.setTitle(viewModel.error, for: .normal)
 	}
 
 	func display(_ cellControllers: [FeedImageCellController]) {
