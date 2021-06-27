@@ -13,6 +13,10 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 	@IBOutlet public var errorView: UIButton?
 
+	@IBAction func onErrorTapped() {
+		delegate?.didRequestFeedRefresh()
+	}
+
 	private var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
 	}

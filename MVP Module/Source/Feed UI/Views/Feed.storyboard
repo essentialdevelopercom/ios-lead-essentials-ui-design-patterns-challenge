@@ -22,6 +22,9 @@
                                     <rect key="frame" x="156" y="-7" width="71" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Error label"/>
+                                    <connections>
+                                        <action selector="onErrorTapped" destination="1hh-nG-9OR" eventType="touchUpInside" id="j3s-Bg-Q53"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

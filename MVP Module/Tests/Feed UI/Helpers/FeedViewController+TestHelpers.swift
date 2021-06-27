@@ -65,4 +65,8 @@ extension FeedViewController {
 	var errorMessageText: String? {
 		return isErrorMessageVisible == true ? errorView?.title(for: .normal) : nil
 	}
+
+	func simulateTapOnErrorMessage() {
+		errorView?.simulateTap()
+	}
 }
