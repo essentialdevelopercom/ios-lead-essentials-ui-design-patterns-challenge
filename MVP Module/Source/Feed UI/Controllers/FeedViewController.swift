@@ -29,7 +29,6 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 	func display(_ viewModel: FeedLoadingViewModel) {
 		if viewModel.isLoading {
-			self.errorView.hideMessage()
 			refreshControl?.beginRefreshing()
 		} else {
 			refreshControl?.endRefreshing()
@@ -79,7 +78,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 
 extension FeedViewController: FeedErrorMessageView {
 	func display(_ viewModel: FeedErrorViewModel) {
-		guard let errorMessage = viewModel.errorMessage else { return }
+		guard let errorMessage = viewModel.errorMessage else { return self.errorView.hideMessage() }
 		self.errorView.show(message: errorMessage)
 	}
 }
