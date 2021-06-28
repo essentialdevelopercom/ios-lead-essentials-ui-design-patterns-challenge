@@ -304,7 +304,7 @@ final class FeedUIIntegrationTests: XCTestCase {
 
 		sut.loadViewIfNeeded()
 		loader.completeFeedLoadingWithError()
-		sut.errorView.button.simulateTap()
+		sut.simulateTapOnError()
 
 		XCTAssertNil(sut.errorMessage)
 	}
