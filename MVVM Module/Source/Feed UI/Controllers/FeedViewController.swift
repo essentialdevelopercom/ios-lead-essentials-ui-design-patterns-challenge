@@ -9,7 +9,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { bind() }
 	}
 
-	@IBOutlet public weak var errorView: ErrorView!
+	@IBOutlet private(set) var errorView: ErrorView!
 
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
