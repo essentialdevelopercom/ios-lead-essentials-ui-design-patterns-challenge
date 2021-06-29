@@ -4,5 +4,4 @@
 
 struct FeedLoadingViewModel {
 	let isLoading: Bool
-	var error: String? = nil
 }
