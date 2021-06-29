@@ -28,13 +28,13 @@ final class FeedViewModel {
 
 	func loadFeed() {
 		onLoadingStateChange?(true)
-		onFeedError?(nil)
+		onErrorStateChange?(nil)
 		feedLoader.load { [weak self] result in
 			switch result {
 			case let .success(feed):
 				self?.onFeedLoad?(feed)
 			case .failure:
-				self?.onFeedError?(self?.loadError)
+				self?.onErrorStateChange?(self?.loadError)
 			}
 			self?.onLoadingStateChange?(false)
 		}
