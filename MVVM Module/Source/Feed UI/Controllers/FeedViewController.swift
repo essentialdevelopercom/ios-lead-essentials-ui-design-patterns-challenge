@@ -9,7 +9,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 		didSet { bind() }
 	}
 
-	@IBOutlet private(set) var errorView: ErrorView!
+	@IBOutlet private(set) public var errorView: ErrorView!
 
 	var tableModel = [FeedImageCellController]() {
 		didSet { tableView.reloadData() }
@@ -34,7 +34,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
 				self?.refreshControl?.endRefreshing()
 			}
 		}
-		viewModel?.onFeedError = { [weak self] errorMessage in
+		viewModel?.onErrorStateChange = { [weak self] errorMessage in
 			if let message = errorMessage {
 				self?.errorView?.show(message: message)
 			} else {
