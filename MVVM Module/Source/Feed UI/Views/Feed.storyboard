@@ -20,31 +20,30 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6N-Pl-k1g">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
-                                    <color key="backgroundColor" red="1" green="0.41568627450980389" blue="0.41568627450980389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
                                     <state key="normal" title="Error Label">
-                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
-                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="4dY-LC-TQX"/>
+                                        <action selector="hideMessage" destination="clu-9B-M8g" eventType="touchUpInside" id="pzX-4u-132"/>
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+							<color key="backgroundColor" red="0.99951404330000004" green="0.41759261489999999" blue="0.4154433012" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstItem="H6N-Pl-k1g" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" id="Bao-RP-7tg"/>
-                                <constraint firstAttribute="trailing" secondItem="H6N-Pl-k1g" secondAttribute="trailing" id="K3S-go-Rii"/>
-                                <constraint firstItem="H6N-Pl-k1g" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="fQP-Am-FDy"/>
-                                <constraint firstAttribute="bottom" secondItem="H6N-Pl-k1g" secondAttribute="bottom" id="vWy-6q-aB0"/>
+                                <constraint firstItem="H6N-Pl-k1g" firstAttribute="leading" secondItem="clu-9B-M8g" secondAttribute="leading" id="Srk-GU-Q07"/>
+                                <constraint firstItem="H6N-Pl-k1g" firstAttribute="top" secondItem="clu-9B-M8g" secondAttribute="top" id="XQQ-5R-1fi"/>
+                                <constraint firstAttribute="trailing" secondItem="H6N-Pl-k1g" secondAttribute="trailing" id="noO-jV-Qca"/>
+                                <constraint firstAttribute="bottom" secondItem="H6N-Pl-k1g" secondAttribute="bottom" id="xqe-BQ-PKs"/>
                             </constraints>
                             <connections>
-                                <outlet property="button" destination="H6N-Pl-k1g" id="zaS-90-fbq"/>
+                                <outlet property="button" destination="H6N-Pl-k1g" id="rcG-S8-B7v"/>
                             </connections>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pGT-Qn-vv2">
                             <rect key="frame" x="0.0" y="663.00000034679067" width="414" height="16"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedImageCell" rowHeight="580" id="4Aa-lg-gTp" customClass="FeedImageCell" customModule="MVVM" customModuleProvider="target">
@@ -167,7 +166,7 @@ Location</string>
                         </connections>
                     </refreshControl>
                     <connections>
-                        <outlet property="errorView" destination="clu-9B-M8g" id="8wq-hz-fV4"/>
+                        <outlet property="errorView" destination="clu-9B-M8g" id="9XR-J4-nD5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RzX-Pc-Xwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
