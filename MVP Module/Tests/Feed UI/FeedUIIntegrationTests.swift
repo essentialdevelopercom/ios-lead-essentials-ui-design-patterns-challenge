@@ -280,8 +280,6 @@ final class FeedUIIntegrationTests: XCTestCase {
 		wait(for: [exp], timeout: 1.0)
 	}
 
-
-
 	func test_loadFeedCompletion_NoRendersErrorMessageOnSuccessfullyLoadedFeed() {
 		let (sut, loader) = makeSUT()
 
@@ -301,19 +299,32 @@ final class FeedUIIntegrationTests: XCTestCase {
 		loader.completeFeedLoadingWithError(at: 0)
 		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 	}
-	
+
 	func test_loadFeedCompletion_rendersErrorMessageOnErrorUntilNextReload() {
-			let (sut, loader) = makeSUT()
+		let (sut, loader) = makeSUT()
 
-			sut.loadViewIfNeeded()
-			XCTAssertEqual(sut.errorMessage, nil)
+		sut.loadViewIfNeeded()
+		XCTAssertEqual(sut.errorMessage, nil)
 
-			loader.completeFeedLoadingWithError(at: 0)
-			XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
 
-			sut.simulateUserInitiatedFeedReload()
-			XCTAssertEqual(sut.errorMessage, nil)
-		}
+		sut.simulateUserInitiatedFeedReload()
+		XCTAssertEqual(sut.errorMessage, nil)
+	}
+
+	func test_errorView_dismissesErrorMessageOnTap() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+		XCTAssertEqual(sut.errorMessage, nil)
+
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertEqual(sut.errorMessage, localized("FEED_VIEW_CONNECTION_ERROR"))
+
+		sut.simulateTapOnErrorMessage()
+		XCTAssertEqual(sut.errorMessage, nil)
+	}
 
 	// MARK: - Helpers
 
