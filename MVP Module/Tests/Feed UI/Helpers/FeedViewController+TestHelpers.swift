@@ -59,6 +59,6 @@ extension FeedViewController {
 	}
 
 	var errorMessage: String? {
-		return nil
+		return errorView?.message
 	}
 }
