@@ -289,6 +289,18 @@ final class FeedUIIntegrationTests: XCTestCase {
 		XCTAssertTrue(sut.isShowingErrorView, "Expected error view after loading completes with error")
 	}
 
+	func test_errorView_isDismissedOnTap() {
+		let (sut, loader) = makeSUT()
+
+		sut.loadViewIfNeeded()
+
+		loader.completeFeedLoadingWithError(at: 0)
+		XCTAssertTrue(sut.isShowingErrorView, "Expected error view after loading completes with error")
+
+		sut.tapOnErrorView()
+		XCTAssertFalse(sut.isShowingErrorView, "Expected error view to be dismissed after tap on it")
+	}
+
 	// MARK: - Helpers
 
 	private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: FeedViewController, loader: LoaderSpy) {
