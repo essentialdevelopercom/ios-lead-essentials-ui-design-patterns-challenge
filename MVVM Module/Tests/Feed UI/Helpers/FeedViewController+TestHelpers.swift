@@ -62,10 +62,6 @@ extension FeedViewController {
 		errorView?.button.simulateTap()
 	}
 
-	private var errorView: ErrorView? {
-		return tableView.tableHeaderView as? ErrorView
-	}
-
 	private var feedImagesSection: Int {
 		return 0
 	}
